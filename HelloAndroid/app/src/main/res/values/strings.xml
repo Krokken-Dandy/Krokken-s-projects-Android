@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HelloAndroid</string>
+    <string name="phonenumber">(650)&#8211;555&#8211;5555</string>
+    <string name="address">Mountain View, CA 94043</string>
+    <string name="address2">2465 Latham St</string>
+    <string name="company">Udacity</string>
+    <string name="faxnumber">(800)&#8211;555&#8211;5555</string>
+    <string name="email">fake@udacity.com</string>
+</resources>

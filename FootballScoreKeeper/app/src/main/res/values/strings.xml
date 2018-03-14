@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FootballScoreKeeper</string>
+    <string name="scoreText">Let\'s get this game started!</string>
+    <string name="reset_scores">Reset Scores</string>
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="touchdown">Touchdown!</string>
+    <string name="field_goal">Field goal!</string>
+    <string name="extra_point">Extra Point!</string>
+    <string name="touchback">Touchback!</string>
+    <string name="two_point_conversion">Two point Conversion!</string>
+    <string name="_0">0</string>
+</resources>

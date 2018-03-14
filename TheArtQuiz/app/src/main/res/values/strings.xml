@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">The Art Quiz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="art_quiz_for">Art Quiz</string>
+    <string name="question_1">question 1</string>
+    <string name="question_2">2</string>
+    <string name="question_3">3</string>
+    <string name="question_4">4</string>
+    <string name="question_5">5</string>
+    <string name="question_6">6</string>
+    <string name="question_7">7</string>
+    <string name="question_8">8</string>
+    <string name="question_9">9</string>
+    <string name="question_10">10</string>
+</resources>

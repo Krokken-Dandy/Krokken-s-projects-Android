@@ -1,0 +1,26 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.krokken.stout.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/stout_month"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Happy Stout Month Rob!"
+         />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height= "match_parent"
+    android:textColor="#f00"
+    android:text="Let's have some beer!"/>
+    </ImageView>
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="quantity">Coffee Qtys</string>
+    <string name="order">Order</string>
+    <string name="price">Price</string>
+    <string name="decrease">–</string>
+    <string name="increase">+</string>
+    <string name="order_Text">What can we get you today?</string>
+    <string name="priceCoffee">$0.00</string>
+    <string name="startQuantity">0</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="current_charge">Current Charge: $</string>
+    <string name="_0_00">| $0.00</string>
+    <string name="liquid_courage">Liquid Courage</string>
+    <string name="dairy_free_creamer">Dairy Free Creamer</string>
+    <string name="espresso_shot">Espresso Shot</string>
+    <string name="latte">Latte</string>
+    <string name="cinnamon">Cinnamon</string>
+    <string name="whipped_cream">Whipped Cream</string>
+    <string name="line">|</string>
+    <string name="toppings">Toppings</string>
+    <string name="priced_per_cup">Priced per cup</string>
+    <string name="current_charge_0_00">Current Charge: $0.00</string>
+    <string name="name">Enter Name</string>
+    <string name="mocha">Mocha</string>
+    <string name="frappuccino">Frappuccino</string>
+    <string name="regular">Regular</string>
+    <string name="americano">Americano</string>
+    <string name="cappuccino">Cappuccino</string>
+    <string name="iced_coffee">Iced Coffee</string>
+    <string name="macchiato">Macchiato</string>
+    <string name="beverage_charges">Pre-Toppings Cost</string>
+</resources>
