@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="question1">question1</string>
+    <string name="question2">2</string>
+    <string name="how_well_do_you_know_art">How well do you know art?</string>
+    <string name="munchQ1">Which artist is credited with this painting?</string>
+</resources>

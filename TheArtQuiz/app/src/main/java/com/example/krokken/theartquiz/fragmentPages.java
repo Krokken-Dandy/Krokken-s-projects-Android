@@ -1,5 +1,6 @@
 package com.example.krokken.theartquiz;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 
 import android.content.res.Resources;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -21,12 +24,12 @@ import java.util.Arrays;
  * A simple {@link Fragment} subclass.
  */
 public class fragmentPages extends Fragment {
-
-    TextView questionTitle1, questionNumber, questionQuestion;
+    TextView questionNumber, questionQuestion, quizTitle, knowArt, questionNumberName;
     View layoutAnswer1, layoutAnswer2, layoutAnswer3, layoutAnswer4, layoutAnswer5,
             layoutAnswer6, layoutAnswer7, layoutAnswer8, layoutAnswer9, layoutAnswer10,
             layoutFinal1, layoutFinal2;
-    Button beginButton;
+    Button submitButton, beginButton;
+    ImageView openingImage;
 
     int qNumber;
     //Resources res = getResources();
@@ -36,34 +39,41 @@ public class fragmentPages extends Fragment {
     String[] questions = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
 
-    public fragmentPages() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View question = inflater.inflate(R.layout.fragment_pages_layout, container, false);
-
         Bundle bundle = getArguments();
         String message = Integer.toString(bundle.getInt("count"));
-        questionQuestion = question.findViewById(R.id.question);
-        questionTitle1 = question.findViewById(R.id.question_title);
-        questionNumber = question.findViewById(R.id.question_number);
-        layoutAnswer1 = question.findViewById(R.id.layout_answer_1);
-        layoutAnswer2 = question.findViewById(R.id.layout_answer_2);
-        layoutAnswer3 = question.findViewById(R.id.layout_answer_3);
-        layoutAnswer4 = question.findViewById(R.id.layout_answer_4);
-        layoutAnswer5 = question.findViewById(R.id.layout_answer_5);
-        layoutAnswer6 = question.findViewById(R.id.layout_answer_6);
-        layoutAnswer7 = question.findViewById(R.id.layout_answer_7);
-        layoutAnswer8 = question.findViewById(R.id.layout_answer_8);
-        layoutAnswer9 = question.findViewById(R.id.layout_answer_9);
-        layoutAnswer10 = question.findViewById(R.id.layout_answer_10);
-        layoutFinal1 = question.findViewById(R.id.layout_final_1);
-        layoutFinal2 = question.findViewById(R.id.layout_final_2);
-        beginButton = question.findViewById(R.id.begin_button);
+//        openingImage = question.findViewById(R.id.opening_image);
+//        quizTitle = question.findViewById(R.id.question_title);
+//        knowArt = question.findViewById(R.id.know_art);
+//        questionQuestion = question.findViewById(R.id.question);
+//        questionNumber = question.findViewById(R.id.question_number);
+//        layoutAnswer1 = question.findViewById(R.id.layout_answer_1);
+//        layoutAnswer2 = question.findViewById(R.id.layout_answer_2);
+//        layoutAnswer3 = question.findViewById(R.id.layout_answer_3);
+//        layoutAnswer4 = question.findViewById(R.id.layout_answer_4);
+//        layoutAnswer5 = question.findViewById(R.id.layout_answer_5);
+//        layoutAnswer6 = question.findViewById(R.id.layout_answer_6);
+//        layoutAnswer7 = question.findViewById(R.id.layout_answer_7);
+//        layoutAnswer8 = question.findViewById(R.id.layout_answer_8);
+//        layoutAnswer9 = question.findViewById(R.id.layout_answer_9);
+//        layoutAnswer10 = question.findViewById(R.id.layout_answer_10);
+//        layoutFinal1 = question.findViewById(R.id.layout_final_1);
+//        layoutFinal2 = question.findViewById(R.id.layout_final_2);
+//        beginButton = question.findViewById(R.id.begin_button);
+//        submitButton = question.findViewById(R.id.submit_button);
+
+        beginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openingImage.setVisibility(View.GONE);
+                beginButton.setVisibility(View.GONE);
+                knowArt.setVisibility(View.GONE);
+                quizTitle.setVisibility(View.GONE);
+            }
+        });
 
         qNumber = bundle.getInt("count");
         if (qNumber > 10) {
@@ -72,18 +82,16 @@ public class fragmentPages extends Fragment {
 
         questionNumber.setText("Question: " + qNumber + " of 10");
         questionQuestion();
-        //answerAnswer();
         return question;
     }
 
     public void questionQuestion() {
         if (qNumber == 1) {
             visibility();
-                layoutAnswer1.setVisibility(View.VISIBLE);
-                for (String q : questions) {
-                    questionQuestion.setText((questions[0]));
-                }
-
+            layoutAnswer1.setVisibility(View.VISIBLE);
+            for (String q : questions) {
+                questionQuestion.setText((questions[0]));
+            }
 
         } else if (qNumber == 2) {
             visibility();
@@ -91,12 +99,14 @@ public class fragmentPages extends Fragment {
             for (String q : questions) {
                 questionQuestion.setText((questions[1]));
             }
+
         } else if (qNumber == 3) {
             visibility();
             layoutAnswer3.setVisibility(View.VISIBLE);
             for (String q : questions) {
                 questionQuestion.setText((questions[2]));
             }
+
         } else if (qNumber == 4) {
             visibility();
             layoutAnswer4.setVisibility(View.VISIBLE);
@@ -148,6 +158,7 @@ public class fragmentPages extends Fragment {
 
         } else if (qNumber == 11) {
             visibility();
+            submitButton.setVisibility(View.VISIBLE);
             layoutFinal1.setVisibility(View.VISIBLE);
             for (String q : questions) {
                 questionQuestion.setText((questions[10]));
@@ -160,8 +171,6 @@ public class fragmentPages extends Fragment {
                 questionQuestion.setText((questions[11]));
             }
 
-        } else {
-            questionTitle1.setText("What went wrong?");
         }
     }
 
@@ -178,23 +187,7 @@ public class fragmentPages extends Fragment {
         layoutAnswer10.setVisibility(View.GONE);
         layoutFinal1.setVisibility(View.GONE);
         layoutFinal2.setVisibility(View.GONE);
+        submitButton.setVisibility(View.GONE);
     }
-
-
-//    public void answerAnswer(){
-//        if (qNumber == 1) {
-//           answers = new CheckBox[sAnswers.length];
-//           for (int i=0;i<sAnswers.length;i++){
-//               c.setText(sAnswers[i]);
-//               answers[i]=c;
-//           }
-//
-//        } else if (qNumber == 2) {
-//            questionTitle.setText("What is tomorrow?");
-//        } else {
-//            questionTitle.setText("What is the day after that?");
-//        }
-//    }
-
 
 }

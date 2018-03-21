@@ -15,26 +15,25 @@ import android.widget.TextView;
 
 public class action_listener implements TextView.OnEditorActionListener {
 
-    String quizName;
     EditText nameForOrder;
     TextView quizTitle;
+    MainActivity mainActivity = new MainActivity();
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_DONE) {
-            InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//            nameForOrder = mainActivity.findViewById(R.id.name_input);
+//            String theirName = nameForOrder.getText().toString();
+               InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(),0);
-            //quizName();
             return true;
         }
         return false;
     }
 
-    public void quizName() {
-        MainActivity mainActivity = new MainActivity();
-        nameForOrder = mainActivity.findViewById(R.id.name_input);
+    private void quizName(String quizName) {
         quizTitle = mainActivity.findViewById(R.id.quiz_title);
-        quizName = mainActivity.getString(R.string.art_quiz_for) + nameForOrder.getText().toString();
+//        quizName += mainActivity.getString(R.string.art_quiz_for);
         quizTitle.setText(quizName);
     }
 }
