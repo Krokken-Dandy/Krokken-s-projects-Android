@@ -967,6 +967,12 @@
                         android:text="The Railway" />
 
                     <CheckBox
+                        android:id="@+id/degas_q9e"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Little Dancer of 14 Years" />
+
+                    <CheckBox
                         android:id="@+id/degas_q9b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -995,12 +1001,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="L'Absinthe " />
-
-                    <CheckBox
-                        android:id="@+id/degas_q9e"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Little Dancer of Fourteen Years" />
 
                     <CheckBox
                         android:id="@+id/olympia_q9"
@@ -1168,6 +1168,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
+                android:onClick="hintClickable"
+                android:textColor="@android:color/holo_blue_light"
+                android:clickable="true"
                 android:text="Hint" />
 
 

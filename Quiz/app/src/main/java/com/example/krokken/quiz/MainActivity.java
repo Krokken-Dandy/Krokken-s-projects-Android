@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
 
-    Toast needName;
+    Toast needName, hint;
     int scoreOne, scoreTwo, scoreThree, scoreFour, scoreFive, scoreFive2, scoreSix, scoreSeven, scoreEight, scoreNine, scoreTen;
 
 
@@ -246,61 +246,87 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void submitAnswersButton(View v){
+    public void hintClickable(View v){
+        hint.makeText(this, "This is a Quiz, no hints!", Toast.LENGTH_LONG).show();
+    }
+
+    public void submitAnswersButton(View v) {
         questionTwoCheck();
         questionThreeCheck();
         questionNineCheck();
         nameOutput.setText(calculateScore());
 
-       // layoutRest.setVisibility(View.GONE);
+        layoutRest.setVisibility(View.GONE);
     }
 
     //Correct Answers Q1: Munch
     public void onQuestionOneRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.eyck_q1:
                 if (munch)
                     scoreOne = 0;
-                    break;
+                break;
             case R.id.gogh_q1:
                 if (munch)
                     scoreOne = 0;
-                    break;
+                break;
             case R.id.munch_q1:
                 if (munch)
                     scoreOne = 5;
-                    break;
+                break;
             case R.id.pablo_q1:
                 if (munch)
                     scoreOne = 0;
-                    break;
+                break;
             case R.id.shrik_q1:
                 if (munch)
                     scoreOne = 0;
-                    break;
+                break;
         }
     }
 
     //Correct answers Q2: Monet, Cezanne, Cassatt, Renoir, Morisot
-    public void questionTwoCheck(){
+    public void questionTwoCheck() {
+        scoreTwo = 0;
+        if (monetQ2.isChecked()) {
+            if (cezanneQ2.isChecked()) {
+                if (cassattQ2.isChecked()) {
+                    if (renoirQ2.isChecked()) {
+                        if (morisotQ2.isChecked()) {
+                            scoreTwo = 25;
 
+                            if (picassoQ2.isChecked()) {
+                                scoreTwo = 0;
+                            } else if (goghQ2.isChecked()) {
+                                scoreTwo = 0;
+                            } else if (pollockQ2.isChecked()) {
+                                scoreTwo = 0;
+                            } else if (christovQ2.isChecked()) {
+                                scoreTwo = 0;
+                            } else if (manetQ2.isChecked()) {
+                                scoreTwo = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    public void questionThreeCheck(){
+    public void questionThreeCheck() {
         String answerThree = questionThreeAnswer.getText().toString().toLowerCase();
 
-        if (answerThree.matches("pablo picasso")){
-            scoreThree = 5;
+        if (answerThree.matches("pablo picasso")) {
+            scoreThree = 10;
         } else if (answerThree.matches("picasso")) {
-            scoreThree = 5;
+            scoreThree = 10;
         } else if (answerThree.matches("pablo")) {
-            scoreThree = 5;
+            scoreThree = 10;
         } else if (answerThree.matches("pablopicasso")) {
-            scoreThree = 5;
+            scoreThree = 10;
         } else {
             scoreThree = 0;
         }
@@ -308,11 +334,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Correct Answers Q4: Sistine
     public void onQuestionFourRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.baptist_q4:
                 if (munch)
                     scoreFour = 0;
@@ -335,13 +360,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
     //Correct Answers Q5: Wall & Doorway
     public void onQuestionFiveRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.canvas_q5:
                 if (munch)
                     scoreFive = 0;
@@ -366,11 +391,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onQuestionFiveRadio2(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.apostle_q5:
                 if (munch)
                     scoreFive2 = 0;
@@ -396,11 +420,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Correct Answers Q6: Decorative
     public void onQuestionSixRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.louvre_q6:
                 if (munch)
                     scoreSix = 0;
@@ -426,11 +449,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Correct Answers Q7: Rembrandt
     public void onQuestionSevenRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.degas_q7:
                 if (munch)
                     scoreSeven = 0;
@@ -453,47 +475,70 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
     //Correct Answers Q8: Magritte
     public void onQuestionEightRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.cezanne_q8:
                 if (munch)
-                    scoreOne = 0;
+                    scoreEight = 0;
                 break;
             case R.id.christov_q8:
                 if (munch)
-                    scoreOne = 0;
+                    scoreEight = 0;
                 break;
             case R.id.magritte_q8:
                 if (munch)
-                    scoreOne = 5;
+                    scoreEight = 5;
                 break;
             case R.id.leonardo_q8:
                 if (munch)
-                    scoreOne = 0;
+                    scoreEight = 0;
                 break;
             case R.id.monet_q8:
                 if (munch)
-                    scoreOne = 0;
+                    scoreEight = 0;
                 break;
         }
     }
-    //Correct answers Q9: DegasA-E
-    public void questionNineCheck(){
 
+    //Correct answers Q9: DegasA-E
+    public void questionNineCheck() {
+        scoreNine = 0;
+        if (degasQ9A.isChecked()) {
+            if (degasQ9B.isChecked()) {
+                if (degasQ9C.isChecked()) {
+                    if (degasQ9D.isChecked()) {
+                        if (degasQ9E.isChecked()) {
+                            scoreNine = 25;
+
+                            if (railwayQ9.isChecked()) {
+                                scoreNine = 0;
+                            } else if (portraitQ9.isChecked()) {
+                                scoreNine = 0;
+                            } else if (annunciationQ9.isChecked()) {
+                                scoreNine = 0;
+                            } else if (monaQ9.isChecked()) {
+                                scoreNine = 0;
+                            } else if (olympiaQ9.isChecked()) {
+                                scoreNine = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //Correct Answers Q10: Napoleon III
     public void onQuestionTenRadio(View view) {
-        // Is the button now checked?
         boolean munch = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.queen_q10:
                 if (munch)
                     scoreTen = 0;
@@ -517,10 +562,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String calculateScore(){
+    public String calculateScore() {
         int sum = scoreOne + scoreTwo + scoreThree + scoreFour + scoreFive + scoreFive2 + scoreSix +
                 scoreSeven + scoreEight + scoreNine + scoreTen;
-        String score = "" + sum;
+        String score = sum + "%";
+
         return score;
     }
 
