@@ -1,5 +1,12 @@
 package com.example.krokken.quiz;
 
+import android.annotation.TargetApi;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.os.Build;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +20,13 @@ import android.widget.Toast;
 
 import java.util.stream.IntStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     Toast needName, hint;
     int scoreOne, scoreTwo, scoreThree, scoreFour, scoreFive, scoreFive2, scoreSix, scoreSeven, scoreEight, scoreNine, scoreTen;
 
+    ViewPager viewPager;
+    swipeAdapter swipeAdapter;
 
     EditText nameInput, questionThreeAnswer;
 
@@ -42,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     Button submitButton;
 
-    View layoutOpening, layoutRest;
+    View layoutOpening, layoutRest, container;
 
     String[] numbers = {"#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10"};
     String[] questions = {
-            "Which artist is credited with this painting?"
+            "This painting is credited to whom?"
             , "Which of the following considered themselves part of the Impressionist movement?"
             , "This painting is credited to whom?"
             , "The artist credited with this piece is also well known for which?"
@@ -63,6 +72,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
+//
+
+//        View.OnClickListener viewlistener = new View.OnClickListener() {
+//
+//            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//
+//            @Override
+//
+//            public void onClick(View v) {
+//
+//
+//
+//
+//    }
+//
+//};
+//
+//        submitButton.setOnClickListener(viewlistener);
+
     }
 
     public void findViews() {
@@ -85,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         layoutOpening = findViewById(R.id.layout_opening);
         openingImage = findViewById(R.id.opening_image);
         questionTitle = findViewById(R.id.question_title);
-
+        container = findViewById(R.id.fragment_container);
     }
 
     public void findCheckBoxes() {
@@ -257,6 +285,15 @@ public class MainActivity extends AppCompatActivity {
         nameOutput.setText(calculateScore());
 
         layoutRest.setVisibility(View.GONE);
+        nameOutput.setVisibility(View.VISIBLE);
+//        container.setVisibility(View.VISIBLE);
+//        swipeAdapter = new swipeAdapter(getSupportFragmentManager());
+//        viewPager.setAdapter(swipeAdapter);
+//        FragmentManager fm = getSupportFragmentManager();
+//        FragmentTransaction ft = fm.beginTransaction();
+//        finalFragments fm2 = new finalFragments();
+//        ft.replace(R.id.fragment_container, fm2, "HELLO");
+//        ft.commit();
     }
 
     //Correct Answers Q1: Munch
