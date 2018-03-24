@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="opening_title_115">115dp</dimen>
+    <dimen name="opening_title_124">124dp</dimen>
+    <dimen name="overall_margin_16">16dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="answer_text_14">14sp</dimen>
+    <dimen name="check_x_7">7dp</dimen>
+    <dimen name="check_x_1">1dp</dimen>
+    <dimen name="check_x_33">33dp</dimen>
+    <dimen name="check_x_45">45dp</dimen>
+    <dimen name="check_x_14">14dp</dimen>
+    <dimen name="check_x_130">130dp</dimen>
+    <dimen name="check_x_98">98dp</dimen>
+    <dimen name="question_number_text_24">24sp</dimen>
+    <dimen name="purple_line_height">6dp</dimen>
+    <dimen name="question_text_18">18sp</dimen>
+    <dimen name="check_x_142">142dp</dimen>
+    <dimen name="check_x_135">135dp</dimen>
+    <dimen name="check_x_75">75dp</dimen>
+    <dimen name="padding_3">3dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="begin_button_text">36sp</dimen>
+    <dimen name="quiz_title_text">46sp</dimen>
+    <dimen name="check_x_66">66dp</dimen>
+    <dimen name="check_x_193">193dp</dimen>
+    <dimen name="check_x_200">200dp</dimen>
+    <dimen name="check_x_110">110dp</dimen>
+    <dimen name="check_x_96">96dp</dimen>
+    <dimen name="final_purple_line">72dp</dimen>
+</resources>
