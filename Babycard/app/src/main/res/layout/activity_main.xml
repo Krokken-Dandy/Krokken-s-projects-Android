@@ -1,5 +1,4 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,56 +9,54 @@
         android:layout_height="match_parent"
         android:cropToPadding="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/stout_month"/>
+        android:src="@drawable/stout_month" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16sp"
-            android:layout_marginTop="8sp"
-            android:fontFamily="sans-serif-light"
-            android:text="Congrats Kim!"
-            android:textColor="@android:color/holo_purple"
-            android:textSize="36sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="85sp"
-            android:layout_marginRight="56sp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:fontFamily="sans-serif-light"
-            android:text="From,"
-            android:textColor="@android:color/holo_purple"
-            android:textSize="36sp"
-             />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="125sp"
-        android:layout_marginRight="16sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginTop="8sp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/congrats_kim"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="36sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="56sp"
+        android:layout_marginTop="85sp"
         android:fontFamily="sans-serif-light"
-        android:text="Chris"
+        android:text="@string/from"
         android:textColor="@android:color/holo_purple"
-        android:textSize="36sp"
-        />
+        android:textSize="36sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8sp"
-        android:layout_marginRight="16sp"
-        android:layout_marginLeft="13sp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16sp"
+        android:layout_marginTop="125sp"
         android:fontFamily="sans-serif-light"
-        android:text="Sorry Pat, BYOB will no longer refer to beer."
+        android:text="@string/chris"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="36sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8sp"
+        android:layout_marginLeft="13sp"
+        android:layout_marginRight="16sp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/sorry_pat_byob_will_no_longer_refer_to_beer"
         android:textColor="#6A1B9A"
-        android:textSize="22sp"
-        />
+        android:textSize="22sp" />
 
 
 </RelativeLayout>

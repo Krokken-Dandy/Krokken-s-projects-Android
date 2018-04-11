@@ -28,8 +28,7 @@
     <dimen name="begin_button_text">36sp</dimen>
     <dimen name="quiz_title_text">46sp</dimen>
     <dimen name="check_x_66">66dp</dimen>
-    <dimen name="check_x_193">193dp</dimen>
-    <dimen name="check_x_200">200dp</dimen>
+    <dimen name="check_x_207">207dp</dimen>
     <dimen name="check_x_110">110dp</dimen>
     <dimen name="check_x_96">96dp</dimen>
     <dimen name="final_purple_line">72dp</dimen>

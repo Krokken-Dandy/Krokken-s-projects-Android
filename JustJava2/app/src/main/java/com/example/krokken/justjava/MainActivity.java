@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     int numberOfCoffees = 0;
     double pricePerCup = 5;
     int coffeeType = -1;
-    int totalNumberOfCoffees, numberOfLatte, numberOfMocha, numberOfFrappuccino, numberOfRegular, numberOfAmericano, numberOfCappuccino, numberOfIcedCoffee, numberOfMacchiato;
+    int numberOfLatte, numberOfMocha, numberOfFrappuccino, numberOfRegular, numberOfAmericano, numberOfCappuccino, numberOfIcedCoffee, numberOfMacchiato;
 
     //Toasts
     Toast needsToOrder;

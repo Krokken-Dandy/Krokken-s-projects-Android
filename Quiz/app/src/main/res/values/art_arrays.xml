@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="art_question_1_array">
+        <item>@string/pablo_picasso</item>
+        <item>@string/skrik</item>
+        <item>@string/edvard_munch</item>
+        <item>@string/vincent_van_gogh</item>
+        <item>@string/jan_van_eyck</item>
+    </string-array>
+    <string-array name="art_question_2_array">
+        <item>@string/edouard_manet</item>
+        <item>@string/claude_monet</item>
+        <item>@string/pablo_picasso</item>
+        <item>@string/vincent_van_gogh</item>
+        <item>@string/paul_c_zanne</item>
+        <item>@string/mary_cassatt</item>
+        <item>@string/berthe_morisot</item>
+        <item>@string/pierre_auguste_renoir</item>
+        <item>@string/christov</item>
+        <item>@string/jackson_pollock</item>
+    </string-array>
+    <string-array name="art_question_4_array">
+        <item>@string/venus_de_milo</item>
+        <item>@string/st_john_the_baptist_preaching</item>
+        <item>@string/sistine_chapel_ceiling</item>
+        <item>@string/mona_lisa</item>
+        <item>@string/the_thinker</item>
+    </string-array>
+    <string-array name="art_question_5_array">
+        <item>@string/a_wood_plank</item>
+        <item>@string/a_wall</item>
+        <item>@string/a_canvas</item>
+        <item>@string/a_piece_of_cloth</item>
+        <item>@string/a_ceiling</item>
+        <item>@string/an_extra_apostle</item>
+        <item>@string/joseph</item>
+        <item>@string/a_doorway</item>
+        <item>@string/a_leg</item>
+        <item>@string/a_skylight</item>
+    </string-array>
+    <string-array name="art_question_6_array">
+        <item>@string/museum_of_decorative_arts</item>
+        <item>@string/the_louvre</item>
+        <item>@string/museum_of_modern_art_moma</item>
+        <item>@string/national_hellenic_museum</item>
+        <item>@string/vatican_museums</item>
+    </string-array>
+    <string-array name="art_question_7_array">
+        <item>@string/edgar_degas</item>
+        <item>@string/rembrandt_van_rijn</item>
+        <item>@string/pablo_picasso</item>
+        <item>@string/jan_van_eyck</item>
+        <item>@string/tila_migarde</item>
+    </string-array>
+    <string-array name="art_question_8_array">
+        <item>@string/christov</item>
+        <item>@string/leonardo_da_vinci</item>
+        <item>@string/claude_monet</item>
+        <item>@string/paul_c_zanne</item>
+        <item>@string/ren_magritte</item>
+    </string-array>
+    <string-array name="art_question_9_array">
+        <item>@string/study_of_miss_lala</item>
+        <item>@string/the_railway</item>
+        <item>@string/little_dancer_of_14_years</item>
+        <item>@string/dancers</item>
+        <item>@string/la_toilette</item>
+        <item>@string/annunciation</item>
+        <item>@string/portrait_of_jan_de_leeuw</item>
+        <item>@string/l_absinthe</item>
+        <item>@string/olympia</item>
+        <item>@string/mona_lisa</item>
+    </string-array>
+    <string-array name="art_question_10_array">
+        <item>@string/emperor_napoleon_iii</item>
+        <item>@string/king_george_vi</item>
+        <item>@string/queen_victoria</item>
+        <item>@string/king_louis_v</item>
+        <item>@string/napol_on_bonaparte</item>
+    </string-array>
+    <string-array name="art_question">
+        <item>@string/art_q1</item>
+        <item>@string/art_q2</item>
+        <item>@string/art_q3</item>
+        <item>@string/art_q4</item>
+        <item>@string/art_q5</item>
+        <item>@string/art_q6</item>
+        <item>@string/art_q7</item>
+        <item>@string/art_q8</item>
+        <item>@string/art_q9</item>
+        <item>@string/art_q10</item>
+    </string-array>
+    <string-array name="correct_array_q2">
+        <item>@string/claude_monet</item>
+        <item>@string/paul_c_zanne</item>
+        <item>@string/mary_cassatt</item>
+        <item>@string/berthe_morisot</item>
+        <item>@string/pierre_auguste_renoir</item>
+    </string-array>
+    <string-array name="correct_array_q5">
+        <item>@string/a_wall</item>
+        <item>@string/a_doorway</item>
+    </string-array>
+    <string-array name="correct_array_q9">
+        <item>@string/study_of_miss_lala</item>
+        <item>@string/little_dancer_of_14_years</item>
+        <item>@string/dancers</item>
+        <item>@string/la_toilette</item>
+        <item>@string/l_absinthe</item>
+    </string-array>
+</resources>

@@ -35,7 +35,7 @@
     <string name="the_louvre">The Louvre</string>
     <string name="museum_of_decorative_arts">Museum of Decorative Arts</string>
     <string name="a_skylight">A skylight</string>
-    <string name="a_fourth_table_leg">A leg</string>
+    <string name="a_leg">A leg</string>
     <string name="a_doorway">A doorway</string>
     <string name="joseph">Joseph</string>
     <string name="an_extra_apostle">An apostle</string>
@@ -43,7 +43,7 @@
     <string name="a_piece_of_cloth">A piece of cloth</string>
     <string name="a_canvas">A canvas</string>
     <string name="a_wall">A wall</string>
-    <string name="a_finished_wood_plank">A finished wood plank</string>
+    <string name="a_wood_plank">A wood plank</string>
     <string name="the_thinker">The Thinker</string>
     <string name="mona_lisa">Mona Lisa</string>
     <string name="sistine_chapel_ceiling">Sistine Chapel Ceiling</string>
@@ -58,13 +58,23 @@
     <string name="paul_c_zanne">Paul Cézanne</string>
     <string name="pablo_picasso">Pablo Picasso</string>
     <string name="claude_monet">Claude Monet</string>
-    <string name="douard_manet">Édouard Manet</string>
+    <string name="edouard_manet">Édouard Manet</string>
     <string name="jan_van_eyck">Jan van Eyck</string>
     <string name="vincent_van_gogh">Vincent van Gogh</string>
     <string name="edvard_munch">Edvard Munch</string>
     <string name="skrik">Skrik</string>
     <string name="enter_name">Enter Name</string>
-    <string name="let_s_begin"> Let\'s begin! </string>
-    <string name="krokken_s_art_quiz">Krokken\'s Art Quiz!</string>
+    <string name="let_s_begin">" Let\'s begin! "</string>
+    <string name="krokken_s_quizes">Krokken\'s Quizes!</string>
     <string name="congratulations_on_finishing_the_quiz_you_ve_scored_a">Congratulations on finishing the Quiz! You\'ve scored a:</string>
+    <string name="art_q1">This painting is credited to whom?</string>
+    <string name="art_q2">Which of the following considered themselves part of the Impressionist movement?</string>
+    <string name="art_q3">This painting is credited to whom?</string>
+    <string name="art_q4">The artist credited with this piece is also well known for which?</string>
+    <string name="art_q5">Leonardo da Vinci\'s last supper is painted on which of the following and what was intentionally added over 150 years later?</string>
+    <string name="art_q6">August Rodin was commissioned this piece, The Gates of Hell; it was intended for which museum?</string>
+    <string name="art_q7">This painting is credited to whom?</string>
+    <string name="art_q8">This is a parody of a famous painting by which artist?</string>
+    <string name="art_q9">Which of the following are popular works of art credited to Edgar Degas?</string>
+    <string name="art_q10">Salon des Refusés became legitimatized when which ruler decreed the paintings be shown for public judgement in another part of the Palace of Industry?</string>
 </resources>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Baby card</string>
+    <string name="congrats_kim">Congrats Kim!</string>
+    <string name="from">From,</string>
+    <string name="chris">Chris</string>
+    <string name="sorry_pat_byob_will_no_longer_refer_to_beer">Sorry Pat, BYOB will no longer refer to beer.</string>
 </resources>

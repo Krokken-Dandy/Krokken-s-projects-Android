@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         // Declaring the Button and Type Casting it.
         Button touchbackA = (Button) findViewById(R.id.touchbackA);
         Button touchbackB = (Button) findViewById(R.id.touchbackB);
-        Button twoPointConversionA = (Button) findViewById(R.id.twoPointConversionA);
-        Button twoPointConversionB = (Button) findViewById(R.id.twoPointConversionB);
 
         // Setting OnClickListener for touchback A & B
         touchbackA.setOnClickListener(new Button.OnClickListener() {
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         displayForTeamA(teamAScore);
         pointText = teamAText + scoreText + touchdownText;
         scoreText(pointText);
-        scoreImageTouchdown();
     }
 
     //Team B scores a touchdown
@@ -155,30 +152,11 @@ public class MainActivity extends AppCompatActivity {
         scoreText(pointText);
     }
 
-   /* Drawable[] layers = new Drawable[2];
-    layers[0] = new BitmapDrawable(getResources(), firstBitmap);
-    layers[1] = new BitmapDrawable(getResources(), secondBitmap);
-
-    TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
-scoreImage.setImageDrawable(R.id.football);
-transitionDrawable.startTransition(FADE_DURATION);
-*/
-    /**
-     * Displays the given score for Team A.
-     */
-
     //Method for displaying Team A's score
     public void displayForTeamA(int score) {
         TextView scoreView = findViewById(R.id.teamAScore);
         scoreView.setText(String.valueOf(score));
     }
-
-    //Loads touchdown image when button pressed
-    public void scoreImageTouchdown(){
-        ImageView scoreImage = findViewById(R.id.scoreImage);
-        scoreImage.setImageResource(R.drawable.touchdown);
-        }
-
 
     //Method for displaying Team A's score
     public void displayForTeamB(int score) {

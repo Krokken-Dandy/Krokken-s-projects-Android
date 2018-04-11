@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:id="@+id/foreground_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_16">
+
+        <TextView
+            android:id="@+id/question_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_16"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/question_number_text_24"
+            tools:text="#1" />
+
+        <ImageView
+            android:id="@+id/answer_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginLeft="@dimen/margin_12"
+            android:layout_marginRight="@dimen/margin_16"
+            android:layout_marginStart="@dimen/margin_12"
+            android:layout_marginTop="@dimen/margin_4"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/green_checkmark"/>
+
+        <ImageView
+            android:id="@+id/question_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_number"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_16"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/question_two_image"/>
+
+        <TextView
+            android:id="@+id/question_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_image"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:textSize="@dimen/question_text_18"
+            tools:text="Who painted this?" />
+
+        <EditText
+            android:id="@+id/edittext_their_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_text_view"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_16"
+            android:layout_marginRight="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:background="@color/main_other_purple"
+            android:hint="@string/enter_name_of_artist"
+            android:imeOptions="actionDone"
+            android:inputType="textPersonName|textAutoCorrect|textCapWords"
+            android:padding="@dimen/padding_3"
+            android:textColorHint="@color/text_color_hint" />
+
+        <TextView
+            android:id="@+id/edittext_correct_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/edittext_their_answer"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_toEndOf="@id/edittext_their_answer"
+            android:layout_toRightOf="@id/edittext_their_answer"
+            android:text="@string/pablo_picasso"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="@dimen/question_text_18"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_text_view">
+
+            <RadioGroup
+                android:id="@+id/question_radio_left"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/question_radio_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <RadioButton
+                    android:id="@+id/radio_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/checkboxes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_text_view"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkbox_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/checkboxes_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkbox_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/answer_text_14"
+                    tools:text="answer"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

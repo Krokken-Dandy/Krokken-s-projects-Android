@@ -4,8 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="rainbow_button">#880E4F</color>
-    <color name="main_light_purple">#B39DDB</color>
-    <color name="main_dark_purple">#673AB7</color>
+    <color name="art_light_purple">#B39DDB</color>
+    <color name="art_dark_purple">#673AB7</color>
     <color name="main_other_purple">#EDE7F6</color>
     <color name="text_color_hint">#9FD500F9</color>
+    <color name="red_color_value">#FF0000</color>
+    <color name="opening_background">#009688</color>
+
 </resources>

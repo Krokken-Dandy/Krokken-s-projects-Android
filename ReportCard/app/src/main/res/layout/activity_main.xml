@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_below="@id/name_input"
+        android:id="@+id/report_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+
+    <EditText
+        android:id="@+id/name_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter Name"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName|textAutoCorrect|textCapWords"
+        android:textColorHint="#9FD500F9" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report Card"
+        android:onClick="getReportCard"/>
+
+</RelativeLayout>
