@@ -1,10 +1,16 @@
 package com.example.krokken.quiz;
 
 import android.app.Activity;
+import android.content.Context;
+import android.renderscript.ScriptGroup;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,7 +27,7 @@ import java.util.ArrayList;
 public class QuestionAdapter extends ArrayAdapter<Question> {
 
     private static final String LOG_TAG = QuestionAdapter.class.getSimpleName();
-    private int mBackgroundColorResource, mForegroundColorResource, mPosition, mAllSubmitted, redColorValue, counter = 10;
+    private int mBackgroundColorResource, mForegroundColorResource, mPosition, mAllSubmitted, redColorValue, mCounterSize;
     private RadioButton[] answeredLeftButton, answeredRightButton, radioButton;
     private int[] score = new int[11], submitted = new int[11];
     private CheckBox[] checkBox;
@@ -37,7 +43,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //Used to dynamically find the views  in my @question_list_item
+        //Used to dynamically find the views in my @question_list_item
         mPosition = position;
         redColorValue = R.color.red_color_value;
         View listItemView = convertView;
@@ -47,27 +53,28 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         // Get the {@link Question} object located at this position in the list
         final Question currentQuestion = getItem(position);
-
-        // Find the ImageView in the question_list_item.xml layout
-        ImageView questionImage = listItemView.findViewById(R.id.question_image);
+        AllArtQuestionsActivity allArtQuestionsActivity = new AllArtQuestionsActivity();
+        mCounterSize = allArtQuestionsActivity.ARRAY_SIZE;
+        final ImageView questionImage = listItemView.findViewById(R.id.question_image);
+        final TextView questionTextView = listItemView.findViewById(R.id.question_text_view);
+        final TextView questionNumber = listItemView.findViewById(R.id.question_number);
         final RadioGroup radioGroupLeft = listItemView.findViewById(R.id.question_radio_left);
         final RadioGroup radioGroupRight = listItemView.findViewById(R.id.question_radio_right);
-        EditText editText = listItemView.findViewById(R.id.edittext_their_answer);
-        TextView editTextAnswer = listItemView.findViewById(R.id.edittext_correct_answer);
-        LinearLayout checkbox_linearLayout = listItemView.findViewById(R.id.checkboxes);
-
+        final EditText editText = listItemView.findViewById(R.id.edittext_their_answer);
+        final TextView editTextAnswer = listItemView.findViewById(R.id.edittext_correct_answer);
+        final LinearLayout checkbox_linearLayout = listItemView.findViewById(R.id.checkboxes);
         editTextAnswer.setVisibility(View.GONE);
+        radioButton = new RadioButton[mCounterSize];
+        answeredLeftButton = new RadioButton[mCounterSize];
+        answeredRightButton = new RadioButton[mCounterSize];
+        checkBox = new CheckBox[mCounterSize];
+        answer = new ImageView[mCounterSize];
 
-        radioButton = new RadioButton[counter];
-        answeredLeftButton = new RadioButton[counter];
-        answeredRightButton = new RadioButton[counter];
-        checkBox = new CheckBox[counter];
-        answer = new ImageView[counter];
-
-        for (int i = 0; i < counter; i++) {
+        for (int i = 0; i < mCounterSize; i++) {
             String sRadioButtonID = "radio_" + (i + 1);
             String sCheckBoxesID = "checkbox_" + (i + 1);
             String sAnswerID = "answer" + (i + 1) + "_correct";
+            mAllSubmitted += submitted[i];
 
             int radioButtonID = listItemView.getResources().getIdentifier(sRadioButtonID, "id", MainActivity.PACKAGE_NAME);
             int checkBoxID = listItemView.getResources().getIdentifier(sCheckBoxesID, "id", MainActivity.PACKAGE_NAME);
@@ -82,7 +89,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                 public void onClick(View v) {
                     String isThisCorrectLeft = "", isThisCorrectRight = "";
                     if (currentQuestion.getQuestionType() == 1) {
-                        answeredLeftButton[mPosition] = (RadioButton) radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                        answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
                         if (answeredLeftButton[mPosition] != null) {
                             isThisCorrectLeft = answeredLeftButton[mPosition].getText().toString();
                         }
@@ -93,11 +100,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                         }
 
                     } else if (currentQuestion.getQuestionType() == 2) {
-                        answeredLeftButton[mPosition] = (RadioButton) radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                        answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
                         if (answeredLeftButton[mPosition] != null) {
                             isThisCorrectLeft = answeredLeftButton[mPosition].getText().toString();
                         }
-                        answeredRightButton[mPosition] = (RadioButton) radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
+                        answeredRightButton[mPosition] = radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
                         if (answeredRightButton[mPosition] != null) {
                             isThisCorrectRight = answeredRightButton[mPosition].getText().toString();
                         }
@@ -109,9 +116,25 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                         }
                     }
                     submitted[mPosition] = 1;
-
                 }
             });
+
+            checkBox[i].setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v;
+                    Toast.makeText(getContext(),
+                            "Clicked on Checkbox: " + cb.getText() +
+                                    " is " + cb.isChecked(),
+                            Toast.LENGTH_LONG).show();
+                }
+            });
+
+            if (currentQuestion.getAnswered() == -1) {
+                checkBox[i].setChecked(false);
+            } else {
+                checkBox[i].setChecked(true);
+                checkBox[i].setTag(currentQuestion);
+            }
 
             if (currentQuestion.getAnswered() == -1) {
                 radioGroupLeft.clearCheck();
@@ -143,6 +166,25 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             });
         }
 
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    String theirAnswer = editText.getText().toString().toLowerCase();
+                    if (v != null) {
+                        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                        editText.clearFocus();
+                        submitted[mPosition] = 1;
+                    }
+                    if (theirAnswer.matches(currentQuestion.getTheAnswer())) {
+                        score[mPosition] = 10;
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
         View textContainer = listItemView.findViewById(R.id.text_container);
         View foregroundContainer = listItemView.findViewById(R.id.foreground_container);
@@ -151,8 +193,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         textContainer.setBackgroundColor(backgroundColor);
         foregroundContainer.setBackgroundColor(foregroundColor);
 
-        // Find the TextView in the question_list_item.xmlm.xml.xml layout with the ID miwok_text_view
-        TextView questionNumber = listItemView.findViewById(R.id.question_number);
         // Get the version name from the current Word object and
         // set this text on the name TextView
         questionNumber.setText(currentQuestion.getQuestionNumber());
@@ -166,8 +206,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             questionImage.setVisibility(View.GONE);
         }
 
-        // Find the TextView in the question_list_item.xmlm.xml.xml layout with the ID miwok_text_view
-        TextView questionTextView = listItemView.findViewById(R.id.question_text_view);
         // Get the version name from the current Word object and
         // set this text on the name TextView
         questionTextView.setText(currentQuestion.getQuestions());
@@ -216,10 +254,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             radioGroupRight.setVisibility(View.GONE);
             checkbox_linearLayout.setVisibility(View.GONE);
         }
-
-        mAllSubmitted = submitted[1] + submitted[2] + submitted[3] + submitted[4] + submitted[5] +
-                submitted[6] + submitted[7] + submitted[8] + submitted[9] + submitted[10];
-
         return listItemView;
     }
 
@@ -227,29 +261,35 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     private String finishCheck() {
         String checkQ = "";
         submitted[0] = 1;
-        for (int i = 0; i<counter; i++){
-            if (submitted[i] != 1){
+        for (int i = 0; i <= mCounterSize; i++) {
+            if (submitted[i] != 1) {
                 checkQ += "#" + i + " ";
-                radioButton[i].setTextColor(redColorValue);
+                //TODO Make the correct text red
+//                radioButton[i].setTextColor(redColorValue);
             }
         }
         return checkQ;
     }
 
+    private void disableQuiz() {
+        for (int i = 0; i < mCounterSize; i++) {
+            radioButton[i].setEnabled(false);
+            checkBox[i].setEnabled(false);
+        }
+
+    }
+
     public int getScore() {
         int totalScore = (score[1] + score[2] + score[3] + score[4] + score[5] + score[6] + score[7] + score[8] + score[9] + score[10]);
-        String s = "Congratulations, you've scored a" + totalScore +"%!";
+        String s = "Congratulations " + MainActivity.PLAYER_NAME + ", you've scored a " + totalScore + "%!";
 
         //Checks if all questions were answered
-        if (mAllSubmitted < 10) {
+        if (mAllSubmitted < mCounterSize) {
             Toast.makeText(getContext(), (10 - mAllSubmitted) + "/10 " + "need to be finished.\n" + "Questions: " + finishCheck(), Toast.LENGTH_LONG).show();
         } else {
-//            disableButtons();
+//            disableQuiz();
 //            showCorrect();
-//            questionThreeAnswer.setFocusable(false);
-//            questionOne.setFocusable(true);
-//            questionOne.setFocusableInTouchMode(true);
-            Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+//            Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
         }
         return totalScore;
     }

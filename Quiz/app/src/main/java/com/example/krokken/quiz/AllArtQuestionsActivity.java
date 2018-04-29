@@ -3,6 +3,7 @@ package com.example.krokken.quiz;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,30 +12,41 @@ import java.util.ArrayList;
 
 public class AllArtQuestionsActivity extends AppCompatActivity {
 
+    public static int ARRAY_SIZE = 10;
+    private static final String STATE_ITEMS = "items";
+
     int backgroundColor = R.color.art_dark_purple;
     int foregroundColor = R.color.art_light_purple;
 
-    private String[] questions, answersQ1, answersQ2, answersQ4, answersQ5, answersQ6, answersQ7, answersQ8, answersQ9, answersQ10,
-                        correctQ2, correctQ5, correctQ9, numbers;
+    ArrayList<Question> questionsForArt;
+
+    private String[] questions, answersQ1, answersQ2, answersQ4, answersQ5, answersQ6, answersQ7,
+            answersQ8, answersQ9, answersQ10, correctQ2, correctQ5, correctQ9, numbers;
     private String correctQ1, correctQ4, correctQ6, correctQ7, correctQ8, correctQ10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
-
         declaredVariables();
         questionsArrayList();
-
-
     }
 
-    private void declaredVariables(){
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Make sure to call the super method so that the states of our views are saved
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+        outState.putSerializable(STATE_ITEMS, questionsForArt);
+    }
+
+    private void declaredVariables() {
         Resources res = getResources();
-        numbers = new String[10];
-        for (int i = 0; i<numbers.length; i++) {
+        numbers = new String[ARRAY_SIZE];
+        for (int i = 0; i < numbers.length; i++) {
             numbers[i] = "#" + (i + 1);
         }
+
         questions = res.getStringArray(R.array.art_question);
         answersQ1 = res.getStringArray(R.array.art_question_1_array);
         answersQ2 = res.getStringArray(R.array.art_question_2_array);
@@ -58,7 +70,7 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
 
     //ArrayList for the Questions in Art Quiz
     public void questionsArrayList() {
-        final ArrayList<Question> questionsForArt = new ArrayList<Question>();
+        questionsForArt = new ArrayList<>();
 
         //QuestionType 1 is 5 Radio 1 answer
         //QuestionType 2 is 10 Radio 2 answers
@@ -80,13 +92,13 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
 
         //Q3 follows constructor: questionType, questionNumber, questionImage,
         // mainQuestion, answer1, and the correctAnswer
-        questionsForArt.add(new Question(4,numbers[2],R.drawable.question_three_image,
+        questionsForArt.add(new Question(4, numbers[2], R.drawable.question_three_image,
                 questions[2], R.string.pablo_picasso));
 
         //Q4 follows constructor: questionType, questionNumber, questionImage,
         // mainQuestion, answer1, answer2, answer3, answer4, answer5, and the correctAnswer
         questionsForArt.add(new Question(1, numbers[3], R.drawable.question_four_image,
-                questions[3], answersQ4[0], answersQ4[1], answersQ4[2], answersQ4[3], answersQ4[4],correctQ4));
+                questions[3], answersQ4[0], answersQ4[1], answersQ4[2], answersQ4[3], answersQ4[4], correctQ4));
 
         //Q5 follows constructor: questionType, questionNumber, mainQuestion,
         // answer1, answer2, answer3, answer4, answer5, correctAnswer1, and correctAnswer2
@@ -122,20 +134,18 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
                 answersQ10[1], answersQ10[2], answersQ10[3], answersQ10[4], correctQ10));
 
         final QuestionAdapter numberAdapter = new QuestionAdapter(this, questionsForArt, backgroundColor, foregroundColor);
+        final View linearLayout = findViewById(R.id.linear_layout);
         final ListView listView = findViewById(R.id.list);
         final Button submitButton = findViewById(R.id.submit_button);
+        linearLayout.setBackgroundColor(getResources().getColor(backgroundColor));
 
+        submitButton.setBackgroundColor(getResources().getColor(foregroundColor));
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 numberAdapter.getScore();
             }
         });
-
         listView.setAdapter(numberAdapter);
-
-
     }
-
-
 }

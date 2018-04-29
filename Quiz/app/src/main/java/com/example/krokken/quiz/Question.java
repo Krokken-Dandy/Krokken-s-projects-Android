@@ -1,15 +1,15 @@
 package com.example.krokken.quiz;
 
-import android.os.MessageQueue;
+import android.util.Log;
 
 public class Question {
 
     private String mQuestions, mQuestionNumber;
 
     private String mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5, mAnswer6, mAnswer7, mAnswer8, mAnswer9, mAnswer10,
-            mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5;
+            mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5, mTheAnswer, mPlayerName;
 
-    private int mQuestionImage = NO_IMAGE_PROVIDED, answer = -1, mQuestionType, mTheAnswer;
+    private int mQuestionImage = NO_IMAGE_PROVIDED, answer = -1, mQuestionType;
 
     private static final int NO_IMAGE_PROVIDED = -1;
 
@@ -129,7 +129,7 @@ public class Question {
         mQuestionNumber = questionNumber;
         mQuestionImage = questionImage;
         mQuestions = question;
-        mTheAnswer = theAnswer;
+        mTheAnswer = "" + theAnswer;
     }
 
     public int getQuestionType() {
@@ -192,7 +192,7 @@ public class Question {
         return mAnswer10;
     }
 
-    public int theAnswer() {
+    public String getTheAnswer() {
         return mTheAnswer;
     }
 
@@ -224,6 +224,14 @@ public class Question {
         return mQuestionImage != NO_IMAGE_PROVIDED;
     }
 
+    public void setName(String name) {
+        mPlayerName = name;
+        Log.v("player name", mPlayerName + " set name");
+    }
 
+    public String getName() {
+        Log.v("player name", mPlayerName + " get name");
+        return mPlayerName;
+    }
 }
 

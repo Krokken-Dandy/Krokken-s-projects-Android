@@ -10,123 +10,125 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/layout_opening"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="gone">
-
-        <ImageView
-            android:id="@+id/opening_image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/paintbrushes"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/question_title"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/layout_opening"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/opening_title_115"
-            android:layout_marginStart="@dimen/opening_title_115"
-            android:layout_marginTop="@dimen/opening_title_124"
-            android:text="@string/krokken_s_quizes"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/quiz_title_text"
-            android:textStyle="bold" />
+            tools:visibility="gone">
 
-        <Button
-            android:id="@+id/begin_button"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/opening_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/question_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/opening_title_115"
+                android:layout_marginStart="@dimen/opening_title_115"
+                android:layout_marginTop="@dimen/opening_title_124"
+                android:text="@string/krokken_s_quizes"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/quiz_title_text"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/begin_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/question_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_24"
+                android:background="@drawable/custom_button"
+                android:fontFamily="cursive"
+                android:padding="@dimen/padding_12"
+                android:text="@string/let_s_begin"
+                android:textAllCaps="false"
+                android:textColor="@color/rainbow_button"
+                android:textSize="@dimen/begin_button_text" />
+
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/begin_button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_12"
+                android:background="@color/art_light_purple"
+                android:hint="@string/enter_name"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName|textAutoCorrect|textCapWords"
+                android:padding="@dimen/padding_8"
+                android:textColorHint="#9FD500F9" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_quizes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/question_title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_24"
-            android:background="@drawable/custom_button"
-            android:fontFamily="cursive"
-            android:padding="@dimen/padding_12"
-            android:text="@string/let_s_begin"
-            android:textAllCaps="false"
-            android:textColor="@color/rainbow_button"
-            android:textSize="@dimen/begin_button_text" />
+            android:layout_below="@id/layout_opening"
+            android:layout_margin="@dimen/overall_margin_16"
+            android:background="@color/art_dark_purple"
+            android:orientation="vertical"
+            tools:visibility="visible">
 
-        <EditText
-            android:id="@+id/name_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/begin_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_12"
-            android:background="@color/art_light_purple"
-            android:hint="@string/enter_name"
-            android:imeOptions="actionDone"
-            android:inputType="textPersonName|textAutoCorrect|textCapWords"
-            android:padding="@dimen/padding_8"
-            android:textColorHint="#9FD500F9" />
+            <TextView
+                android:id="@+id/art_quiz"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/button_art_quiz_title"
+                android:textSize="24sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/test_quiz"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="Test Quiz"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <LinearLayout
-        android:id="@+id/layout_quizes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_opening"
-        android:layout_margin="@dimen/overall_margin_16"
-        android:background="@color/art_dark_purple"
-        android:orientation="vertical"
-        tools:visibility="visible">
+            <TextView
+                android:id="@+id/quiz_three"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:layout_margin="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/button_science_quiz_title"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/art_quiz"
-            android:layout_width="match_parent"
-            android:background="@drawable/custom_button"
-            android:layout_height="88dp"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="20dp"
-            android:clickable="true"
-            android:text="Art Quiz"
-            android:textAlignment="center"
-            android:textSize="24dp" />
+            <TextView
+                android:id="@+id/quiz_four"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/button_math_quiz_title"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/test_quiz"
-            android:layout_width="match_parent"
-            android:layout_height="88dp"
-            android:layout_below="@id/art_quiz"
-            android:layout_centerHorizontal="true"
-            android:clickable="true"
-            android:text="Test Quiz"
-            android:textAlignment="center"
-            android:textSize="24dp" />
-
-        <TextView
-            android:id="@+id/quiz_three"
-            android:layout_width="match_parent"
-            android:layout_height="88dp"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="20dp"
-            android:clickable="true"
-            android:text="Sciences"
-            android:textAlignment="center"
-            android:textSize="24dp" />
-
-        <TextView
-            android:id="@+id/quiz_four"
-            android:layout_width="match_parent"
-            android:layout_height="88dp"
-            android:layout_below="@id/art_quiz"
-            android:layout_centerHorizontal="true"
-            android:clickable="true"
-            android:text="Maths"
-            android:textAlignment="center"
-            android:textSize="24dp" />
-
-    </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 </ScrollView>
 

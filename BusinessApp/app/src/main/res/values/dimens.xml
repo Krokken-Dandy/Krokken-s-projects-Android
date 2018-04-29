@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="contact_text_size">14sp</dimen>
+    <dimen name="contact_margin_right">8dp</dimen>
+    <dimen name="contact_margin_left">8dp</dimen>
+    <dimen name="contact_margin_bottom">16dp</dimen>
+    <dimen name="contact_title_text">24sp</dimen>
+    <dimen name="contact_margin_top">8dp</dimen>
+    <dimen name="business_name_margin_left">8dp</dimen>
+    <dimen name="website_margin_bottom">16dp</dimen>
+    <dimen name="business_name_portrait">36sp</dimen>
+    <dimen name="business_name_landscape">28sp</dimen>
+    <dimen name="exterior_padding">16dp</dimen>
+</resources>

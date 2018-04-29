@@ -77,4 +77,8 @@
     <string name="art_q8">This is a parody of a famous painting by which artist?</string>
     <string name="art_q9">Which of the following are popular works of art credited to Edgar Degas?</string>
     <string name="art_q10">Salon des Refusés became legitimatized when which ruler decreed the paintings be shown for public judgement in another part of the Palace of Industry?</string>
+    <string name="button_art_quiz_title">Art Quiz</string>
+    <string name="button_math_quiz_title">Maths</string>
+    <string name="button_science_quiz_title">Sciences</string>
+    <string name="button_submit_text">Submit</string>
 </resources>

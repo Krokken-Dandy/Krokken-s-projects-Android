@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">FootballScoreKeeper</string>
-    <string name="scoreText">Let\'s get this game started!</string>
-    <string name="reset_scores">Reset Scores</string>
+    <string name="start_game_text">Let\'s get this game started!</string>
+    <string name="reset_scores_name">Reset Scores</string>
     <string name="team_a">Team A</string>
     <string name="team_b">Team B</string>
-    <string name="touchdown">Touchdown!</string>
-    <string name="field_goal">Field goal!</string>
-    <string name="extra_point">Extra Point!</string>
-    <string name="touchback">Touchback!</string>
-    <string name="two_point_conversion">Two point Conversion!</string>
+    <string name="touchdown_name">Touchdown!</string>
+    <string name="field_goal_name">Field goal!</string>
+    <string name="extra_point_name">Extra Point!</string>
+    <string name="safety_name">Safety!</string>
+    <string name="two_point_conversion_name">Two point Conversion!</string>
     <string name="_0">0</string>
+    <string name="score_text">" scored a"</string>
+    <string name="touchdown_text">"\n TOUCHDOWN!"</string>
+    <string name="field_goal_text">"\n FIELD GOAL!"</string>
+    <string name="conversion_text">"\n two-point conversion!"</string>
+    <string name="safety_text">"\n safety!"</string>
+    <string name="extra_point_text">"n \nextra point!"</string>
+    <string name="new_game_text">Time for a new game!</string>
 </resources>

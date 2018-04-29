@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Business App</string>
+    <string name="business_website">http://www.4colorfantasies.com</string>
+    <string name="business_name">4 Color Fantasies</string>
+    <string name="business_description">Located in Rancho Cucamonga, 4 Color Fantasies opened in 2006 with the belief that customer service was the number one thing that was needed in the comic book industry. Twelve years later we have grown to one of the best pop culture nexus in southern California!</string>
+    <string name="phone_number">855–692–6642</string>
+    <string name="business_email">info@4colorfantasies.com</string>
+    <string name="facebook_page">https://www.facebook.com/4cfrancho/</string>
+    <string name="facebook_title">Facebook</string>
+    <string name="http">http://</string>
+    <string name="inquiry">Inquiry through application</string>
+    <string name="no_email_application">You have no email application available</string>
+    <string name="contact_us">Contact us</string>
+    <string name="business_address">8045 Archibald Ave Unit #120 \nRancho Cucamonga, CA 91730</string>
+    <string name="business_operating_hours">OPEN EVERYDAY 11am to 9pm</string>
+</resources>
