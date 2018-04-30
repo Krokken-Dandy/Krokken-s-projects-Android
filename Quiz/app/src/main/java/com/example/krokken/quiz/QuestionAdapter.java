@@ -27,7 +27,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     private static final String LOG_TAG = QuestionAdapter.class.getSimpleName();
     private int mBackgroundColorResource, mForegroundColorResource, mPosition, mAllSubmitted, redColorValue, mCounterSize;
     private RadioButton[] answeredLeftButton, answeredRightButton, radioButton;
-    private int[] score = new int[11], submitted = new int[11];
+    private int[] score = new int[10], submitted = new int[10];
     private boolean[] mCheckBoxesChecked;
     private boolean[] unansweredQuestions = new boolean[10];
     private CheckBox[] checkBox;
@@ -41,9 +41,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         //Used to dynamically find the views in my @question_list_item
-        mPosition = position;
+        mPosition = position - 1;
         redColorValue = R.color.red_color_value;
         View listItemView = convertView;
         if (listItemView == null) {
@@ -91,32 +91,32 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                     String isThisCorrectRight = "";
                     if (currentQuestion.getQuestionType() == 1) {
                         answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
-                        if (answeredLeftButton[mPosition] != null) {
-                            isThisCorrectLeft = answeredLeftButton[mPosition].getText().toString();
+                        submitted[position] = 1;
+                        if (answeredLeftButton[position] != null) {
+                            isThisCorrectLeft = answeredLeftButton[position].getText().toString();
                         }
                         if (isThisCorrectLeft.equals(currentQuestion.getCorrect1())) {
-                            score[mPosition] = 5;
+                            score[position] = 5;
                         } else {
-                            score[mPosition] = 0;
+                            score[position] = 0;
                         }
 
                     } else if (currentQuestion.getQuestionType() == 2) {
                         answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
-                        if (answeredLeftButton[mPosition] != null) {
-                            isThisCorrectLeft = answeredLeftButton[mPosition].getText().toString();
+                        submitted[position] = 1;
+                        if (answeredLeftButton[position] != null) {
+                            isThisCorrectLeft = answeredLeftButton[position].getText().toString();
                         }
-                        answeredRightButton[mPosition] = radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
-                        if (answeredRightButton[mPosition] != null) {
-                            isThisCorrectRight = answeredRightButton[mPosition].getText().toString();
+                        answeredRightButton[position] = radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
+                        if (answeredRightButton[position] != null) {
+                            isThisCorrectRight = answeredRightButton[position].getText().toString();
                         }
-
                         if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) && (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
-                            score[mPosition] = 10;
+                            score[position] = 10;
                         } else {
-                            score[mPosition] = 0;
+                            score[position] = 0;
                         }
                     }
-                    submitted[mPosition] = 1;
                 }
             });
 
@@ -124,9 +124,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    submitted[position] = 1;
                     if (isChecked) {
                         currentQuestion.setAnswer(10);
-                        submitted[mAllSubmitted] = 1;
                     } else {
                         currentQuestion.setAnswer(-1);
                     }
@@ -138,7 +138,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                 if (child instanceof CheckBox) {
                     if (currentQuestion.getAnswered() == -1) {
                         ((CheckBox) child).setChecked(false);
-                    } else if (currentQuestion.getAnswered() == 10){
+                    } else if (currentQuestion.getAnswered() == 10) {
                         ((CheckBox) child).setChecked(true);
                     }
                 }
@@ -148,7 +148,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             //Will recheck/uncheck the proper radio button when the views are reinflated
             if ((currentQuestion.getAnswered() == -1) || (currentQuestion.getAnswered() == 10)) {
                 radioGroupLeft.clearCheck();
-            } else if (currentQuestion.getAnswered() < 5){
+            } else if (currentQuestion.getAnswered() < 5) {
                 ((RadioButton) radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
             }
 
@@ -188,10 +188,10 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                         editText.clearFocus();
-                        submitted[mPosition] = 1;
+                        submitted[position] = 1;
                     }
                     if (theirAnswer.equals(currentQuestion.getTheTextAnswer())) {
-                        score[mPosition] = 10;
+                        score[position] = 10;
                     }
                     return true;
                 }
@@ -275,13 +275,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     //Changes the color of text for unanswered questions
     private String finishCheck() {
         String checkQ = "";
-        submitted[0] = 1;
-        for (int i = 0; i <= mCounterSize; i++) {
+        for (int i = 0; i < mCounterSize; i++) {
             if (submitted[i] != 1) {
-                checkQ += "#" + i + " ";
-                //TODO Make the correct text red
-                Log.v("checkQ is ", checkQ);
+                checkQ += "#" + (i + 1) + " ";
             } else {
+                //TODO Make the correct text red
                 unansweredQuestions[i] = true;
             }
         }
@@ -291,11 +289,19 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     //Returns a count of answers that have been answered
     private int submittedCheck() {
         int submitCount = 0;
-        for (int i = 0; i <= mCounterSize; i++) {
+        for (int i = 0; i < mCounterSize; i++) {
             submitCount += submitted[i];
-            Log.v("What is the count", ""+ submitCount);
         }
         return submitCount;
+    }
+
+    //Returns their score
+    private int calculateScore(){
+        int playerScore = 0;
+        for (int i = 0; i < score.length; i++) {
+            playerScore +=score[i];
+        }
+        return playerScore;
     }
 
     //Disables the buttons when the quiz is completed so answers can't be changed
@@ -310,16 +316,16 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     //Method to calculate the score when submit button is pressed
     public int getScore() {
         mAllSubmitted = submittedCheck();
-        int totalScore = (score[1] + score[2] + score[3] + score[4] + score[5] + score[6] + score[7] + score[8] + score[9] + score[10]);
+        int totalScore = 5;
         String s = "Congratulations " + MainActivity.PLAYER_NAME + ", you've scored a " + totalScore + "%!";
-
         //Will display which questions still need to be answered
+
         if (mAllSubmitted < mCounterSize) {
-            Toast.makeText(getContext(), (10 - mAllSubmitted) + "/10 " + "need to be finished.\n" + "Questions: " + finishCheck(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), (10 - mAllSubmitted) + " questions need to be finished.\n" + finishCheck(), Toast.LENGTH_LONG).show();
         } else {
 //            disableQuiz();
 //            showCorrect();
-//            Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
         }
         return totalScore;
     }

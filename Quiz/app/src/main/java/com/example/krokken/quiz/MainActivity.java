@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                         nameInput.clearFocus();
                     }
-                    Log.v(PLAYER_INPUT_NAME, PLAYER_NAME);
                     return true;
                 }
                 return false;
@@ -90,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PLAYER_NAME = nameInput.getText().toString().trim();
                 if (TextUtils.isEmpty(PLAYER_NAME)) {
                     Toast.makeText(MainActivity.this, "Please enter your name", Toast.LENGTH_LONG).show();
                 } else {

@@ -7,7 +7,7 @@ public class Question {
     private String mQuestions, mQuestionNumber;
 
     private String mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5, mAnswer6, mAnswer7, mAnswer8, mAnswer9, mAnswer10,
-            mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5, mTheAnswer, mPlayerName;
+            mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5, mTheTextAnswer, mPlayerName;
 
     private int mQuestionImage = NO_IMAGE_PROVIDED, answer = -1, mQuestionType;
 
@@ -124,12 +124,12 @@ public class Question {
     }
 
     //EditText constructor
-    public Question(int questionType, String questionNumber, int questionImage, String question, int theAnswer) {
+    public Question(int questionType, String questionNumber, int questionImage, String question, int theTextAnswer) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
         mQuestionImage = questionImage;
         mQuestions = question;
-        mTheAnswer = "" + theAnswer;
+        mTheTextAnswer = "" + theTextAnswer;
     }
 
     public int getQuestionType() {
@@ -193,7 +193,7 @@ public class Question {
     }
 
     public String getTheTextAnswer() {
-        return mTheAnswer;
+        return mTheTextAnswer;
     }
 
     public String getCorrect1(){
