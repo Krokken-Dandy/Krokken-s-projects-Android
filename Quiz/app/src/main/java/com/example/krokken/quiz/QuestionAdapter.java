@@ -27,7 +27,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     private static final String LOG_TAG = QuestionAdapter.class.getSimpleName();
     private int mBackgroundColorResource, mForegroundColorResource, mPosition, mAllSubmitted, redColorValue, mCounterSize;
     private RadioButton[] answeredLeftButton, answeredRightButton, radioButton;
-    private int[] score = new int[10], submitted = new int[10];
+    private int[] score = new int[10];
+    private int[] submitted = new int[10];
     private boolean[] mCheckBoxesChecked;
     private boolean[] unansweredQuestions = new boolean[10];
     private CheckBox[] checkBox;
