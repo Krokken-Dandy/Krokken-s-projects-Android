@@ -90,7 +90,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                     String isThisCorrectLeft = "";
                     String isThisCorrectRight = "";
                     if (currentQuestion.getQuestionType() == 1) {
-                        answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                        answeredLeftButton[mPosition] =
+                                radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
                         submitted[position] = 1;
                         if (answeredLeftButton[position] != null) {
                             isThisCorrectLeft = answeredLeftButton[position].getText().toString();
@@ -102,16 +103,19 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                         }
 
                     } else if (currentQuestion.getQuestionType() == 2) {
-                        answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                        answeredLeftButton[mPosition] =
+                                radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
                         submitted[position] = 1;
                         if (answeredLeftButton[position] != null) {
                             isThisCorrectLeft = answeredLeftButton[position].getText().toString();
                         }
-                        answeredRightButton[position] = radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
+                        answeredRightButton[position] =
+                                radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
                         if (answeredRightButton[position] != null) {
                             isThisCorrectRight = answeredRightButton[position].getText().toString();
                         }
-                        if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) && (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
+                        if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) &&
+                                (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
                             score[position] = 10;
                         } else {
                             score[position] = 0;
@@ -206,7 +210,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         textContainer.setBackgroundColor(backgroundColor);
         foregroundContainer.setBackgroundColor(foregroundColor);
 
-
         //Will check if the question has an image or not
         if (currentQuestion.hasImage()) {
             // Get the image resource ID from the current Question object and
@@ -296,10 +299,10 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     }
 
     //Returns their score
-    private int calculateScore(){
+    private int calculateScore() {
         int playerScore = 0;
         for (int i = 0; i < score.length; i++) {
-            playerScore +=score[i];
+            playerScore += score[i];
         }
         return playerScore;
     }
