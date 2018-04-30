@@ -192,7 +192,7 @@ public class Question {
         return mAnswer10;
     }
 
-    public String getTheAnswer() {
+    public String getTheTextAnswer() {
         return mTheAnswer;
     }
 

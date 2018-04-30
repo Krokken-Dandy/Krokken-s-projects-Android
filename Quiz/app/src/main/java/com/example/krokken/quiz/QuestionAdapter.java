@@ -1,8 +1,6 @@
 package com.example.krokken.quiz;
 
 import android.app.Activity;
-import android.content.Context;
-import android.renderscript.ScriptGroup;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,8 +10,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +28,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     private int mBackgroundColorResource, mForegroundColorResource, mPosition, mAllSubmitted, redColorValue, mCounterSize;
     private RadioButton[] answeredLeftButton, answeredRightButton, radioButton;
     private int[] score = new int[11], submitted = new int[11];
+    private boolean[] mCheckBoxesChecked;
+    private boolean[] unansweredQuestions = new boolean[10];
     private CheckBox[] checkBox;
     private ImageView[] answer;
 
@@ -61,7 +61,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         final RadioGroup radioGroupRight = listItemView.findViewById(R.id.question_radio_right);
         final EditText editText = listItemView.findViewById(R.id.edittext_their_answer);
         final TextView editTextAnswer = listItemView.findViewById(R.id.edittext_correct_answer);
-        final LinearLayout checkbox_linearLayout = listItemView.findViewById(R.id.checkboxes);
+        final LinearLayout checkBox_linearLayout = listItemView.findViewById(R.id.checkboxes);
         editTextAnswer.setVisibility(View.GONE);
         radioButton = new RadioButton[mCounterSize];
         answeredLeftButton = new RadioButton[mCounterSize];
@@ -74,7 +74,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             String sRadioButtonID = "radio_" + (i + 1);
             String sCheckBoxesID = "checkbox_" + (i + 1);
             String sAnswerID = "answer" + (i + 1) + "_correct";
-            mAllSubmitted += submitted[i];
 
             int radioButtonID = listItemView.getResources().getIdentifier(sRadioButtonID, "id", MainActivity.PACKAGE_NAME);
             int checkBoxID = listItemView.getResources().getIdentifier(sCheckBoxesID, "id", MainActivity.PACKAGE_NAME);
@@ -85,17 +84,17 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             answer[i] = listItemView.findViewById(answerID);
 
             //RadioButton clickListeners for checking answers
-            //
             radioButton[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String isThisCorrectLeft = "", isThisCorrectRight = "";
+                    String isThisCorrectLeft = "";
+                    String isThisCorrectRight = "";
                     if (currentQuestion.getQuestionType() == 1) {
                         answeredLeftButton[mPosition] = radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
                         if (answeredLeftButton[mPosition] != null) {
                             isThisCorrectLeft = answeredLeftButton[mPosition].getText().toString();
                         }
-                        if (isThisCorrectLeft.matches(currentQuestion.getCorrect1())) {
+                        if (isThisCorrectLeft.equals(currentQuestion.getCorrect1())) {
                             score[mPosition] = 5;
                         } else {
                             score[mPosition] = 0;
@@ -111,7 +110,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             isThisCorrectRight = answeredRightButton[mPosition].getText().toString();
                         }
 
-                        if (isThisCorrectLeft.matches(currentQuestion.getCorrect1()) && (isThisCorrectRight.matches(currentQuestion.getCorrect2()))) {
+                        if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) && (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
                             score[mPosition] = 10;
                         } else {
                             score[mPosition] = 0;
@@ -122,31 +121,39 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             });
 
             //TODO Make the checkboxes work properly
-            checkBox[i].setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    CheckBox cb = (CheckBox) v;
-                    Toast.makeText(getContext(),
-                            "Clicked on Checkbox: " + cb.getText() +
-                                    " is " + cb.isChecked(),
-                            Toast.LENGTH_LONG).show();
+            checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        currentQuestion.setAnswer(10);
+                        submitted[mAllSubmitted] = 1;
+                    } else {
+                        currentQuestion.setAnswer(-1);
+                    }
                 }
             });
 
-            if (currentQuestion.getAnswered() == -1) {
-                checkBox[i].setChecked(false);
-            } else {
-                checkBox[i].setChecked(true);
-                checkBox[i].setTag(currentQuestion);
-            }
-
-            if (currentQuestion.getAnswered() == -1) {
-                radioGroupLeft.clearCheck();
-            } else {
-                ((RadioButton) radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
+            for (int j = 0; j < checkBox_linearLayout.getChildCount(); j++) {
+                View child = checkBox_linearLayout.getChildAt(j);
+                if (child instanceof CheckBox) {
+                    if (currentQuestion.getAnswered() == -1) {
+                        ((CheckBox) child).setChecked(false);
+                    } else if (currentQuestion.getAnswered() == 10){
+                        ((CheckBox) child).setChecked(true);
+                    }
+                }
             }
 
             //Will check if any radioButtons in the current position were already checked
-            //Will recheck the proper button when the views are inflated
+            //Will recheck/uncheck the proper radio button when the views are reinflated
+            if ((currentQuestion.getAnswered() == -1) || (currentQuestion.getAnswered() == 10)) {
+                radioGroupLeft.clearCheck();
+            } else if (currentQuestion.getAnswered() < 5){
+                ((RadioButton) radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
+            }
+
+            //Sets a value when a radio button is checked
+            //so that it can be checked on reinflate later
             radioGroupLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -183,7 +190,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                         editText.clearFocus();
                         submitted[mPosition] = 1;
                     }
-                    if (theirAnswer.matches(currentQuestion.getTheAnswer())) {
+                    if (theirAnswer.equals(currentQuestion.getTheTextAnswer())) {
                         score[mPosition] = 10;
                     }
                     return true;
@@ -199,8 +206,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         textContainer.setBackgroundColor(backgroundColor);
         foregroundContainer.setBackgroundColor(foregroundColor);
 
-        //Gets the current question Number and displays it
-        questionNumber.setText(currentQuestion.getQuestionNumber());
 
         //Will check if the question has an image or not
         if (currentQuestion.hasImage()) {
@@ -212,10 +217,10 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             questionImage.setVisibility(View.GONE);
         }
 
-        // Get the version name from the current Word object and
-        // set this text on the name TextView
-        //TODO See if there is a way to simplify this, such as an array for method name
+        //Gets the current question Number and displays it
+        questionNumber.setText(currentQuestion.getQuestionNumber());
         questionTextView.setText(currentQuestion.getQuestions());
+        //TODO See if there is a way to simplify this, such as an array for method name
         checkBox[0].setText(currentQuestion.getAnswer1());
         checkBox[1].setText(currentQuestion.getAnswer2());
         checkBox[2].setText(currentQuestion.getAnswer3());
@@ -243,30 +248,31 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             editText.setVisibility(View.GONE);
             radioGroupLeft.setVisibility(View.VISIBLE);
             radioGroupRight.setVisibility(View.GONE);
-            checkbox_linearLayout.setVisibility(View.GONE);
-        //Type 2 uses 10 radio buttons in two groups and a question
+            checkBox_linearLayout.setVisibility(View.GONE);
+            //Type 2 uses 10 radio buttons in two groups and a question
         } else if (currentQuestion.getQuestionType() == 2) {
             editText.setVisibility(View.GONE);
             radioGroupLeft.setVisibility(View.VISIBLE);
             radioGroupRight.setVisibility(View.VISIBLE);
-            checkbox_linearLayout.setVisibility(View.GONE);
-        //Type 3 uses 10 checkboxes and a question
+            checkBox_linearLayout.setVisibility(View.GONE);
+            //Type 3 uses 10 checkboxes and a question
         } else if (currentQuestion.getQuestionType() == 3) {
             editText.setVisibility(View.GONE);
             radioGroupLeft.setVisibility(View.GONE);
             radioGroupRight.setVisibility(View.GONE);
-            checkbox_linearLayout.setVisibility(View.VISIBLE);
-        //Type 4 uses edit text to answer the question
+            checkBox_linearLayout.setVisibility(View.VISIBLE);
+            //Type 4 uses edit text to answer the question
         } else if (currentQuestion.getQuestionType() == 4) {
             editText.setVisibility(View.VISIBLE);
             radioGroupLeft.setVisibility(View.GONE);
             radioGroupRight.setVisibility(View.GONE);
-            checkbox_linearLayout.setVisibility(View.GONE);
+            checkBox_linearLayout.setVisibility(View.GONE);
         }
         return listItemView;
     }
 
     //Returns a string for which questions have yet to be answered
+    //Changes the color of text for unanswered questions
     private String finishCheck() {
         String checkQ = "";
         submitted[0] = 1;
@@ -274,10 +280,22 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             if (submitted[i] != 1) {
                 checkQ += "#" + i + " ";
                 //TODO Make the correct text red
-//                radioButton[i].setTextColor(redColorValue);
+                Log.v("checkQ is ", checkQ);
+            } else {
+                unansweredQuestions[i] = true;
             }
         }
         return checkQ;
+    }
+
+    //Returns a count of answers that have been answered
+    private int submittedCheck() {
+        int submitCount = 0;
+        for (int i = 0; i <= mCounterSize; i++) {
+            submitCount += submitted[i];
+            Log.v("What is the count", ""+ submitCount);
+        }
+        return submitCount;
     }
 
     //Disables the buttons when the quiz is completed so answers can't be changed
@@ -291,6 +309,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
     //Method to calculate the score when submit button is pressed
     public int getScore() {
+        mAllSubmitted = submittedCheck();
         int totalScore = (score[1] + score[2] + score[3] + score[4] + score[5] + score[6] + score[7] + score[8] + score[9] + score[10]);
         String s = "Congratulations " + MainActivity.PLAYER_NAME + ", you've scored a " + totalScore + "%!";
 

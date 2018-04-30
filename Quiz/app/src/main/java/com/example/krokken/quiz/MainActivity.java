@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    PLAYER_NAME = nameInput.getText().toString();
+                    PLAYER_NAME = nameInput.getText().toString().trim();
                     if (v != null) {
                         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (PLAYER_NAME.matches("")) {
+                if (TextUtils.isEmpty(PLAYER_NAME)) {
                     Toast.makeText(MainActivity.this, "Please enter your name", Toast.LENGTH_LONG).show();
                 } else {
                     layoutOpening.setVisibility(View.GONE);
