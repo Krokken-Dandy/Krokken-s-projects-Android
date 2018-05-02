@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Quiz</string>
+
+    <!-- Set of strings used by the whole application -->
+    <string name="krokken_s_quizes">Krokken\'s Quizes!</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="let_s_begin">" Let\'s begin! "</string>
+    <string name="button_art_quiz_title">Art Quiz</string>
+    <string name="button_math_quiz_title">Maths</string>
+    <string name="button_science_quiz_title">Sciences</string>
+    <string name="button_submit_text">Submit</string>
+    <string name="hit_submit">Hit submit if you think you\'re ready to be scored. You cannot change once submitted.</string>
+    <string name="score_text_congratulations">"Congratulations "</string>
+    <string name="score_text_you_scored_a">", you\'ve scored a "</string>
+    <string name="score_text_percent_symbol">%!</string>
+    <string name="quiz_finish_questions_need_to_finish">" questions need to be finished."</string>
+
     <!--                    Set of strings for the Art Quiz                  -->
     <!--Questions for Art Quiz -->
     <string name="art_q1">This painting is credited to whom?</string>
@@ -67,18 +82,4 @@
     <string name="vincent_van_gogh">Vincent van Gogh</string>
     <string name="edvard_munch">Edvard Munch</string>
     <string name="skrik">Skrik</string>
-
-    <!-- Set of strings used by the whole application -->
-    <string name="krokken_s_quizes">Krokken\'s Quizes!</string>
-    <string name="enter_name">Enter Name</string>
-    <string name="let_s_begin">" Let\'s begin! "</string>
-    <string name="button_art_quiz_title">Art Quiz</string>
-    <string name="button_math_quiz_title">Maths</string>
-    <string name="button_science_quiz_title">Sciences</string>
-    <string name="button_submit_text">Submit</string>
-    <string name="hit_submit">Hit submit if you think you\'re ready to be scored. You cannot change once submitted.</string>
-    <string name="score_text_congratulations">"Congratulations "</string>
-    <string name="score_text_you_scored_a">", you\'ve scored a "</string>
-    <string name="score_text_percent_symbol">%!</string>
-    <string name="quiz_finish_questions_need_to_finish">questions need to be finished.</string>
 </resources>

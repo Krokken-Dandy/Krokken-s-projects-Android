@@ -401,21 +401,21 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
     //Method to calculate the mScoredQuestions when submit button is pressed
     public int getScore() {
-        Resources res = MainActivity.getContext().getResources();
+        Resources res = getContext().getResources();
         int mAllSubmitted = submittedCheck();
         int totalScore = calculateScore();
-//        String s = res.getString(R.string.score_text_congratulations) + MainActivity.PLAYER_NAME +
-//                res.getString(R.string.score_text_you_scored_a) + totalScore +
-//                res.getString(R.string.score_text_percent_symbol);
+        String s = res.getString(R.string.score_text_congratulations) + MainActivity.PLAYER_NAME +
+                res.getString(R.string.score_text_you_scored_a) + totalScore +
+                res.getString(R.string.score_text_percent_symbol);
         //Will display which questions still need to be answered
         if (mAllSubmitted < mCounterSize) {
-//            Toast.makeText(getContext(), /*(10 - mAllSubmitted) +
-//                    res.getString(R.string.quiz_finish_questions_need_to_finish) +*/
-//                    finishCheck(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), (10 - mAllSubmitted) +
+                    res.getString(R.string.quiz_finish_questions_need_to_finish) +
+                    finishCheck(), Toast.LENGTH_LONG).show();
         } else {
 //            disableQuiz();
 //            showCorrect();
-            Toast.makeText(getContext(), "s", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
         }
         return totalScore;
     }
