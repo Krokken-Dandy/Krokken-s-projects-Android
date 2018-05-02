@@ -1,10 +1,9 @@
 package com.example.krokken.quiz;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,10 +13,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -190,5 +186,19 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity( intent );
 //    }
 
+    public static class App extends Application {
+
+        private static Context mContext;
+
+            @Override
+            public void onCreate() {
+                super.onCreate();
+                mContext = this;
+            }
+
+            public static Context getContext(){
+                return mContext;
+            }
+        }
 }
 

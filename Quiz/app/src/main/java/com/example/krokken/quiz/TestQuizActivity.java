@@ -21,16 +21,16 @@ public class TestQuizActivity extends AppCompatActivity {
         redColorValue = R.color.red_color_value;
 
         //numbersForMiwok.add("One");
-        questionsForArt.add(new Question(1,"1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
-        questionsForArt.add(new Question(1, "2", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "t"));
-        questionsForArt.add(new Question(1, "1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "a"));
-        questionsForArt.add(new Question(1, "4", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "o"));
-        questionsForArt.add(new Question(1, "1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"r"));
-        questionsForArt.add(new Question(1,"1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
-        questionsForArt.add(new Question(1,"1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"a"));
-        questionsForArt.add(new Question(1,"1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"t"));
-        questionsForArt.add(new Question(1, "9", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
-        questionsForArt.add(new Question(1,"1", "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"o"));
+        questionsForArt.add(new Question(1, 1, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
+        questionsForArt.add(new Question(1, 2, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "t"));
+        questionsForArt.add(new Question(1, 3, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "a"));
+        questionsForArt.add(new Question(1, 4, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "o"));
+        questionsForArt.add(new Question(1, 5, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"r"));
+        questionsForArt.add(new Question(1,6, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
+        questionsForArt.add(new Question(1,7, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"a"));
+        questionsForArt.add(new Question(1,8, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"t"));
+        questionsForArt.add(new Question(1, 9, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
+        questionsForArt.add(new Question(1,10, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"o"));
 
         QuestionAdapter questionAdapter = new QuestionAdapter(this, questionsForArt, redColorValue, redColorValue);
         final ListView listView = findViewById(R.id.list);

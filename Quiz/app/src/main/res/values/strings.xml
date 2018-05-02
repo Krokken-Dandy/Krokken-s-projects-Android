@@ -1,15 +1,19 @@
 <resources>
     <string name="app_name">Quiz</string>
-    <string name="question1">question1</string>
-    <string name="question2">2</string>
-    <string name="how_well_do_you_know_art">How well do you know art?</string>
-    <string name="munchQ1">Which artist is credited with this painting?</string>
+    <!--                    Set of strings for the Art Quiz                  -->
+    <!--Questions for Art Quiz -->
+    <string name="art_q1">This painting is credited to whom?</string>
+    <string name="art_q2">Which of the following considered themselves part of the Impressionist movement?</string>
+    <string name="art_q3">This painting is credited to whom?</string>
+    <string name="art_q4">The artist credited with this piece is also well known for which?</string>
+    <string name="art_q5">Leonardo da Vinci\'s last supper is painted on which of the following and what was intentionally added over 150 years later?</string>
+    <string name="art_q6">August Rodin was commissioned this piece, The Gates of Hell; it was intended for which museum?</string>
+    <string name="art_q7">This painting is credited to whom?</string>
+    <string name="art_q8">This is a parody of a famous painting by which artist?</string>
+    <string name="art_q9">Which of the following are popular works of art credited to Edgar Degas?</string>
+    <string name="art_q10">Salon des Refusés became legitimatized when which ruler decreed the paintings be shown for public judgement in another part of the Palace of Industry?</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hint">Hint</string>
-    <string name="hit_submit">Hit submit if you think you\'re ready to be scored. You cannot change once submitted.</string>
-    <string name="submit">Submit</string>
+    <!--Answers used by Art Quiz-->
     <string name="napol_on_bonaparte">Napoléon Bonaparte</string>
     <string name="king_louis_v">King Louis V</string>
     <string name="queen_victoria">Queen Victoria</string>
@@ -63,22 +67,18 @@
     <string name="vincent_van_gogh">Vincent van Gogh</string>
     <string name="edvard_munch">Edvard Munch</string>
     <string name="skrik">Skrik</string>
+
+    <!-- Set of strings used by the whole application -->
+    <string name="krokken_s_quizes">Krokken\'s Quizes!</string>
     <string name="enter_name">Enter Name</string>
     <string name="let_s_begin">" Let\'s begin! "</string>
-    <string name="krokken_s_quizes">Krokken\'s Quizes!</string>
-    <string name="congratulations_on_finishing_the_quiz_you_ve_scored_a">Congratulations on finishing the Quiz! You\'ve scored a:</string>
-    <string name="art_q1">This painting is credited to whom?</string>
-    <string name="art_q2">Which of the following considered themselves part of the Impressionist movement?</string>
-    <string name="art_q3">This painting is credited to whom?</string>
-    <string name="art_q4">The artist credited with this piece is also well known for which?</string>
-    <string name="art_q5">Leonardo da Vinci\'s last supper is painted on which of the following and what was intentionally added over 150 years later?</string>
-    <string name="art_q6">August Rodin was commissioned this piece, The Gates of Hell; it was intended for which museum?</string>
-    <string name="art_q7">This painting is credited to whom?</string>
-    <string name="art_q8">This is a parody of a famous painting by which artist?</string>
-    <string name="art_q9">Which of the following are popular works of art credited to Edgar Degas?</string>
-    <string name="art_q10">Salon des Refusés became legitimatized when which ruler decreed the paintings be shown for public judgement in another part of the Palace of Industry?</string>
     <string name="button_art_quiz_title">Art Quiz</string>
     <string name="button_math_quiz_title">Maths</string>
     <string name="button_science_quiz_title">Sciences</string>
     <string name="button_submit_text">Submit</string>
+    <string name="hit_submit">Hit submit if you think you\'re ready to be scored. You cannot change once submitted.</string>
+    <string name="score_text_congratulations">"Congratulations "</string>
+    <string name="score_text_you_scored_a">", you\'ve scored a "</string>
+    <string name="score_text_percent_symbol">%!</string>
+    <string name="quiz_finish_questions_need_to_finish">questions need to be finished.</string>
 </resources>

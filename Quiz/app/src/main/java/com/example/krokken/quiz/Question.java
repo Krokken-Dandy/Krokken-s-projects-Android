@@ -4,17 +4,20 @@ import android.util.Log;
 
 public class Question {
 
-    private String mQuestions, mQuestionNumber;
+    private String mQuestions;
 
     private String mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5, mAnswer6, mAnswer7, mAnswer8, mAnswer9, mAnswer10,
             mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5, mTheTextAnswer, mPlayerName;
 
-    private int mQuestionImage = NO_IMAGE_PROVIDED, answer = -1, mQuestionType;
-
-    private static final int NO_IMAGE_PROVIDED = -1;
+    private static final int NO_ANSWER_PROVIDED = -1;
+    private int mQuestionImage = NO_ANSWER_PROVIDED;
+    private int mIsItAnswered = NO_ANSWER_PROVIDED;
+    private int checkBoxAnswer = NO_ANSWER_PROVIDED;
+    private int mQuestionType;
+    private int mQuestionNumber;
 
     //Constructor for 10 possible answers, an image, and 5 correct answers
-    public Question(int questionType, String questionNumber, int questionImage, String question, String answer1, String answer2, String answer3, String answer4,
+    public Question(int questionType, int questionNumber, int questionImage, String question, String answer1, String answer2, String answer3, String answer4,
                     String answer5, String answer6, String answer7, String answer8, String answer9, String answer10, String correct1, String correct2, String correct3, String correct4, String correct5) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
@@ -38,7 +41,7 @@ public class Question {
     }
 
     //Constructor for 10 possible answers, no image, and 5 correct answers
-    public Question(int questionType, String questionNumber, String question, String answer1, String answer2, String answer3, String answer4,
+    public Question(int questionType, int questionNumber, String question, String answer1, String answer2, String answer3, String answer4,
                     String answer5, String answer6, String answer7, String answer8, String answer9, String answer10, String correct1, String correct2, String correct3, String correct4, String correct5) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
@@ -61,7 +64,7 @@ public class Question {
     }
 
     //Constructor for 10 possible answers, no image, and 2 correct answers
-    public Question(int questionType, String questionNumber, String question, String answer1, String answer2, String answer3, String answer4, String answer5,
+    public Question(int questionType, int questionNumber, String question, String answer1, String answer2, String answer3, String answer4, String answer5,
                     String answer6, String answer7, String answer8, String answer9, String answer10, String correct1, String correct2) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
@@ -80,8 +83,8 @@ public class Question {
         mCorrect2 = correct2;
     }
 
-    //Constructor for 5 possible answers, an image, and a single correct answer
-    public Question(int questionType, String questionNumber, int questionImage, String question, String answer1, String answer2, String answer3, String answer4,
+    //Constructor for 5 possible answers, an image, and a single correct mIsItAnswered
+    public Question(int questionType, int questionNumber, int questionImage, String question, String answer1, String answer2, String answer3, String answer4,
                     String answer5, String correct1) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
@@ -95,8 +98,8 @@ public class Question {
         mCorrect1 = correct1;
     }
 
-    //Constructor for 5 possible answers, no image, and a single correct answer
-    public Question(int questionType, String questionNumber, String question, String answer1, String answer2, String answer3, String answer4, String answer5,
+    //Constructor for 5 possible answers, no image, and a single correct mIsItAnswered
+    public Question(int questionType, int questionNumber, String question, String answer1, String answer2, String answer3, String answer4, String answer5,
                     String correct1) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
@@ -109,8 +112,17 @@ public class Question {
         mCorrect1 = correct1;
     }
 
+    //EditText constructor
+    public Question(int questionType, int questionNumber, int questionImage, String question, String theTextAnswer) {
+        mQuestionType = questionType;
+        mQuestionNumber = questionNumber;
+        mQuestionImage = questionImage;
+        mQuestions = question;
+        mTheTextAnswer = theTextAnswer;
+    }
+
     //Test constructor
-    public Question(int questionType, String questionNumber, String question, String answer1, String answer2, String answer3, String answer4, String answer5, int questionImage, String correct1) {
+    public Question(int questionType, int questionNumber, String question, String answer1, String answer2, String answer3, String answer4, String answer5, int questionImage, String correct1) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
         mQuestionImage = questionImage;
@@ -122,30 +134,24 @@ public class Question {
         mAnswer5 = answer5;
         mCorrect1 = correct1;
     }
-
-    //EditText constructor
-    public Question(int questionType, String questionNumber, int questionImage, String question, int theTextAnswer) {
-        mQuestionType = questionType;
-        mQuestionNumber = questionNumber;
-        mQuestionImage = questionImage;
-        mQuestions = question;
-        mTheTextAnswer = "" + theTextAnswer;
-    }
-
     public int getQuestionType() {
         return mQuestionType;
     }
 
-    public String getQuestionNumber() {
+    public int getQuestionNumber() {
         return mQuestionNumber;
     }
 
-    public int getAnswered(){
-        return answer;
-        }
+    public int getAnswered() {
+        return mIsItAnswered;
+    }
 
-    public void setAnswer(int answer) {
-        this.answer = answer;
+    public void setIsItAnswered(int answered) {
+        this.mIsItAnswered = answered;
+    }
+
+    public void setCheckBoxAnswer(int answered) {
+        this.checkBoxAnswer = answered;
     }
 
     public String getQuestions() {
@@ -196,23 +202,23 @@ public class Question {
         return mTheTextAnswer;
     }
 
-    public String getCorrect1(){
+    public String getCorrect1() {
         return mCorrect1;
     }
 
-    public String getCorrect2(){
+    public String getCorrect2() {
         return mCorrect2;
     }
 
-    public String getCorrect3(){
+    public String getCorrect3() {
         return mCorrect3;
     }
 
-    public String getCorrect4(){
+    public String getCorrect4() {
         return mCorrect4;
     }
 
-    public String getCorrect5(){
+    public String getCorrect5() {
         return mCorrect5;
     }
 
@@ -221,7 +227,7 @@ public class Question {
     }
 
     public boolean hasImage() {
-        return mQuestionImage != NO_IMAGE_PROVIDED;
+        return mQuestionImage != NO_ANSWER_PROVIDED;
     }
 
     public void setName(String name) {

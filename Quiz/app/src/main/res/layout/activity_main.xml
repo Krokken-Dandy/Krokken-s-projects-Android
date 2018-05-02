@@ -81,6 +81,7 @@
             android:layout_margin="@dimen/overall_margin_16"
             android:background="@color/art_dark_purple"
             android:orientation="vertical"
+            android:visibility="gone"
             tools:visibility="visible">
 
             <TextView

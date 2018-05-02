@@ -21,8 +21,9 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
     ArrayList<Question> questionsForArt;
 
     private String[] questions, answersQ1, answersQ2, answersQ4, answersQ5, answersQ6, answersQ7,
-            answersQ8, answersQ9, answersQ10, correctQ2, correctQ5, correctQ9, numbers;
-    private String correctQ1, correctQ4, correctQ6, correctQ7, correctQ8, correctQ10;
+            answersQ8, answersQ9, answersQ10, correctQ2, correctQ5, correctQ9;
+    private String correctQ1, correctQ3, correctQ4, correctQ6, correctQ7, correctQ8, correctQ10;
+    private int[] numbers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,9 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
 
     private void declaredVariables() {
         Resources res = getResources();
-        numbers = new String[ARRAY_SIZE];
+        numbers = new int[ARRAY_SIZE];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = "#" + (i + 1);
+            numbers[i] = i + 1;
         }
 
         questions = res.getStringArray(R.array.art_question);
@@ -59,6 +60,7 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
         answersQ10 = res.getStringArray(R.array.art_question_10_array);
         correctQ1 = res.getString(R.string.edvard_munch);
         correctQ2 = res.getStringArray(R.array.correct_array_q2);
+        correctQ3 = res.getString(R.string.pablo_picasso);
         correctQ4 = res.getString(R.string.sistine_chapel_ceiling);
         correctQ5 = res.getStringArray(R.array.correct_array_q5);
         correctQ6 = res.getString(R.string.museum_of_decorative_arts);
@@ -93,7 +95,7 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
         //Q3 follows constructor: questionType, questionNumber, questionImage,
         // mainQuestion, answer1, and the correctAnswer
         questionsForArt.add(new Question(4, numbers[2], R.drawable.question_three_image,
-                questions[2], R.string.pablo_picasso));
+                questions[2], correctQ3));
 
         //Q4 follows constructor: questionType, questionNumber, questionImage,
         // mainQuestion, answer1, answer2, answer3, answer4, answer5, and the correctAnswer

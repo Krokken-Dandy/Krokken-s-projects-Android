@@ -78,7 +78,7 @@
             android:imeOptions="actionDone"
             android:inputType="textPersonName|textAutoCorrect|textCapWords"
             android:padding="@dimen/padding_3"
-            android:textColorHint="@color/text_color_hint" />
+            android:textColorHint="@color/main_other_purple" />
 
         <TextView
             android:id="@+id/edittext_correct_answer"
@@ -115,35 +115,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
             </RadioGroup>
 
@@ -164,35 +164,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <RadioButton
                     android:id="@+id/radio_10"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
             </RadioGroup>
         </LinearLayout>
@@ -219,35 +219,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
             </LinearLayout>
 
             <LinearLayout
@@ -266,35 +266,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
                 <CheckBox
                     android:id="@+id/checkbox_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/answer_text_14"
-                    tools:text="answer"/>
+                    tools:text="mIsItAnswered"/>
 
             </LinearLayout>
         </LinearLayout>
