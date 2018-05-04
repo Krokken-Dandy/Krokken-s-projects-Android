@@ -369,7 +369,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
         }
-        for (int i = 0; i<mCounterSize; i++) Log.v("question" + i, "points" + mScoredQuestions[i]);
+        for (int i = 1; i<=mCounterSize; i++) Log.v("question" + i, "points" + mScoredQuestions[i]);
         return listItemView;
     }
 
