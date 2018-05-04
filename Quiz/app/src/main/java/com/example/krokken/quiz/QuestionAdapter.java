@@ -123,12 +123,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
                 //RadioButton clickListeners for checking answers
                 item.radioButton[i].setOnClickListener(new View.OnClickListener() {
-                    int questionPosition = currentQuestion.getQuestionNumber() - 1;
-
                     @Override
                     public void onClick(View v) {
                         String isThisCorrectLeft = "";
                         String isThisCorrectRight = "";
+                        int questionPosition = currentQuestion.getQuestionNumber() - 1;
                         //Questions that require only 5 radio buttons
                         if (currentQuestion.getQuestionType() == 1) {
                             item.answeredLeftButton[questionPosition] =
@@ -198,7 +197,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                     }
                 });
             }
-            //Questions that use checkboxes
+
+            //Executes for questions that use checkboxes
             if (currentQuestion.getQuestionType() == 3) {
                 item.checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
@@ -257,9 +257,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         }
 
         //Will check any editText answer inputs with the correct answer
-        item.editText.setOnEditorActionListener(new TextView.OnEditorActionListener()
-
-        {
+        item.editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -300,16 +298,12 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         //Sets the text for the question
         item.questionTextView.setText(currentQuestion.getQuestions());
-        if (mUnansweredQuestions[position])
-
-        {
+        if (mUnansweredQuestions[position]) {
             item.questionTextView.setTextColor(redColorValue);
         }
         //Set answer text to the correct button type
         //TODO See if there is a way to simplify this, such as an array for method name
-        if ((currentQuestion.getQuestionType() == 1) || (currentQuestion.getQuestionType() == 2))
-
-        {
+        if ((currentQuestion.getQuestionType() == 1) || (currentQuestion.getQuestionType() == 2)) {
             item.radioButton[0].setText(currentQuestion.getAnswer1());
             item.radioButton[1].setText(currentQuestion.getAnswer2());
             item.radioButton[2].setText(currentQuestion.getAnswer3());
@@ -338,16 +332,12 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         }
 
         //Will check if the question has an image or not
-        if (currentQuestion.hasImage())
-
-        {
+        if (currentQuestion.hasImage()) {
             // Get the image resource ID from the current Question object and
             // set the image to the question Image
             item.questionImage.setImageResource(currentQuestion.getImageResourceId());
             item.questionImage.setVisibility(View.VISIBLE);
-        } else
-
-        {
+        } else {
             item.questionImage.setVisibility(View.GONE);
         }
 
@@ -388,10 +378,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
         }
-        for (
-                int i = 1;
-                i <= mCounterSize; i++)
-            Log.v("question" + i, "points" + mScoredQuestions[i]);
+        for (int i = 0; i < mCounterSize; i++) {
+            Log.v("question" + (i + 1), "points" + mScoredQuestions[i]);
+        }
         return listItemView;
     }
 

@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     View layoutOpening, layoutQuizes;
 
     //TODO Add graded score to main page with Reset Quiz button
-    //TODO
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
