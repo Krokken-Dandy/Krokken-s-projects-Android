@@ -36,12 +36,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     //The size of the question array for the Quiz chosen
     private int mCounterSize;
 
-    //References the group of radio buttons on the left of the question, if needed
-    private RadioGroup radioGroupLeft;
-
-    //References the group of radio buttons on the right of the question, if needed
-    private RadioGroup radioGroupRight;
-
     //Array used to collect the mScoredQuestions of the user as they finish questions
     private int[] mScoredQuestions;
 
@@ -83,6 +77,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             item.editText = listItemView.findViewById(R.id.edittext_their_answer);
             item.editTextAnswer = listItemView.findViewById(R.id.edittext_correct_answer);
             item.checkBox_linearLayout = listItemView.findViewById(R.id.checkboxes);
+            item.radioGroupLeft = listItemView.findViewById(R.id.question_radio_left);
+            item.radioGroupRight = listItemView.findViewById(R.id.question_radio_right);
 
             //Initializing arrays to the size of the Quiz's question array
             item.radioButton = new RadioButton[mCounterSize];
@@ -113,13 +109,19 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             item = (ViewHolder) listItemView.getTag();
         }
 
-        radioGroupLeft = listItemView.findViewById(R.id.question_radio_left);
-        radioGroupRight = listItemView.findViewById(R.id.question_radio_right);
         item.editTextAnswer.setVisibility(View.GONE);
         //Loop to initialize and create listeners for all the items used in the required layout
         for (int i = 0; i < mCounterSize; i++) {
             //Will execute if question uses Radio Buttons
             if ((currentQuestion.getQuestionType() == 1) || (currentQuestion.getQuestionType() == 2)) {
+
+                //Will check if any radioButtons in the current position were already checked
+                //Will recheck/uncheck the proper radio button when the views are reinflated
+                if (currentQuestion.getAnswered() == -1) {
+                    item.radioGroupLeft.clearCheck();
+                } else {
+                    ((RadioButton) item.radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
+                }
 
                 //RadioButton clickListeners for checking answers
                 item.radioButton[i].setOnClickListener(new View.OnClickListener() {
@@ -131,7 +133,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                         //Questions that require only 5 radio buttons
                         if (currentQuestion.getQuestionType() == 1) {
                             item.answeredLeftButton[questionPosition] =
-                                    radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                                    item.radioGroupLeft.findViewById(item.radioGroupLeft.getCheckedRadioButtonId());
                             mSubmittedQuestions[questionPosition] = 1;
                             if (item.answeredLeftButton[questionPosition] != null) {
                                 isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
@@ -144,13 +146,13 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             //Questions that require 10 radio buttons
                         } else if (currentQuestion.getQuestionType() == 2) {
                             item.answeredLeftButton[questionPosition] =
-                                    radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                                    item.radioGroupLeft.findViewById(item.radioGroupLeft.getCheckedRadioButtonId());
                             mSubmittedQuestions[questionPosition] = 1;
                             if (item.answeredLeftButton[questionPosition] != null) {
                                 isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
                             }
                             item.answeredRightButton[questionPosition] =
-                                    radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
+                                    item.radioGroupRight.findViewById(item.radioGroupRight.getCheckedRadioButtonId());
                             if (item.answeredRightButton[questionPosition] != null) {
                                 isThisCorrectRight = item.answeredRightButton[questionPosition].getText().toString();
                             }
@@ -164,17 +166,10 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                     }
                 });
 
-                //Will check if any radioButtons in the current position were already checked
-                //Will recheck/uncheck the proper radio button when the views are reinflated
-                if (currentQuestion.getAnswered() == -1) {
-                    radioGroupLeft.clearCheck();
-                } else {
-                    ((RadioButton) radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
-                }
 
                 //Sets a value when a radio button is checked
                 //so that it can be checked when the view is reinflated later
-                radioGroupLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                item.radioGroupLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         switch (checkedId) {
@@ -347,8 +342,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         {
             item.editText.setVisibility(View.GONE);
-            radioGroupLeft.setVisibility(View.VISIBLE);
-            radioGroupRight.setVisibility(View.GONE);
+            item.radioGroupLeft.setVisibility(View.VISIBLE);
+            item.radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
 
             //Type 2 uses 10 radio buttons in two groups and a question
@@ -356,8 +351,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         {
             item.editText.setVisibility(View.GONE);
-            radioGroupLeft.setVisibility(View.VISIBLE);
-            radioGroupRight.setVisibility(View.VISIBLE);
+            item.radioGroupLeft.setVisibility(View.VISIBLE);
+            item.radioGroupRight.setVisibility(View.VISIBLE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
 
             //Type 3 uses 10 checkboxes and a question
@@ -365,8 +360,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         {
             item.editText.setVisibility(View.GONE);
-            radioGroupLeft.setVisibility(View.GONE);
-            radioGroupRight.setVisibility(View.GONE);
+            item.radioGroupLeft.setVisibility(View.GONE);
+            item.radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.VISIBLE);
 
             //Type 4 uses edit text to answer the question
@@ -374,8 +369,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         {
             item.editText.setVisibility(View.VISIBLE);
-            radioGroupLeft.setVisibility(View.GONE);
-            radioGroupRight.setVisibility(View.GONE);
+            item.radioGroupLeft.setVisibility(View.GONE);
+            item.radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
         }
         for (int i = 0; i < mCounterSize; i++) {
@@ -391,6 +386,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         private TextView editTextAnswer;
         private TextView questionTextView;
         private TextView questionNumber;
+        //References the group of radio buttons on the left of the question, if needed
+        private RadioGroup radioGroupLeft;
+
+        //References the group of radio buttons on the right of the question, if needed
+        private RadioGroup radioGroupRight;
         private RadioButton[] radioButton;
         private RadioButton[] answeredLeftButton;
         private RadioButton[] answeredRightButton;
