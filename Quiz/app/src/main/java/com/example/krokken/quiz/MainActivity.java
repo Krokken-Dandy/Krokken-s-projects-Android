@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Find all the Main.xml views
-    private void findViews(){
+    private void findViews() {
         artQuiz = findViewById(R.id.art_quiz);
         testQuiz = findViewById(R.id.test_quiz);
         layoutOpening = findViewById(R.id.layout_opening);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //OnClickListeners for opening and Quiz Options
-    private void onClickListeners(){
+    private void onClickListeners() {
         //Chooses the
         nameInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        artQuiz.setOnClickListener(new View.OnClickListener(){
+        artQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
-                    public void onClick(View v){
+            public void onClick(View v) {
                 Intent theArtQuiz = new Intent(MainActivity.this, AllArtQuestionsActivity.class);
                 theArtQuiz.putExtra(PLAYER_INPUT_NAME, PLAYER_NAME);
                 Log.v(PLAYER_NAME, PLAYER_NAME + " activity");
@@ -105,15 +105,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        testQuiz.setOnClickListener(new View.OnClickListener(){
+        testQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent theTestQuiz = new Intent(MainActivity.this, TestQuizActivity.class);
                 theTestQuiz.putExtra(PLAYER_INPUT_NAME, PLAYER_NAME);
                 startActivity(theTestQuiz);
             }
         });
     }
+}
 
 
     //OnClick for submit button. Checks which are correct
@@ -185,20 +186,3 @@ public class MainActivity extends AppCompatActivity {
 //        finish();
 //        startActivity( intent );
 //    }
-
-    public static class App extends Application {
-
-        private static Context mContext;
-
-            @Override
-            public void onCreate() {
-                super.onCreate();
-                mContext = this;
-            }
-
-            public static Context getContext(){
-                return mContext;
-            }
-        }
-}
-

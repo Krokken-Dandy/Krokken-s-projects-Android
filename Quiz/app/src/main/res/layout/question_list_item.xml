@@ -78,7 +78,7 @@
             android:imeOptions="actionDone"
             android:inputType="textPersonName|textAutoCorrect|textCapWords"
             android:padding="@dimen/padding_3"
-            android:textColorHint="@color/main_other_purple" />
+            android:textColorHint="@color/art_light_purple" />
 
         <TextView
             android:id="@+id/edittext_correct_answer"

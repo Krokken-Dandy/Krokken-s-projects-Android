@@ -135,7 +135,7 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
         questionsForArt.add(new Question(1, numbers[9], questions[9], answersQ10[0],
                 answersQ10[1], answersQ10[2], answersQ10[3], answersQ10[4], correctQ10));
 
-        final QuestionAdapter numberAdapter = new QuestionAdapter(this, questionsForArt, backgroundColor, foregroundColor);
+        final QuestionAdapter numberAdapter = new QuestionAdapter(this, questionsForArt, backgroundColor, foregroundColor, ARRAY_SIZE);
         final View linearLayout = findViewById(R.id.linear_layout);
         final ListView listView = findViewById(R.id.list);
         final Button submitButton = findViewById(R.id.submit_button);

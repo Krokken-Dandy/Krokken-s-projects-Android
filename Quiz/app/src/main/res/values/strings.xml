@@ -13,7 +13,7 @@
     <string name="score_text_congratulations">"Congratulations "</string>
     <string name="score_text_you_scored_a">", you\'ve scored a "</string>
     <string name="score_text_percent_symbol">%!</string>
-    <string name="quiz_finish_questions_need_to_finish">" questions need to be finished."</string>
+    <string name="quiz_finish_questions_need_to_finish">" questions need to be finished.\n"</string>
 
     <!--                    Set of strings for the Art Quiz                  -->
     <!--Questions for Art Quiz -->

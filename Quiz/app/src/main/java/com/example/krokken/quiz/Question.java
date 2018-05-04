@@ -9,6 +9,8 @@ public class Question {
     private String mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5, mAnswer6, mAnswer7, mAnswer8, mAnswer9, mAnswer10,
             mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5, mTheTextAnswer, mPlayerName;
 
+    private String[] mCorrectCheckBoxArray;
+
     private static final int NO_ANSWER_PROVIDED = -1;
     private int mQuestionImage = NO_ANSWER_PROVIDED;
     private int mIsItAnswered = NO_ANSWER_PROVIDED;
@@ -38,6 +40,7 @@ public class Question {
         mCorrect3 = correct3;
         mCorrect4 = correct4;
         mCorrect5 = correct5;
+        mCorrectCheckBoxArray = new String[]{correct1, correct2, correct3, correct4, correct5};
     }
 
     //Constructor for 10 possible answers, no image, and 5 correct answers
@@ -61,6 +64,7 @@ public class Question {
         mCorrect3 = correct3;
         mCorrect4 = correct4;
         mCorrect5 = correct5;
+        mCorrectCheckBoxArray = new String[]{correct1, correct2, correct3, correct4, correct5};
     }
 
     //Constructor for 10 possible answers, no image, and 2 correct answers
@@ -200,6 +204,10 @@ public class Question {
 
     public String getTheTextAnswer() {
         return mTheTextAnswer;
+    }
+
+    public String[] getCorrectArray() {
+        return mCorrectCheckBoxArray;
     }
 
     public String getCorrect1() {

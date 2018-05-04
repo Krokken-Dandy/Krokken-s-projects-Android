@@ -32,7 +32,7 @@ public class TestQuizActivity extends AppCompatActivity {
         questionsForArt.add(new Question(1, 9, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image, "s"));
         questionsForArt.add(new Question(1,10, "a", "t", "r", "s", "o", "5", R.drawable.question_one_image,"o"));
 
-        QuestionAdapter questionAdapter = new QuestionAdapter(this, questionsForArt, redColorValue, redColorValue);
+        QuestionAdapter questionAdapter = new QuestionAdapter(this, questionsForArt, redColorValue, redColorValue, 10);
         final ListView listView = findViewById(R.id.list);
         listView.setAdapter(questionAdapter);
 
