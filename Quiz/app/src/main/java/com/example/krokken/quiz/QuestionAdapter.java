@@ -129,7 +129,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                     public void onClick(View v) {
                         String isThisCorrectLeft = "";
                         String isThisCorrectRight = "";
-                        int questionPosition = currentQuestion.getQuestionNumber() - 1;
+                        final int questionPosition = currentQuestion.getQuestionNumber() - 1;
                         //Questions that require only 5 radio buttons
                         if (currentQuestion.getQuestionType() == 1) {
                             item.answeredLeftButton[questionPosition] =
