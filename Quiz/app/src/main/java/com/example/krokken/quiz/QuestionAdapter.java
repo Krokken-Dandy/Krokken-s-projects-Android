@@ -125,9 +125,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                 if (currentQuestion.getQuestionType() != 3) {
                     //RadioButton clickListeners for checking answers
                     item.radioButton[i].setOnClickListener(new View.OnClickListener() {
+                        int questionPosition = currentQuestion.getQuestionNumber() - 1;
                         @Override
                         public void onClick(View v) {
-                            int questionPosition = currentQuestion.getQuestionNumber() - 1;
                             String isThisCorrectLeft = "";
                             String isThisCorrectRight = "";
                             //Questions that require only 5 radio buttons
