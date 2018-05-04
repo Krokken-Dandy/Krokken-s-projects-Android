@@ -85,6 +85,7 @@ public class Question {
         mAnswer10 = answer10;
         mCorrect1 = correct1;
         mCorrect2 = correct2;
+        mCorrectCheckBoxArray = new String[]{correct1, correct2};
     }
 
     //Constructor for 5 possible answers, an image, and a single correct mIsItAnswered
@@ -218,18 +219,6 @@ public class Question {
         return mCorrect2;
     }
 
-    public String getCorrect3() {
-        return mCorrect3;
-    }
-
-    public String getCorrect4() {
-        return mCorrect4;
-    }
-
-    public String getCorrect5() {
-        return mCorrect5;
-    }
-
     public int getImageResourceId() {
         return mQuestionImage;
     }
@@ -240,11 +229,9 @@ public class Question {
 
     public void setName(String name) {
         mPlayerName = name;
-        Log.v("player name", mPlayerName + " set name");
     }
 
     public String getName() {
-        Log.v("player name", mPlayerName + " get name");
         return mPlayerName;
     }
 }

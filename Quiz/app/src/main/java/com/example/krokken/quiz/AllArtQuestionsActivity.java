@@ -104,7 +104,7 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
 
         //Q5 follows constructor: questionType, questionNumber, mainQuestion,
         // answer1, answer2, answer3, answer4, answer5, correctAnswer1, and correctAnswer2
-        questionsForArt.add(new Question(2, numbers[4], questions[4], answersQ5[0],
+        questionsForArt.add(new Question(3, numbers[4], questions[4], answersQ5[0],
                 answersQ5[1], answersQ5[2], answersQ5[3], answersQ5[4], answersQ5[5], answersQ5[6],
                 answersQ5[7], answersQ5[8], answersQ5[9], correctQ5[0], correctQ5[1]));
 

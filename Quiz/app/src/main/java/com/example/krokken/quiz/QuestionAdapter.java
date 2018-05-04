@@ -129,6 +129,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                     public void onClick(View v) {
                         String isThisCorrectLeft = "";
                         String isThisCorrectRight = "";
+                        final String currentCorrectAnswerLeft = currentQuestion.getCorrect1();
+                        final String currentCorrectAnswerRight = currentQuestion.getCorrect2();
                         final int questionPosition = currentQuestion.getQuestionNumber() - 1;
                         //Questions that require only 5 radio buttons
                         if (currentQuestion.getQuestionType() == 1) {
@@ -138,7 +140,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             if (item.answeredLeftButton[questionPosition] != null) {
                                 isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
                             }
-                            if (isThisCorrectLeft.equals(currentQuestion.getCorrect1())) {
+                            if (isThisCorrectLeft.equals(currentCorrectAnswerLeft)) {
                                 mScoredQuestions[questionPosition] = 5;
                             } else {
                                 mScoredQuestions[questionPosition] = 0;
@@ -156,8 +158,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             if (item.answeredRightButton[questionPosition] != null) {
                                 isThisCorrectRight = item.answeredRightButton[questionPosition].getText().toString();
                             }
-                            if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) &&
-                                    (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
+                            if (isThisCorrectLeft.equals(currentCorrectAnswerLeft) &&
+                                    (isThisCorrectRight.equals(currentCorrectAnswerRight))) {
                                 mScoredQuestions[questionPosition] = 10;
                             } else {
                                 mScoredQuestions[questionPosition] = 0;
