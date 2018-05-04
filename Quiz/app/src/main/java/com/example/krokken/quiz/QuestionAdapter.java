@@ -116,133 +116,132 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         radioGroupLeft = listItemView.findViewById(R.id.question_radio_left);
         radioGroupRight = listItemView.findViewById(R.id.question_radio_right);
         item.editTextAnswer.setVisibility(View.GONE);
+        //Loop to initialize and create listeners for all the items used in the required layout
+        for (int i = 0; i < mCounterSize; i++) {
+            //Will execute if question uses Radio Buttons
+            if ((currentQuestion.getQuestionType() == 1) || (currentQuestion.getQuestionType() == 2)) {
 
-        //Skips if the current question isn't an EditText
-        if (currentQuestion.getQuestionType() != 4) {
-            //Loop to initialize and create listeners for all the items used in the required layout
-            for (int i = 0; i < mCounterSize; i++) {
-                //Skips if the current question isn't CheckBoxes
-                if (currentQuestion.getQuestionType() != 3) {
-                    //RadioButton clickListeners for checking answers
-                    item.radioButton[i].setOnClickListener(new View.OnClickListener() {
-                        int questionPosition = currentQuestion.getQuestionNumber() - 1;
-                        @Override
-                        public void onClick(View v) {
-                            String isThisCorrectLeft = "";
-                            String isThisCorrectRight = "";
-                            //Questions that require only 5 radio buttons
-                            if (currentQuestion.getQuestionType() == 1) {
-                                item.answeredLeftButton[questionPosition] =
-                                        radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
-                                mSubmittedQuestions[questionPosition] = 1;
-                                if (item.answeredLeftButton[questionPosition] != null) {
-                                    isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
-                                }
-                                if (isThisCorrectLeft.equals(currentQuestion.getCorrect1())) {
-                                    mScoredQuestions[questionPosition] = 5;
-                                } else {
-                                    mScoredQuestions[questionPosition] = 0;
-                                }
-                                //Questions that require 10 radio buttons
-                            } else if (currentQuestion.getQuestionType() == 2) {
-                                item.answeredLeftButton[questionPosition] =
-                                        radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
-                                mSubmittedQuestions[questionPosition] = 1;
-                                if (item.answeredLeftButton[questionPosition] != null) {
-                                    isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
-                                }
-                                item.answeredRightButton[questionPosition] =
-                                        radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
-                                if (item.answeredRightButton[questionPosition] != null) {
-                                    isThisCorrectRight = item.answeredRightButton[questionPosition].getText().toString();
-                                }
-                                if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) &&
-                                        (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
-                                    mScoredQuestions[questionPosition] = 10;
-                                } else {
-                                    mScoredQuestions[questionPosition] = 0;
-                                }
-                            }
-                        }
-                    });
+                //RadioButton clickListeners for checking answers
+                item.radioButton[i].setOnClickListener(new View.OnClickListener() {
+                    int questionPosition = currentQuestion.getQuestionNumber() - 1;
 
-                    //Will check if any radioButtons in the current position were already checked
-                    //Will recheck/uncheck the proper radio button when the views are reinflated
-                    if (currentQuestion.getAnswered() == -1) {
-                        radioGroupLeft.clearCheck();
-                    } else {
-                        ((RadioButton) radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
-                    }
-
-                    //Sets a value when a radio button is checked
-                    //so that it can be checked when the view is reinflated later
-                    radioGroupLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup group, int checkedId) {
-                            switch (checkedId) {
-                                case R.id.radio_1:
-                                    currentQuestion.setIsItAnswered(0);
-                                    break;
-                                case R.id.radio_2:
-                                    currentQuestion.setIsItAnswered(1);
-                                    break;
-                                case R.id.radio_3:
-                                    currentQuestion.setIsItAnswered(2);
-                                    break;
-                                case R.id.radio_4:
-                                    currentQuestion.setIsItAnswered(3);
-                                    break;
-                                case R.id.radio_5:
-                                    currentQuestion.setIsItAnswered(4);
-                                    break;
-                            }
-                        }
-                    });
-                }
-                //Questions that use checkboxes
-                if (currentQuestion.getQuestionType() == 3) {
-                    item.checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                            int questionPosition = currentQuestion.getQuestionNumber() - 1;
+                    @Override
+                    public void onClick(View v) {
+                        String isThisCorrectLeft = "";
+                        String isThisCorrectRight = "";
+                        //Questions that require only 5 radio buttons
+                        if (currentQuestion.getQuestionType() == 1) {
+                            item.answeredLeftButton[questionPosition] =
+                                    radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
                             mSubmittedQuestions[questionPosition] = 1;
-                            String[] correctAnswers = currentQuestion.getCorrectArray();
-
-                            if (isChecked) {
-                                currentQuestion.setCheckBoxAnswer(10);
+                            if (item.answeredLeftButton[questionPosition] != null) {
+                                isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
+                            }
+                            if (isThisCorrectLeft.equals(currentQuestion.getCorrect1())) {
+                                mScoredQuestions[questionPosition] = 5;
                             } else {
-                                currentQuestion.setCheckBoxAnswer(-1);
+                                mScoredQuestions[questionPosition] = 0;
                             }
-                            if ((!item.checkBox[0].isChecked()) && (!item.checkBox[1].isChecked()) &&
-                                    (!item.checkBox[2].isChecked()) && (!item.checkBox[3].isChecked()) &&
-                                    (!item.checkBox[4].isChecked()) && (!item.checkBox[5].isChecked()) &&
-                                    (!item.checkBox[6].isChecked()) && (!item.checkBox[7].isChecked()) &&
-                                    (!item.checkBox[8].isChecked()) && (!item.checkBox[9].isChecked())) {
-                                mSubmittedQuestions[questionPosition] = 0;
+                            //Questions that require 10 radio buttons
+                        } else if (currentQuestion.getQuestionType() == 2) {
+                            item.answeredLeftButton[questionPosition] =
+                                    radioGroupLeft.findViewById(radioGroupLeft.getCheckedRadioButtonId());
+                            mSubmittedQuestions[questionPosition] = 1;
+                            if (item.answeredLeftButton[questionPosition] != null) {
+                                isThisCorrectLeft = item.answeredLeftButton[questionPosition].getText().toString();
                             }
-
-                            //Determines how many questions of check box questions are correct
-                            int localScore = 0;
-                            for (int j = 0; j < item.checkBox.length; j++) {
-                                if (item.checkBox[j].isChecked()) {
-                                    for (int i = 0; i < correctAnswers.length; i++) {
-                                        if (correctAnswers[i].equals(item.checkBox[j].getText().toString())) {
-                                            localScore++;
-                                        }
-                                    }
-                                }
+                            item.answeredRightButton[questionPosition] =
+                                    radioGroupRight.findViewById(radioGroupRight.getCheckedRadioButtonId());
+                            if (item.answeredRightButton[questionPosition] != null) {
+                                isThisCorrectRight = item.answeredRightButton[questionPosition].getText().toString();
                             }
-
-                            //Calculates final score of checkBox questions
-                            //localScore needs to match correct number of answers (Get all correct)
-                            if (localScore == correctAnswers.length) {
-                                mScoredQuestions[questionPosition] = 5 * correctAnswers.length;
+                            if (isThisCorrectLeft.equals(currentQuestion.getCorrect1()) &&
+                                    (isThisCorrectRight.equals(currentQuestion.getCorrect2()))) {
+                                mScoredQuestions[questionPosition] = 10;
                             } else {
                                 mScoredQuestions[questionPosition] = 0;
                             }
                         }
-                    });
+                    }
+                });
+
+                //Will check if any radioButtons in the current position were already checked
+                //Will recheck/uncheck the proper radio button when the views are reinflated
+                if (currentQuestion.getAnswered() == -1) {
+                    radioGroupLeft.clearCheck();
+                } else {
+                    ((RadioButton) radioGroupLeft.getChildAt(currentQuestion.getAnswered())).setChecked(true);
                 }
+
+                //Sets a value when a radio button is checked
+                //so that it can be checked when the view is reinflated later
+                radioGroupLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        switch (checkedId) {
+                            case R.id.radio_1:
+                                currentQuestion.setIsItAnswered(0);
+                                break;
+                            case R.id.radio_2:
+                                currentQuestion.setIsItAnswered(1);
+                                break;
+                            case R.id.radio_3:
+                                currentQuestion.setIsItAnswered(2);
+                                break;
+                            case R.id.radio_4:
+                                currentQuestion.setIsItAnswered(3);
+                                break;
+                            case R.id.radio_5:
+                                currentQuestion.setIsItAnswered(4);
+                                break;
+                        }
+                    }
+                });
+            }
+            //Questions that use checkboxes
+            if (currentQuestion.getQuestionType() == 3) {
+                item.checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        int questionPosition = currentQuestion.getQuestionNumber() - 1;
+                        mSubmittedQuestions[questionPosition] = 1;
+                        String[] correctAnswers = currentQuestion.getCorrectArray();
+
+                        if (isChecked) {
+                            currentQuestion.setCheckBoxAnswer(10);
+                        } else {
+                            currentQuestion.setCheckBoxAnswer(-1);
+                        }
+                        if ((!item.checkBox[0].isChecked()) && (!item.checkBox[1].isChecked()) &&
+                                (!item.checkBox[2].isChecked()) && (!item.checkBox[3].isChecked()) &&
+                                (!item.checkBox[4].isChecked()) && (!item.checkBox[5].isChecked()) &&
+                                (!item.checkBox[6].isChecked()) && (!item.checkBox[7].isChecked()) &&
+                                (!item.checkBox[8].isChecked()) && (!item.checkBox[9].isChecked())) {
+                            mSubmittedQuestions[questionPosition] = 0;
+                        }
+
+                        //Determines how many questions of check box questions are correct
+                        int localScore = 0;
+                        for (int j = 0; j < item.checkBox.length; j++) {
+                            if (item.checkBox[j].isChecked()) {
+                                for (int i = 0; i < correctAnswers.length; i++) {
+                                    if (correctAnswers[i].equals(item.checkBox[j].getText().toString())) {
+                                        localScore++;
+                                    }
+                                }
+                            }
+                        }
+
+                        //Calculates final score of checkBox questions
+                        //localScore needs to match correct number of answers (Get all correct)
+                        if (localScore == correctAnswers.length) {
+                            mScoredQuestions[questionPosition] = 5 * correctAnswers.length;
+                        } else {
+                            mScoredQuestions[questionPosition] = 0;
+                        }
+                    }
+                });
+            }
 
 //            for (int j = 0; j < item.checkBox_linearLayout.getChildCount(); j++) {
 //                View child = item.checkBox_linearLayout.getChildAt(j);
@@ -254,11 +253,13 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 //                    }
 //                }
 //            }
-            }
+
         }
 
         //Will check any editText answer inputs with the correct answer
-        item.editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        item.editText.setOnEditorActionListener(new TextView.OnEditorActionListener()
+
+        {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -299,12 +300,16 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         //Sets the text for the question
         item.questionTextView.setText(currentQuestion.getQuestions());
-        if (mUnansweredQuestions[position]) {
+        if (mUnansweredQuestions[position])
+
+        {
             item.questionTextView.setTextColor(redColorValue);
         }
         //Set answer text to the correct button type
         //TODO See if there is a way to simplify this, such as an array for method name
-        if ((currentQuestion.getQuestionType() == 1) || (currentQuestion.getQuestionType() == 2)) {
+        if ((currentQuestion.getQuestionType() == 1) || (currentQuestion.getQuestionType() == 2))
+
+        {
             item.radioButton[0].setText(currentQuestion.getAnswer1());
             item.radioButton[1].setText(currentQuestion.getAnswer2());
             item.radioButton[2].setText(currentQuestion.getAnswer3());
@@ -317,7 +322,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                 item.radioButton[8].setText(currentQuestion.getAnswer9());
                 item.radioButton[9].setText(currentQuestion.getAnswer10());
             }
-        } else if (currentQuestion.getQuestionType() == 3) {
+        } else if (currentQuestion.getQuestionType() == 3)
+
+        {
             item.checkBox[0].setText(currentQuestion.getAnswer1());
             item.checkBox[1].setText(currentQuestion.getAnswer2());
             item.checkBox[2].setText(currentQuestion.getAnswer3());
@@ -331,45 +338,60 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         }
 
         //Will check if the question has an image or not
-        if (currentQuestion.hasImage()) {
+        if (currentQuestion.hasImage())
+
+        {
             // Get the image resource ID from the current Question object and
             // set the image to the question Image
             item.questionImage.setImageResource(currentQuestion.getImageResourceId());
             item.questionImage.setVisibility(View.VISIBLE);
-        } else {
+        } else
+
+        {
             item.questionImage.setVisibility(View.GONE);
         }
 
         //Checks what question type the inflated question is to make sure the correct layout is shown
         //Type 1 uses 5 radio buttons and a question
-        if (currentQuestion.getQuestionType() == 1) {
+        if (currentQuestion.getQuestionType() == 1)
+
+        {
             item.editText.setVisibility(View.GONE);
             radioGroupLeft.setVisibility(View.VISIBLE);
             radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
 
             //Type 2 uses 10 radio buttons in two groups and a question
-        } else if (currentQuestion.getQuestionType() == 2) {
+        } else if (currentQuestion.getQuestionType() == 2)
+
+        {
             item.editText.setVisibility(View.GONE);
             radioGroupLeft.setVisibility(View.VISIBLE);
             radioGroupRight.setVisibility(View.VISIBLE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
 
             //Type 3 uses 10 checkboxes and a question
-        } else if (currentQuestion.getQuestionType() == 3) {
+        } else if (currentQuestion.getQuestionType() == 3)
+
+        {
             item.editText.setVisibility(View.GONE);
             radioGroupLeft.setVisibility(View.GONE);
             radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.VISIBLE);
 
             //Type 4 uses edit text to answer the question
-        } else if (currentQuestion.getQuestionType() == 4) {
+        } else if (currentQuestion.getQuestionType() == 4)
+
+        {
             item.editText.setVisibility(View.VISIBLE);
             radioGroupLeft.setVisibility(View.GONE);
             radioGroupRight.setVisibility(View.GONE);
             item.checkBox_linearLayout.setVisibility(View.GONE);
         }
-        for (int i = 1; i<=mCounterSize; i++) Log.v("question" + i, "points" + mScoredQuestions[i]);
+        for (
+                int i = 1;
+                i <= mCounterSize; i++)
+            Log.v("question" + i, "points" + mScoredQuestions[i]);
         return listItemView;
     }
 
