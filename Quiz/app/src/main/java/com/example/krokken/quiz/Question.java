@@ -45,7 +45,7 @@ public class Question {
         mCorrect4 = correct4;
         mCorrect5 = correct5;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5};
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 10 possible answers, no image, and 5 correct answers
@@ -71,7 +71,7 @@ public class Question {
         mCorrect4 = correct4;
         mCorrect5 = correct5;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5};
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 10 possible answers, no image, and 2 correct answers
@@ -94,7 +94,7 @@ public class Question {
         mCorrect1 = correct1;
         mCorrect2 = correct2;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2};
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 5 possible answers, an image, and a single correct mIsItAnswered
@@ -112,7 +112,7 @@ public class Question {
         mQuestionImage = questionImage;
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 5 possible answers, no image, and a single correct mIsItAnswered
@@ -129,7 +129,7 @@ public class Question {
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //EditText constructor
@@ -140,7 +140,7 @@ public class Question {
         mQuestions = question;
         mTheTextAnswer = theTextAnswer;
         mPossibleAnswersArray = new String[0];
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Test constructor
@@ -157,7 +157,22 @@ public class Question {
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray();
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
+    }
+
+    public Question(int questionType, int questionNumber, String question, String answer1, String answer2, String answer3, String answer4, int questionImage, String correct1) {
+        mQuestionType = questionType;
+        mQuestionNumber = questionNumber;
+        mQuestionImage = questionImage;
+        mQuestions = question;
+        mAnswer1 = answer1;
+        mAnswer2 = answer2;
+        mAnswer3 = answer3;
+        mAnswer4 = answer4;
+        mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
+        mCorrect1 = correct1;
+        mCorrectAnswerArray = new String[]{mCorrect1};
+        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     public int getQuestionType() {
@@ -237,7 +252,7 @@ public class Question {
     }
 
     public boolean getCheckBoxBoolean(int i) {
-        return mCheckBoxChecked.get(i);
+        return this.mCheckBoxChecked.get(i);
     }
 }
 

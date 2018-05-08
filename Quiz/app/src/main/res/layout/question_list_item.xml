@@ -204,9 +204,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/question_text_view"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/checkboxes_left"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_8"
