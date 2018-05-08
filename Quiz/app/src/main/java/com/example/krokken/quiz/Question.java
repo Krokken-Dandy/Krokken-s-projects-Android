@@ -2,9 +2,6 @@ package com.example.krokken.quiz;
 
 import android.util.SparseBooleanArray;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Question {
 
     private String mQuestions;
@@ -14,10 +11,9 @@ public class Question {
 
     private String[] mCorrectAnswerArray;
     private String[] mPossibleAnswersArray;
-    public SparseBooleanArray mCheckBoxChecked = new SparseBooleanArray();
+    public SparseBooleanArray mCheckBoxChecked;
     private static final int NO_ANSWER_PROVIDED = -1;
     private int mQuestionImage = NO_ANSWER_PROVIDED;
-    private int mIsItAnswered = NO_ANSWER_PROVIDED;
     private int mQuestionType;
     private int mQuestionNumber;
 
@@ -49,6 +45,7 @@ public class Question {
         mCorrect4 = correct4;
         mCorrect5 = correct5;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5};
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     //Constructor for 10 possible answers, no image, and 5 correct answers
@@ -74,6 +71,7 @@ public class Question {
         mCorrect4 = correct4;
         mCorrect5 = correct5;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5};
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     //Constructor for 10 possible answers, no image, and 2 correct answers
@@ -96,6 +94,7 @@ public class Question {
         mCorrect1 = correct1;
         mCorrect2 = correct2;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2};
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     //Constructor for 5 possible answers, an image, and a single correct mIsItAnswered
@@ -112,6 +111,8 @@ public class Question {
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mQuestionImage = questionImage;
         mCorrect1 = correct1;
+        mCorrectAnswerArray = new String[]{mCorrect1};
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     //Constructor for 5 possible answers, no image, and a single correct mIsItAnswered
@@ -127,6 +128,8 @@ public class Question {
         mAnswer5 = answer5;
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
+        mCorrectAnswerArray = new String[]{mCorrect1};
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     //EditText constructor
@@ -137,6 +140,7 @@ public class Question {
         mQuestions = question;
         mTheTextAnswer = theTextAnswer;
         mPossibleAnswersArray = new String[0];
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     //Test constructor
@@ -152,6 +156,8 @@ public class Question {
         mAnswer5 = answer5;
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
+        mCorrectAnswerArray = new String[]{mCorrect1};
+        mCheckBoxChecked = new SparseBooleanArray();
     }
 
     public int getQuestionType() {
@@ -160,14 +166,6 @@ public class Question {
 
     public int getQuestionNumber() {
         return mQuestionNumber;
-    }
-
-    public int getAnswered() {
-        return mIsItAnswered;
-    }
-
-    public void setIsItAnswered(int answered) {
-        this.mIsItAnswered = answered;
     }
 
     public String getQuestions() {
@@ -234,11 +232,11 @@ public class Question {
         mChildPosition = childPosition;
     }
 
-    public void putsCheckBoxBoolean (int i, boolean checked) {
+    public void putsCheckBoxBoolean(int i, boolean checked) {
         this.mCheckBoxChecked.put(i, checked);
     }
 
-    public boolean getCheckBoxBoolean(int i){
+    public boolean getCheckBoxBoolean(int i) {
         return mCheckBoxChecked.get(i);
     }
 }
