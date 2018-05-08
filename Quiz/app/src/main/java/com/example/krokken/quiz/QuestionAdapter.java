@@ -128,7 +128,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         foregroundContainer.setBackgroundColor(foregroundColor);
 
         //Gets the current question Number and displays it
-        String questionNumber = "#" + currentQuestion.getQuestionNumber();
+        final String questionNumber = "#" + currentQuestion.getQuestionNumber();
         item.questionNumber.setText(questionNumber);
 
         //Needs
@@ -192,7 +192,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
                             //Sets a value when a radio button is checked
                             //so that it can be checked when the view is reinflated later
-                            for (int i = 0; i<currentQuestionAnswers.length;i++) {
+                            for (int i = 0; i < currentQuestionAnswers.length; i++) {
                                 if (item.radioButton[i].isChecked()) {
                                     currentQuestion.setChildPosition(i);
                                 }
@@ -201,7 +201,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             currentQuestion.setListViewPosition(questionPosition);
                         }
                     });
-
 
 
 //                    item.radioGroupLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -230,12 +229,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
                 //Executes for questions that use checkboxes
                 if (currentQuestion.getQuestionType() == 3) {
-                    if (currentQuestion.getIsItChecked()) {
-                        for (int j = 0; j < currentQuestionAnswers.length; j++) {
-                            Log.v("cq sparse array", ""+currentQuestion.getCheckBoxBoolean(j));
-//                            boolean checked = currentQuestion.mCheckBoxChecked.get(j);
-//                            item.checkBox[j].setChecked(checked);
-                        }
+                    for (int j = 0; j < currentQuestionAnswers.length; j++) {
+                        boolean checked = currentQuestion.getCheckBoxBoolean(j);
+                        item.checkBox[j].setChecked(checked);
                     }
 
                     item.checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -245,11 +241,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             mSubmittedQuestions[questionPosition] = 1;
                             String[] correctAnswers = currentQuestion.getCorrectArray();
 
-                            if (!(item.checkBox[0].isChecked() && item.checkBox[1].isChecked() &&
-                                    item.checkBox[2].isChecked() && item.checkBox[3].isChecked() &&
-                                    item.checkBox[4].isChecked() && item.checkBox[5].isChecked() &&
-                                    item.checkBox[6].isChecked() && item.checkBox[7].isChecked() &&
-                                    item.checkBox[8].isChecked() && item.checkBox[9].isChecked())) {
+                            if ((!(item.checkBox[0].isChecked()) && !(item.checkBox[1].isChecked()) &&
+                                    !(item.checkBox[2].isChecked()) && !(item.checkBox[3].isChecked()) &&
+                                    !(item.checkBox[4].isChecked()) && !(item.checkBox[5].isChecked()) &&
+                                    !(item.checkBox[6].isChecked()) && !(item.checkBox[7].isChecked()) &&
+                                    !(item.checkBox[8].isChecked()) && !(item.checkBox[9].isChecked()))) {
                                 mSubmittedQuestions[questionPosition] = 0;
                             }
 
@@ -292,16 +288,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
                             //Sets a value when a checkbox is checked
                             //so that it can be checked when the view is reinflated later
-                            //TODO This needs to work as well as the radiobutton one
-                            for (int i = 0; i<item.checkBox.length;i++) {
+                            for (int i = 0; i < item.checkBox.length; i++) {
                                 if (item.checkBox[i].isChecked()) {
                                     currentQuestion.putsCheckBoxBoolean(i, true);
-                                } else {
-//                                    currentQuestion.putsCheckBoxBoolean(i, false);
                                 }
                             }
-                            currentQuestion.setIsItChecked(true);
-                            currentQuestion.setListViewPosition(questionPosition);
                         }
                     });
                 }
@@ -372,8 +363,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         //Type 1 uses 5 radio buttons and a question
         if (currentQuestion.getQuestionType() == 1) {
             item.radioGroupLeft.setVisibility(View.VISIBLE);
-            for (int i = 0; i<10;i++){
-                String questionText= item.radioButton[i].getText().toString().trim();
+            for (int i = 0; i < 10; i++) {
+                String questionText = item.radioButton[i].getText().toString().trim();
                 if (TextUtils.isEmpty(questionText)) {
                     item.radioButton[i].setVisibility(View.GONE);
                 }
@@ -387,8 +378,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         } else if (currentQuestion.getQuestionType() == 2) {
             item.radioGroupLeft.setVisibility(View.VISIBLE);
             item.radioGroupRight.setVisibility(View.VISIBLE);
-            for (int i = 0; i<10;i++){
-                String questionText= item.radioButton[i].getText().toString().trim();
+            for (int i = 0; i < 10; i++) {
+                String questionText = item.radioButton[i].getText().toString().trim();
                 if (TextUtils.isEmpty(questionText)) {
                     item.radioButton[i].setVisibility(View.GONE);
                 }
@@ -400,8 +391,8 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
             //Type 3 uses 10 checkboxes and a question
         } else if (currentQuestion.getQuestionType() == 3) {
             item.checkBox_linearLayout.setVisibility(View.VISIBLE);
-            for (int i = 0; i<10;i++){
-                String questionText= item.checkBox[i].getText().toString().trim();
+            for (int i = 0; i < 10; i++) {
+                String questionText = item.checkBox[i].getText().toString().trim();
                 if (TextUtils.isEmpty(questionText)) {
                     item.checkBox[i].setVisibility(View.GONE);
                 }

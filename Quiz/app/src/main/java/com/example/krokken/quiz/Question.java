@@ -14,7 +14,7 @@ public class Question {
 
     private String[] mCorrectAnswerArray;
     private String[] mPossibleAnswersArray;
-    public SparseBooleanArray mCheckBoxChecked;
+    public SparseBooleanArray mCheckBoxChecked = new SparseBooleanArray();
     private static final int NO_ANSWER_PROVIDED = -1;
     private int mQuestionImage = NO_ANSWER_PROVIDED;
     private int mIsItAnswered = NO_ANSWER_PROVIDED;
