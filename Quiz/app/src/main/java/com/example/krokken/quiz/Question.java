@@ -1,17 +1,15 @@
 package com.example.krokken.quiz;
 
-import android.util.SparseBooleanArray;
-
 public class Question {
 
     private String mQuestions;
 
+    //All the variables that are used for the possible and correct answers
     private String mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5, mAnswer6, mAnswer7, mAnswer8, mAnswer9, mAnswer10,
             mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5, mTheTextAnswer, mPlayerName;
 
     private String[] mCorrectAnswerArray;
     private String[] mPossibleAnswersArray;
-    public SparseBooleanArray mCheckBoxChecked;
     private static final int NO_ANSWER_PROVIDED = -1;
     private int mQuestionImage = NO_ANSWER_PROVIDED;
     private int mQuestionType;
@@ -45,7 +43,6 @@ public class Question {
         mCorrect4 = correct4;
         mCorrect5 = correct5;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 10 possible answers, no image, and 5 correct answers
@@ -71,7 +68,6 @@ public class Question {
         mCorrect4 = correct4;
         mCorrect5 = correct5;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2, mCorrect3, mCorrect4, mCorrect5};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 10 possible answers, no image, and 2 correct answers
@@ -94,7 +90,6 @@ public class Question {
         mCorrect1 = correct1;
         mCorrect2 = correct2;
         mCorrectAnswerArray = new String[]{mCorrect1, mCorrect2};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 5 possible answers, an image, and a single correct mIsItAnswered
@@ -112,7 +107,6 @@ public class Question {
         mQuestionImage = questionImage;
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Constructor for 5 possible answers, no image, and a single correct mIsItAnswered
@@ -129,7 +123,6 @@ public class Question {
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //EditText constructor
@@ -140,7 +133,6 @@ public class Question {
         mQuestions = question;
         mTheTextAnswer = theTextAnswer;
         mPossibleAnswersArray = new String[0];
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     //Test constructor
@@ -157,9 +149,9 @@ public class Question {
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
+    //Second Test constructor
     public Question(int questionType, int questionNumber, String question, String answer1, String answer2, String answer3, String answer4, int questionImage, String correct1) {
         mQuestionType = questionType;
         mQuestionNumber = questionNumber;
@@ -172,7 +164,6 @@ public class Question {
         mPossibleAnswersArray = new String[]{mAnswer1, mAnswer2, mAnswer3, mAnswer4, mAnswer5};
         mCorrect1 = correct1;
         mCorrectAnswerArray = new String[]{mCorrect1};
-        mCheckBoxChecked = new SparseBooleanArray(mPossibleAnswersArray.length);
     }
 
     public int getQuestionType() {
@@ -227,10 +218,6 @@ public class Question {
         return mIsItChecked;
     }
 
-    public int getListViewPosition() {
-        return mListViewPosition;
-    }
-
     public int getChildPosition() {
         return mChildPosition;
     }
@@ -239,20 +226,8 @@ public class Question {
         mIsItChecked = checked;
     }
 
-    public void setListViewPosition(int listPosition) {
-        mListViewPosition = listPosition;
-    }
-
     public void setChildPosition(int childPosition) {
         mChildPosition = childPosition;
-    }
-
-    public void putsCheckBoxBoolean(int i, boolean checked) {
-        this.mCheckBoxChecked.put(i, checked);
-    }
-
-    public boolean getCheckBoxBoolean(int i) {
-        return this.mCheckBoxChecked.get(i);
     }
 }
 

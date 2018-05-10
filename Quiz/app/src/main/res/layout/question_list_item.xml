@@ -103,7 +103,7 @@
 
             <RadioGroup
                 android:id="@+id/question_radio_left"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/checkbox_linearlayout_width"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_8"
                 android:layout_marginLeft="@dimen/margin_16"
@@ -151,7 +151,7 @@
 
             <RadioGroup
                 android:id="@+id/question_radio_right"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/checkbox_linearlayout_width"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_8"
                 android:layout_marginLeft="@dimen/margin_16"
@@ -209,7 +209,7 @@
 
             <LinearLayout
                 android:id="@+id/checkboxes_left"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/checkbox_linearlayout_width"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_8"
                 android:layout_marginLeft="@dimen/margin_16"
@@ -256,7 +256,7 @@
 
             <LinearLayout
                 android:id="@+id/checkboxes_right"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/checkbox_linearlayout_width"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_8"
                 android:layout_marginLeft="@dimen/margin_16"

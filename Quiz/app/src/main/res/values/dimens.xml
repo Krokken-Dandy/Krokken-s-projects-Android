@@ -32,4 +32,9 @@
     <dimen name="check_x_110">110dp</dimen>
     <dimen name="check_x_96">96dp</dimen>
     <dimen name="final_purple_line">72dp</dimen>
+    <dimen name="quiz_button_height">88dp</dimen>
+    <dimen name="quiz_button_margin">20dp</dimen>
+    <dimen name="quiz_button_text_size">24sp</dimen>
+    <dimen name="checkbox_linearlayout_width">0dp</dimen>
+    <dimen name="divider_height">2dp</dimen>
 </resources>

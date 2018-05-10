@@ -13,7 +13,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,9 +30,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
     //The color that will be the main foreground color based on the Quiz chosen
     private int mForegroundColorResource;
 
-    //Red color that is used to show unfinished or incorrect questions
-    private int redColorValue;
-
     //The size of the question array for the Quiz chosen
     private int mCounterArraySize;
 
@@ -45,6 +41,9 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
     //Array used to track which questions have been mSubmittedQuestions
     private int[] mSubmittedQuestions;
+
+    //Array used to track value of checkboxes for the entire Quiz
+    private int[][] mCheckBoxChecked;
 
     //Array used to track the boolean of questions; answered/unanswered
     private boolean[] mUnansweredQuestions;
@@ -59,12 +58,12 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         mHowManyAnswers = howManyAnswers;
         mScoredQuestions = new int[mCounterArraySize];
         mSubmittedQuestions = new int[mCounterArraySize];
+        mCheckBoxChecked = new int[mCounterArraySize][mHowManyAnswers];
     }
 
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
         //Used to dynamically find the views in my @question_list_item
-        redColorValue = R.color.red_color_value;
         View listItemView = convertView;
         final ViewHolder item;
         final Question currentQuestion = getItem(position);
@@ -280,7 +279,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                                 }
                             }
                             currentQuestion.setIsItChecked(true);
-                            currentQuestion.setListViewPosition(questionPosition);
                         }
                     });
 
@@ -288,12 +286,24 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
                 //Executes for questions that use checkboxes
                 if (currentQuestion.getQuestionType() == 3) {
-                    item.checkBox[i].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    item.checkBox[i].setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        public void onClick(View v) {
                             int questionPosition = currentQuestion.getQuestionNumber() - 1;
                             mSubmittedQuestions[questionPosition] = 1;
                             String[] correctAnswers = currentQuestion.getCorrectArray();
+
+                            //Sets a value when a checkbox is checked
+                            //so that it can be checked when the view is reinflated later
+                            for (int i = 0; i < currentQuestionAnswers.length; i++) {
+                                if (item.checkBox[i].isChecked()) {
+//                                    currentQuestion.putsCheckBoxBoolean(i, true);
+                                    mCheckBoxChecked[questionPosition][i] = 1;
+                                } else {
+//                                    currentQuestion.putsCheckBoxBoolean(i, false);
+                                    mCheckBoxChecked[questionPosition][i] = 0;
+                                }
+                            }
 
                             //Determines how many questions of check box questions are correct
                             //@localScore tracks how many correct of the possible correct
@@ -331,17 +341,11 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
                             if (incorrectlyChecked > 0) {
                                 mScoredQuestions[questionPosition] = 0;
                             }
-
-                            //Sets a value when a checkbox is checked
-                            //so that it can be checked when the view is reinflated later
-                            for (int i = 0; i < currentQuestionAnswers.length; i++) {
-                                if (item.checkBox[i].isChecked()) {
-                                    currentQuestion.putsCheckBoxBoolean(i, true);
-                                } else {
-                                    currentQuestion.putsCheckBoxBoolean(i, false);
+                            for (int i = 0; i < mCounterArraySize; i++) {
+                                for (int j = 0; j < currentQuestionAnswers.length; j++) {
+                                    Log.v("value of", "by answer then position" + mCheckBoxChecked[i][j]);
                                 }
                             }
-                            currentQuestion.setIsItChecked(true);
                         }
                     });
                 }
@@ -361,9 +365,13 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         if (currentQuestion.getQuestionType() == 3) {
             for (int j = 0; j < currentQuestionAnswers.length; j++) {
-                boolean checked = currentQuestion.getCheckBoxBoolean(j);
-                item.checkBox[j].setChecked(checked);
-                Log.v("checked", "" + checked);
+                if (mCheckBoxChecked[position][j] == 1) {
+                    Log.v("checked", "" + true);
+                    item.checkBox[j].setChecked(true);
+                } else {
+                    Log.v("checked", "" + false);
+                    item.checkBox[j].setChecked(false);
+                }
             }
         }
 
@@ -400,9 +408,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
 
         //Tracks which questions have been answered
         mUnansweredQuestions = new boolean[mCounterArraySize];
-        if (mUnansweredQuestions[position]) {
-            item.questionTextView.setTextColor(redColorValue);
-        }
         return listItemView;
     }
 
@@ -457,15 +462,6 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         }
         return playerScore;
     }
-
-    //Disables the buttons when the quiz is completed so answers can't be changed
-    //TODO Make disabling quiz work correctly
-//    private void disableQuiz() {
-//        for (int i = 0; i < mCounterArraySize; i++) {
-//            item.radioButton[i].setEnabled(false);
-//            item.checkBox[i].setEnabled(false);
-//        }
-//    }
 
     //Method to calculate the mScoredQuestions when submit button is pressed
     public void getScore() {

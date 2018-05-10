@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/opening_background"
     tools:context="com.example.krokken.quiz.MainActivity">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:background="@color/opening_background"
+        >
 
         <RelativeLayout
             android:id="@+id/layout_opening"
@@ -87,48 +88,50 @@
             <TextView
                 android:id="@+id/art_quiz"
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
-                android:layout_margin="20dp"
+                android:layout_height="@dimen/quiz_button_height"
+                android:layout_margin="@dimen/quiz_button_margin"
                 android:background="@drawable/custom_button"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
                 android:text="@string/button_art_quiz_title"
-                android:textSize="24sp" />
+                android:textSize="@dimen/quiz_button_text_size" />
 
             <TextView
                 android:id="@+id/test_quiz"
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
+                android:layout_height="@dimen/quiz_button_height"
+                android:layout_margin="@dimen/quiz_button_margin"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
                 android:text="Test Quiz"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="@dimen/quiz_button_text_size" />
 
             <TextView
                 android:id="@+id/quiz_three"
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
-                android:layout_margin="20dp"
+                android:layout_height="@dimen/quiz_button_height"
+                android:layout_margin="@dimen/quiz_button_margin"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
                 android:text="@string/button_science_quiz_title"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="@dimen/quiz_button_text_size" />
 
             <TextView
                 android:id="@+id/quiz_four"
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
+                android:layout_height="@dimen/quiz_button_height"
+                android:layout_margin="@dimen/quiz_button_margin"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
                 android:text="@string/button_math_quiz_title"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="@dimen/quiz_button_text_size" />
 
         </LinearLayout>
     </RelativeLayout>
