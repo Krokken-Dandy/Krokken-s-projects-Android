@@ -31,10 +31,10 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.list_view);
         declaredVariables();
         questionsArrayList();
-        
+
         //Will restore a saved state if we have one
         if (savedInstanceState != null) {
-            questionsForArt = savedInstanceState.getSerializable(questionsForArt);
+//            questionsForArt = savedInstanceState.getSerializable(questionsForArt);
         }
     }
 

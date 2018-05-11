@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         library.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent numbersList = new Intent(MainActivity.this, LibraryActivity.class);
-                startActivity(numbersList);
+                Intent libraryActivity = new Intent(MainActivity.this, LibraryActivity.class);
+                startActivity(libraryActivity);
             }
         });
     }

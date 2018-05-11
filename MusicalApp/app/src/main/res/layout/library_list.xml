@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="5dp">
 
     <ImageView
@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:textSize="12sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>
