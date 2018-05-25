@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".SettingsActivity">
+
+    <CheckBox
+        android:id="@+id/play_random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/random_play" />
+
+    <CheckBox
+        android:id="@+id/play_continuous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/play_random"
+        android:layout_marginTop="8dp"
+        android:text="@string/continuous_play" />
+
+    <CheckBox
+        android:id="@+id/box_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/play_continuous"
+        android:layout_marginTop="8dp"
+        android:text="@string/another_option"/>
+
+    <CheckBox
+        android:id="@+id/box_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/box_3"
+        android:layout_marginTop="8dp"
+        android:text="@string/another_option"/>
+
+</RelativeLayout>

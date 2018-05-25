@@ -1,43 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/library_activity"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:textSize="36sp"
-        android:focusableInTouchMode="true"
-        android:text="Library" />
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:text=""/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/music_background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:text="" />
+            <TextView
+                android:id="@+id/music_library"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_activity_selection_height"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:text="@string/music"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/main_activity_selection_text_size" />
+        </FrameLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:text=""/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/podcast_background">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/podcast_library"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_activity_selection_height"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:text="@string/podcasts"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/main_activity_selection_text_size" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B2FF59">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_activity_selection_height"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:text="@string/playlists"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/main_activity_selection_text_size" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7C4DfF">
+
+            <TextView
+                android:id="@+id/currently_playing"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_activity_selection_height"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:text="@string/currently_playing"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/main_activity_selection_text_size" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/settings"
+                    android:layout_width="@dimen/main_activity_selection_settings_width"
+                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:src="@drawable/ic_settings"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/main_activity_selection_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/store"
+                    android:layout_width="@dimen/main_activity_selection_settings_width"
+                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:src="@drawable/ic_settings"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/main_activity_selection_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/trending"
+                    android:layout_width="@dimen/main_activity_selection_settings_width"
+                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:src="@drawable/ic_settings"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/main_activity_selection_text_size" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/charts"
+                    android:layout_width="@dimen/main_activity_selection_settings_width"
+                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:src="@drawable/ic_settings"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/main_activity_selection_text_size" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

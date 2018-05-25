@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="audio_extensions">
+        <item>@string/mp3</item>
+        <item>@string/mp3</item>
+        <item>@string/ogg</item>
+        <item>@string/_3gp</item>
+        <item>@string/aa</item>
+        <item>@string/aac</item>
+        <item>@string/aax</item>
+        <item>@string/act</item>
+        <item>@string/aiff</item>
+        <item>@string/amr</item>
+        <item>@string/ape</item>
+        <item>@string/au</item>
+        <item>@string/awb</item>
+        <item>@string/dct</item>
+        <item>@string/dss</item>
+        <item>@string/dvf</item>
+        <item>@string/flac</item>
+        <item>@string/gsm</item>
+        <item>@string/iklax</item>
+        <item>@string/ivs</item>
+        <item>@string/m4a</item>
+        <item>@string/m4b</item>
+        <item>@string/m4p</item>
+        <item>@string/mmf</item>
+        <item>@string/mpc</item>
+        <item>@string/msv</item>
+        <item>@string/oga</item>
+        <item>@string/mogg</item>
+        <item>@string/ra</item>
+        <item>@string/rm</item>
+        <item>@string/raw</item>
+        <item>@string/sln</item>
+        <item>@string/tta</item>
+        <item>@string/vox</item>
+        <item>@string/wav</item>
+        <item>@string/wma</item>
+        <item>@string/wv</item>
+        <item>@string/webm</item>
+        <item>@string/_8svx</item>
+    </string-array>
+</resources>

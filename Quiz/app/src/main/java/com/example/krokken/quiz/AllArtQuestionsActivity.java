@@ -1,8 +1,8 @@
 package com.example.krokken.quiz;
 
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,18 +32,6 @@ public class AllArtQuestionsActivity extends AppCompatActivity {
         declaredVariables();
         questionsArrayList();
 
-        //Will restore a saved state if we have one
-        if (savedInstanceState != null) {
-//            questionsForArt = savedInstanceState.getSerializable(questionsForArt);
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        // Make sure to call the super method so that the states of our views are saved
-        super.onSaveInstanceState(outState);
-        // Save our own state now
-        outState.putSerializable(STATE_ITEMS, questionsForArt);
     }
 
     private void declaredVariables() {
