@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -13,16 +13,17 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/music_background">
+            android:layout_weight="1"
+            android:background="@color/music_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/music_library"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_activity_selection_height"
                 android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:text="@string/music"
                 android:textColor="@android:color/black"
@@ -32,16 +33,17 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/podcast_background">
+            android:layout_weight="1"
+            android:background="@color/podcast_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/podcast_library"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_activity_selection_height"
                 android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:text="@string/podcasts"
                 android:textColor="@android:color/black"
@@ -51,15 +53,17 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#B2FF59">
+            android:layout_weight="1"
+            android:background="#B2FF59"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
+                android:id="@+id/playlists"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_activity_selection_height"
                 android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:text="@string/playlists"
                 android:textColor="@android:color/black"
@@ -69,16 +73,17 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#7C4DfF">
+            android:layout_weight="1"
+            android:background="#7C4DfF"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/currently_playing"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/main_activity_selection_height"
                 android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:text="@string/currently_playing"
                 android:textColor="@android:color/black"
@@ -88,24 +93,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/black"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_light"
+            android:orientation="horizontal"
+            android:padding="@dimen/main_activity_other_options_padding">
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <ImageView
                     android:id="@+id/settings"
                     android:layout_width="@dimen/main_activity_selection_settings_width"
-                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:layout_height="@dimen/main_activity_selection_settings_height"
+                    android:layout_gravity="center"
                     android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center"
-                    android:src="@drawable/ic_settings"
+                    android:src="@mipmap/ic_settings"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/main_activity_selection_text_size" />
             </FrameLayout>
@@ -113,18 +120,18 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <ImageView
                     android:id="@+id/store"
                     android:layout_width="@dimen/main_activity_selection_settings_width"
-                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:layout_height="@dimen/main_activity_selection_settings_height"
+                    android:layout_gravity="center"
                     android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center"
-                    android:src="@drawable/ic_settings"
+                    android:src="@mipmap/ic_store"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/main_activity_selection_text_size" />
             </FrameLayout>
@@ -132,18 +139,18 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <ImageView
                     android:id="@+id/trending"
                     android:layout_width="@dimen/main_activity_selection_settings_width"
-                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:layout_height="@dimen/main_activity_selection_settings_height"
+                    android:layout_gravity="center"
                     android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center"
-                    android:src="@drawable/ic_settings"
+                    android:src="@mipmap/ic_hot"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/main_activity_selection_text_size" />
             </FrameLayout>
@@ -151,18 +158,18 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <ImageView
-                    android:id="@+id/charts"
+                    android:id="@+id/chart"
                     android:layout_width="@dimen/main_activity_selection_settings_width"
-                    android:layout_height="@dimen/main_activity_selection_height"
+                    android:layout_height="@dimen/main_activity_selection_settings_height"
+                    android:layout_gravity="center"
                     android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center"
-                    android:src="@drawable/ic_settings"
+                    android:src="@mipmap/ic_chart"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/main_activity_selection_text_size" />
             </FrameLayout>

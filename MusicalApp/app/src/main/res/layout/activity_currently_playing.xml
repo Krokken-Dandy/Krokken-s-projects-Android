@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/currently_playing_layout_padding">
+
+    <ImageView
+        android:id="@+id/currently_playing_song_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sample" />
+
+    <TextView
+        android:id="@+id/currently_playing_purchase"
+        android:layout_toRightOf="@id/currently_playing_song_image"
+        android:layout_marginTop="@dimen/currently_playing_text_margin_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currently_playing_purchase_text"
+        />
+
+    <TextView
+        android:id="@+id/currently_playing_song_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/currently_playing_artist_name"
+        android:layout_marginBottom="@dimen/currently_playing_text_margin_bottom"
+        android:layout_toRightOf="@id/currently_playing_song_image"
+        android:text="@string/currently_playing_song_title"
+        android:textSize="@dimen/currently_playing_song_title_text" />
+
+    <TextView
+        android:id="@+id/currently_playing_artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/currently_playing_song_duration"
+        android:layout_marginBottom="@dimen/currently_playing_text_margin_bottom"
+        android:layout_toRightOf="@id/currently_playing_song_image"
+        android:text="@string/currently_playing_name_of_artist_text" />
+
+    <TextView
+        android:id="@+id/currently_playing_song_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/currently_playing_song_image"
+        android:layout_marginBottom="@dimen/currently_playing_text_margin_bottom"
+        android:layout_toRightOf="@id/currently_playing_song_image"
+        android:text="@string/currently_playing_song_duration_text" />
+
+    <TextView
+        android:id="@+id/currently_playing_song_lyrics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currently_playing_song_image"
+        android:layout_marginTop="@dimen/currently_playing_text_margin_top"
+        android:layout_marginBottom="@dimen/currently_playing_text_margin_bottom"
+        android:text="@string/currently_playing_song_lyrics_link_text" />
+
+    <TextView
+        android:id="@+id/currently_playing_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currently_playing_song_lyrics"
+        android:text="@string/currently_playing_description_text" />
+
+</RelativeLayout>

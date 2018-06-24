@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary color of the app (shown in the app bar) -->
+    <color name="primary_color">#00ACC1</color>
+    <color name="primary_brewery_color">#7E57C2</color>
+    <color name="primary_event_color">#61D800</color>
+    <color name="primary_hike_color">#FA8100</color>
+    <color name="primary_park_color">#DD0074</color>
+
+    <!-- Primary dark color of the app (shown in the status bar) -->
+    <color name="primary_dark_color">#FF2F1D1A</color>
+
+    <!-- Primary light color of the app (shown in main background) -->
+    <color name="primary_color_light">#80DEEA</color>
+
+    <!-- Popup colors -->
+    <color name="popup_brewery_color">#EEE6FF</color>
+    <color name="popup_hike_color">#FFCC80</color>
+    <color name="popup_park_color">#F8BBD0</color>
+    <color name="popup_event_color">#AED581</color>
+
+    <!--Other colors-->
+    <color name="clickable_text_color">#2979FF</color>
+</resources>

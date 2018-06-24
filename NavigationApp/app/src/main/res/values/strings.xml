@@ -1,0 +1,471 @@
+<resources>
+    <string name="app_name">NavigationApp</string>
+
+    <!--Strings used by layout-->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hikes_title">Hikes</string>
+    <string name="breweries_title">Breweries</string>
+    <string name="events_title">Events</string>
+    <string name="parks_title">Parks</string>
+
+    <!--Strings for Breweries Fragment-->
+    <string name="parks_website_text">"Visit website for: "</string>
+
+    <!--Strings of names for Breweries Fragment-->
+    <string name="brewery_asher_name">Asher Brewing Company</string>
+    <string name="brewery_avery_name">Avery Brewing Company</string>
+    <string name="brewery_beyond_name">Beyond the Mountain Brewing Company</string>
+    <string name="brewery_boulder_beer_name">Boulder Beer Brewery</string>
+    <string name="brewery_BRU_name">"BRU Handbuilt Ales &amp; Eats"</string>
+    <string name="brewery_cellar_name">Cellar West Artisan Ales</string>
+    <string name="brewery_fate_name">FATE Brewing Company</string>
+    <string name="brewery_finkel_garf_name">Finkel &amp; Garf Craft Beer</string>
+    <string name="brewery_gunbarrel_name">Gunbarrel Brewing Company</string>
+    <string name="brewery_jwells_name">JWells Brewery</string>
+    <string name="brewery_kettle_spoke_name">Kettle &amp; Spoke Brewery</string>
+    <string name="brewery_mountain_sun_name">Mountain Sun Pub &amp; Brewery</string>
+    <string name="brewery_sanitas_name">Sanitas Brewery Company</string>
+    <string name="brewery_twisted_pine_name">Twisted Pine Brewing Company</string>
+    <string name="brewery_upslope_name">Upslope Brewing Company</string>
+    <string name="brewery_visionquest_name">VisionQuest Brewery</string>
+    <string name="brewery_west_flanders_name">West Flanders Brewing Company</string>
+    <string name="brewery_wild_woods_name">Wild Woods Brewery</string>
+
+    <!--Strings of addresses for Breweries Fragment-->
+    <string name="brewery_asher_address">4699 Nautilus Ct., Suite 104 \nBoulder, CO 80301</string>
+    <string name="brewery_avery_address">4910 Nautilus Ct., \nBoulder, CO 80301</string>
+    <string name="brewery_beyond_address">6035 Longbow Dr., Unit 109 \nBoulder, CO 80301</string>
+    <string name="brewery_boulder_beer_address">2880 Wilderness Place \nBoulder, CO 80301</string>
+    <string name="brewery_BRU_address">5290 Arapahoe, Unit I \nBoulder, CO 80301 </string>
+    <string name="brewery_cellar_address">1001 Lee Hill Dr. #10 \nBoulder, CO 80302</string>
+    <string name="brewery_fate_address">1600 38th Street \nBoulder, CO 80301</string>
+    <string name="brewery_finkel_garf_address">5455 Spine Rd., Unit A \nBoulder, CO 80301</string>
+    <string name="brewery_gunbarrel_address">7088 Winchester Cir. \nBoulder, CO 80301</string>
+    <string name="brewery_jwells_address">2516 49th St. #5 \nBoulder, CO 80301</string>
+    <string name="brewery_kettle_spoke_address">2500 47th St. Unit 12 \nBoulder, CO 80301</string>
+    <string name="brewery_mountain_sun_address">1535 Pearl Street \nBoulder, CO 80302</string>
+    <string name="brewery_sanitas_address">3550 Frontier Ave., Unit A \nBoulder, CO 80304</string>
+    <string name="brewery_twisted_pine_address">3201 Walnut Street, Suite A
+        \nBoulder, CO 80301</string>
+    <string name="brewery_upslope_address">1898 S. Flatiron Ct. \nBoulder, CO 80301</string>
+    <string name="brewery_visionquest_address">2510 47th St., Suite A2 \nBoulder, CO 80301</string>
+    <string name="brewery_west_flanders_address">1125 Pearl Street \nBoulder, CO 80302</string>
+    <string name="brewery_wild_woods_address">5460 Conestoga Court \nBoulder, CO 80301</string>
+
+    <!--Strings of operating hours for Breweries Fragment-->
+    <string name="brewery_asher_hours">2pm-10pm Mon-Wed\n2pm-12am Thurs-Fri
+        \n2pm-10pm Sat-Sun</string>
+    <string name="brewery_avery_hours">3pm-11pm Mon-Sun</string>
+    <string name="brewery_beyond_hours">Closed Mon-Tues\n3pm-9pm Wed-Fri\n12pm-9pm Sat
+        \n12pm-7pm Sun</string>
+    <string name="brewery_boulder_beer_hours">11am-10pm Mon-Fri\n12pm-8pm Sat\nClosed Sun</string>
+    <string name="brewery_BRU_hours">11:30am-close Mon-Sat\n9:30am-close Sun</string>
+    <string name="brewery_cellar_hours">Closed Mon-Tues\n4pm-9pm Wed-Fri\n1pm-9pm Sat-Sun</string>
+    <string name="brewery_fate_hours">Mon-Fri 11am-10pm\nSat-Sun 10am-10pm</string>
+    <string name="brewery_finkel_garf_hours">3pm-9pm Mon-Thurs\n3pm-10pm Fri-Sat
+        \n3pm-7pm Sun</string>
+    <string name="brewery_gunbarrel_hours">4pm-9pm Mon-Tues\n4pm-10pm Wed\n3pm-10pm Thurs
+        \n12pm-10pm Fri-Sat\n2pm-8pm Sun</string>
+    <string name="brewery_jwells_hours">Closed Mon\n3pm-9pm Tues-Thurs\n3pm-10pm Fri\n12pm-10pm Sat
+        \n12pm-8pm Sun</string>
+    <string name="brewery_kettle_spoke_hours">Closed Mon-Tues\n4pm-8pm Wed\n4pm-9pm Thurs-Fri
+        \n2pm-9pm Sat\nClosed Sun</string>
+    <string name="brewery_mountain_sun_hours">11:30am-1am Mon-Sat\n12pm-1am Sun</string>
+    <string name="brewery_sanitas_hours">Closed Mon\n3pm-10pm Tues-Fri\n12pm-10pm Sat-Sun</string>
+    <string name="brewery_twisted_pine_hours">11am-9pm Mon-Fri.\n12pm-9pm Sat.
+        \n12pm-8pm Sun.</string>
+    <string name="brewery_upslope_hours">11am-10pm Mon-Sun</string>
+    <string name="brewery_visionquest_hours">Mon Closed\nTues 12pm-7pm\nWed-Thurs 12pm-8pm
+        \nFri-Sat 12pm-9pm\nSun 12pm-6pm</string>
+    <string name="brewery_west_flanders_hours">11:30am-11pm Mon-Sun</string>
+    <string name="brewery_wild_woods_hours">Closed Sun-Mon\n4pm-9pm Tues-Fri\n2pm-9pm Sat</string>
+
+    <!--Strings of phone numbers for Breweries Fragment-->
+    <string name="brewery_asher_phone_number">(303)&#8211;530&#8211;1381</string>
+    <string name="brewery_avery_phone_number">(303)&#8211;440&#8211;4324</string>
+    <string name="brewery_beyond_phone_number">(303)&#8211;530&#8211;6981</string>
+    <string name="brewery_boulder_beer_phone_number">(303)&#8211;444&#8211;8448</string>
+    <string name="brewery_BRU_phone_number">(720)&#8211;638&#8211;5193</string>
+    <string name="brewery_cellar_phone_number">(720)&#8211;465&#8211;9346</string>
+    <string name="brewery_fate_phone_number">(303)&#8211;449&#8211;3283</string>
+    <string name="brewery_finkel_garf_phone_number">(720)&#8211;379&#8211;6042</string>
+    <string name="brewery_gunbarrel_phone_number">(800)&#8211;803&#8211;5732</string>
+    <string name="brewery_jwells_phone_number">(303)&#8211;396&#8211;0384</string>
+    <string name="brewery_kettle_spoke_phone_number">(303)&#8211;990&#8211;1811</string>
+    <string name="brewery_mountain_sun_phone_number">(303)&#8211;546&#8211;0886</string>
+    <string name="brewery_sanitas_phone_number">(303)&#8211;442&#8211;4130</string>
+    <string name="brewery_twisted_pine_phone_number">(303)&#8211;786&#8211;9270</string>
+    <string name="brewery_upslope_phone_number">(303)&#8211;396&#8211;1898</string>
+    <string name="brewery_visionquest_phone_number">(720)&#8211;446&#8211;9387</string>
+    <string name="brewery_west_flanders_phone_number">(303)&#8211;447&#8211;2739</string>
+    <string name="brewery_wild_woods_phone_number">(303)&#8211;484&#8211;1465</string>
+
+    <!--Strings of websites for Breweries Fragment-->
+    <string name="brewery_asher_website">www.asherbrewing.com</string>
+    <string name="brewery_avery_website">www.averybrewing.com</string>
+    <string name="brewery_beyond_website">www.btmbrewing.com</string>
+    <string name="brewery_boulder_beer_website">www.boulderbeer.com</string>
+    <string name="brewery_BRU_website">www.bruboulder.com</string>
+    <string name="brewery_cellar_website">www.cellarwest.com</string>
+    <string name="brewery_fate_website">www.fatebrewingcompany.com</string>
+    <string name="brewery_finkel_garf_website">www.finkelandgarf.com</string>
+    <string name="brewery_gunbarrel_website">www.gunbarrelbrewing.com</string>
+    <string name="brewery_jwells_website">www.jwellsbrewing.com</string>
+    <string name="brewery_kettle_spoke_website">www.kettleandspoke.com</string>
+    <string name="brewery_mountain_sun_website">www.mountainsunpub.com</string>
+    <string name="brewery_sanitas_website">www.sanitasbrewing.com</string>
+    <string name="brewery_twisted_pine_website">www.twistedpinebrewery.com</string>
+    <string name="brewery_upslope_website">www.upslopebrewing.com</string>
+    <string name="brewery_visionquest_website">www.visionquestbrewing.com</string>
+    <string name="brewery_west_flanders_website">www.wfbrews.com</string>
+    <string name="brewery_wild_woods_website">www.wildwoodsbrewery.com</string>
+
+    <!--Strings of extra information for Breweries Fragment-->
+    <string name="brewery_asher_description">This was Colorado\'s first all-organic brewery. Asher
+        uses high quality ingredients in a socially responsible way. They employ a wide variety of
+        sustainability efforts while proving that top-notch craft brewing can be done organically.
+    </string>
+    <string name="brewery_avery_description">This is an east Boulder legend that brews a wide range
+        of beer. Avery backs up its regular lineup of traditional beers with dynamic sub&#8211;sets
+        of other beers: Seasonals, The Holy Trinity of Ales, The Dictator Series, The Demons of Ale,
+        The Barrel&#8211;Aged Series, and The Annual Barrel Series. If this means nothing to you,
+        trust us: There is a ton of innovation, experimentation and craft happening at Avery.
+    </string>
+    <string name="brewery_beyond_description">When you\'re driving east&#8211;bound out of Boulder
+        on the Diagonal, you\'ll see the sign for this brewery to the right, especially at night
+        when it\'s lit up. Definitely pull off the highway to check this place out. You\'ll notice
+        right away a west&#8211;facing patio with a good view of the mountains along with a dog
+        &#8211;friendly environment. Once inside, look at the bar itself which features countless
+        concert tickets in its design. So you won\'t be surprised to discover, right next to the
+        bar, a stage with an excellent sound system. (Live performances are common here). The beer
+        selection changes up often, to reflect the love for improvisational music.</string>
+    <string name="brewery_boulder_beer_description">Colorado\'s First Microbrewery. Yep, all the
+        way back in 1979, Boulder Beer pioneered craft beer for the rest of the Centennial State.
+        Visit today and you will find an excellent range of beers &#8211;&#8211; from well&#8211;
+        known year&#8211;rounders to seasonals and limited releases. There\'s a food menu, special
+        beer and food deals on certain days of the week, and occasional live music.</string>
+    <string name="brewery_BRU_description">When you enter BRU, it primarily feels like a restaurant.
+        But take note: The Chef and Brewmaster are the same person here. So the Ales take no back
+        seat to the \"Eats\"!. You will find a wide array of beers, all with \"handbuilt\" touches:
+        Natural carbonation, no filtering, and no pasteurizing. Also, look for the occasional
+        \"Chef\'s collaboration\" ale where BRU pairs up with other local chefs to brew a special
+        beer.</string>
+    <string name="brewery_cellar_description">Here\'s a brewery that really puts the Craft in
+        craft brewing. The beers here are all farmhouse-style and wild ales, and most are fermented
+        in oak barrels with a house blend of wild yeast. This means brett-forward, naturally
+        carbonated beers. Some of them are dry-hopped for another layer of complexity and aromatics.
+        As for the location, it\'s off the beaten path: Upon entering the narrow parking lot, keep
+        going straight past a handful of other businesses, and beware of speed bumps. Once you open
+        the door, you realize the intimate, candle&#8211;lit setting is just right for this
+        sophisticated brewery. Choose from among a few taps, plus an array of bottles which can
+        be opened and enjoyed on&#8211;premise.</string>
+    <string name="brewery_fate_description">This is Boulder\'s first \"Brew&#8211;Bistro\" which
+        helps make it unique. The interior design and overall ambiance is upscale; lots of seating
+        both indoors and outdoors (the patio even has heat lamps for the colder days!) FATE
+        emphasizes local ingredients in their food&#8230; and plenty of good beer. 30 taps, in
+        fact&#8230; about 12 of which are FATE\'s beers. For something distinctive and fresh, try
+        their Watermelon Kolsch Style Ale</string>
+    <string name="brewery_finkel_garf_description">This brewery thinks outside the box; a visit
+        here gives you a unique, unforgettable experience. For example, when you order a flight
+        of beer, you can opt for food pairings&#8230; which means classic snacks: The Cream Ale
+        pairs with Ritz Bits; The Oatmeal Milk Stout comes with a Hostess Twinkie. The bartender
+        is also happy to blend beers for you. Be sure to check out their game selection which
+        includes Table Top Bowling and Shuffle Board.</string>
+    <string name="brewery_gunbarrel_description">Part of a string of businesses, this brewery is
+        visible from N. 71st St, and you pull in to Winchester Circle to access it. Once inside
+        you\'ll notice a ton of seating options around a long and winding bar. Behind there,
+        amongst dozens of barrels, you\'ll find additional seating along with pool tables and
+        pinball machines. The vast array of beers on the menu any given day can really dazzle
+        you: everything from German and Belgian beers to stouts and a handful of IPAs.</string>
+    <string name="brewery_jwells_description">J Wells\' motto tells you all you need to know:
+        \"Life is too short for ordinary beer.\" At this intimate, dog&#8211;friendly nanobrewery
+        you will find quite an array of beers &#8211;&#8211; especially for a small operation.
+        The ambiance here is simple and minimalist&#8230; which helps you focus on beer, friends
+        and a nice view of the Flatirons.</string>
+    <string name="brewery_kettle_spoke_description">Here\'s a brewery that values bicycle culture
+        &#8230; so much so that it shares its space with Green Guru, a bicycle accessories shop.
+        The tasting room here is small and intimate, which is appropriate because they brew very
+        small batches&#8211;&#8211;one barrel at a time. You may find an IPA on tap, along with a
+        stout, a saison, or even a lager. The atmosphere is quintessentially Boulder&#8211;&#8211;
+        very relaxed&#8211;&#8211;and sometimes includes live music out on to the south&#8211;facing
+        patio.</string>
+    <string name="brewery_mountain_sun_description">This is the original site of the small chain of
+        \"Sun\" Pubs &amp; Breweries. Mountain Sun features a social, TV-free environment with about
+        20 taps of their own ales and lagers, plus a versatile food menu that includes vegan and
+        gluten&#8211;free options. The layout here is basically restaurant&#8211;style, with a
+        small bar area and small patio on lively Pearl Street. They rotate about 75 beers per year
+        so you can look for new releases constantly.</string>
+    <string name="brewery_sanitas_description">Sanitas is a great place to hang out indoors,
+        outdoors &#8211;&#8211; or both! Tucked away near some old abandoned railroad tracks, this
+        brewery gives you some things to do while you sip, including games of bocce and cornhole.
+        The brewers here put a lot of thought and purpose into the process, sometimes incorporating
+        organic ingredients. They opened in 2013 with a few flagship beers and the plans to grow
+        both sour and barrel programs.</string>
+    <string name="brewery_twisted_pine_description">Since opening in 1995, Twisted Pine has grown
+        steadily while keeping its local hang&#8211;out vibe. They brew a wide variety of beers here
+        &#8211;&#8211; and keep you on your toes with rotating seasonals and the creative use of
+        local ingredients (i.e. the "Roots Revival" is a Carrot IPA!). Look for a wide&#8211;ranging
+        food menu and occasional live music. You'll also encounter \"zymeristas,\" Twisted Pine's
+        term for its bartenders; it means they have extensive knowledge and training in all things
+        beer!</string>
+    <string name="brewery_upslope_description">Upslope Brewing Company was founded in 2008 in North
+        Boulder with a seven barrel brewhouse. Business soared, so Upslope added a new, larger
+        brewery (with a 30 bbl brewhouse) located in Flatiron Park, which opened in April of 2013.
+        This larger brewery allows them to focus on brewing and canning their five core styles.
+        Their Flatiron Park tap room has a laid-back atmosphere that\'s dog&#8211;friendly, allows
+        customers to bring in their own food; they occasionally host food trucks, and have live
+        music weekly. This Flatiron Park location is roomier than their original tap room and
+        includes a \"Work Cafe,\" which can be rented out for private parties.</string>
+    <string name="brewery_visionquest_description">Here\'s an innovative, artisan brewery off the
+        beaten path. It\'s located in a cluster of industrial-style buildings and warehouses just
+        a bit east of Foothills Parkway. The beer lineup here changes frequently with incredibly
+        unique touches such as: a porter brewed with coffee, cinnamon and fire&#8211;roasted chili
+        peppers; a stout brewed with white chocolate and vanilla; and an American IPA brewed with
+        coconut flakes. Next door you\'ll notice a fermentation supply company which was here
+        first&#8211;&#8211;the owners of that place opened VisionQuest once they started brewing
+        beer on the side.</string>
+    <string name="brewery_west_flanders_description">This is a chic place with an open-air feel on
+        a warm day and a cozy feel on a cold day. Named after the famous beer province in Belgium,
+        West Flanders backs up the moniker with a nice array of Belgian style beers. But they round
+        out their lineup with a few American&#8211;influenced beers, guest taps and a bottle list.
+        Check out the food menu, too. It has been carefully crafted so the dishes can pair well
+        with the beers.</string>
+    <string name="brewery_wild_woods_description">In the industrial warehouse district of east
+        Boulder&#8230; there are Wild Woods! This little nanobrewery is tucked away and worth
+        finding. The husband&#8211;wife ownership has created a homey feel to make you think
+        \"cabin\" instead of "warehouse." Each beer is inspired by the outdoors, a concept which
+        leads to a pale ale brewed with whole jasmine flowers.</string>
+
+    <!--Strings for Events Fragment-->
+    <!--Strings of names for Events Fragment-->
+    <string name="events_rabblefish_name">Rabblefish</string>
+    <string name="events_larry_lacerte_name">Larry Lacerte</string>
+    <string name="events_greg_brown_name">Greg Brown</string>
+    <string name="events_taylor_shae_name">Taylor Shae</string>
+    <string name="events_bandshell_boogie_name">Bandshell Boogie</string>
+
+    <!--Strings of addresses for Events Fragment-->
+    <string name="events_rabblefish_address">1001 Arapahoe Ave\nBoulder, CO 80305</string>
+    <string name="events_larry_lacerte_address">1709 Pearl St\nBoulder, CO 80305</string>
+    <string name="events_greg_brown_address">2032 14th St\nBoulder, CO 80305</string>
+    <string name="events_taylor_shae_address">1709 Pearl St\nBoulder, CO 80305</string>
+    <string name="events_bandshell_boogie_address">1942 Broadway, Suite 301\nBoulder, CO 80305</string>
+
+    <!--Strings of operating hours for Events Fragment-->
+    <string name="events_rabblefish_hours">Tuesday, Jun 19, 2018 12 pm - 1 pm</string>
+    <string name="events_larry_lacerte_hours">Thursday, Jun 21, 2018 8 pm - 9 pm</string>
+    <string name="events_greg_brown_hours">Friday, Jun 22, 2018 7 pm</string>
+    <string name="events_taylor_shae_hours">Saturday, Jun 23, 2018 8 pm - 9 pm</string>
+    <string name="events_bandshell_boogie_hours">Monday, Jun 25, 2018 7 pm - 9 pm</string>
+
+    <!--Strings of phone numbers for Events Fragment-->
+    <string name="events_rabblefish_phone_number">303&#8211;449&#8211;3774</string>
+    <string name="events_larry_lacerte_phone_number">303&#8211;449&#8211;3774</string>
+    <string name="events_greg_brown_phone_number">303&#8211;449&#8211;3774</string>
+    <string name="events_taylor_shae_phone_number">303&#8211;449&#8211;3774</string>
+    <string name="events_bandshell_boogie_phone_number">303&#8211;449&#8211;3774</string>
+
+    <!--Strings of websites for Events Fragment-->
+    <string name="events_rabblefish_website">www.rabblefishmusic.com/</string>
+    <string name="events_larry_lacerte_website">www.lacertemusic.com/tour-1</string>
+    <string name="events_greg_brown_website">www.bouldertheater.com/event/1588303-evening-greg-brown-boulder</string>
+    <string name="events_taylor_shae_website">www.taylorshaemusic.com/</string>
+    <string name="events_bandshell_boogie_website">www.bandshellboogie.com/</string>
+
+    <!--Strings of extra information for Events Fragment-->
+    <string name="events_rabblefish_description">Join us for the free Lunchtime Concert Series
+        at the Boulder Public Library, Canyon Theater. Rabblefish plays a vibrant mix of jazz,
+        funk, rock and blues — original compositions, with an emphasis on groove.</string>
+    <string name="events_larry_lacerte_description">Larry Lacerte is a ski patroller turned
+        musician from Frisco, CO. Larry performs a diverse mix of cover songs and growing
+        repertoire of originals as a solo artist and as a member of the band, Broke Down Rodeo.
+        His latest release, Dreaming of the Ways, is his first full band studio EP. The album has
+        a roots rock flavor and represents a few of his favorite original songs recorded with his
+        band.</string>
+    <string name="events_greg_brown_description">Greg Brown was born in the Hacklebarney section
+        of southeastern Iowa and raised by a family that made words and music a way of life. His
+        seasoned songwriting, storytelling, and music are deeply rooted in that place. He moves
+        audiences with warmth, humor, a thundering voice and his unpretentious musical vision.
+    </string>
+    <string name="events_taylor_shae_description">Taylor Shae is an 18 year old award-winning
+        singer-songwriter from Colorado. She performs bluesy acoustic-americana music. Taylor
+        released her 2nd album, \“Twenty Paces\”, on March 23, 2018. You can catch her performing
+        as a duo, blending sounds of acoustic guitar, untamed bass, and soul-crying vocals. See
+        her live at The Laughing Goat, an intimate venue where you can enjoy live music and
+        delicious coffee, tea and more!</string>
+    <string name="events_bandshell_boogie_description">Bandshell Boogie turns 3 this year, and
+        it will be back bigger than ever with 7 consecutive Mondays filled with music, fun and
+        connection!\nBandshell Boogie is a FREE, community wide outdoor dance series that is
+        all about re-introducing the power of Freeform / Ecstatic Dance back into our fast-paced
+        and increasingly technological modern lifestyles.</string>
+
+    <!--Strings for Hikes Fragment-->
+    <string name="hikes_directions_text">Directions to trailhead</string>
+    <!--Strings of names for Hikes Fragment-->
+    <string name="hikes_first_flatiron_name">First and Second Flatirons</string>
+    <string name="hikes_eldorado_falls_name">Eldorado Falls at Walker Ranch</string>
+    <string name="hikes_forsythe_canyon_name">Forsythe Canyon to Waterfall</string>
+    <string name="hikes_green_mountain_name">Green Mountain</string>
+    <string name="hikes_mt_sanitas_name">Mt. Sanitas</string>
+
+    <!--Strings of addresses for Hikes Fragment-->
+    <string name="hikes_first_flatiron_address">39.9993470, -105.2827230</string>
+    <string name="hikes_eldorado_falls_address">Eldorado Falls at Walker Ranch</string>
+    <string name="hikes_forsythe_canyon_address">Forsythe Canyon to Waterfall</string>
+    <string name="hikes_green_mountain_address">39.9975720, -105.2927540</string>
+    <string name="hikes_mt_sanitas_address">40.019846, -105.298188</string>
+
+    <!--Strings of difficulty and distance for Hikes Fragment-->
+    <string name="hikes_first_flatiron_hours">
+        Difficulty: Easy to Moderate \n2.6 Miles Round Trip</string>
+    <string name="hikes_eldorado_falls_hours">
+        Difficulty: Moderate \n2.5 Miles Round Trip</string>
+    <string name="hikes_forsythe_canyon_hours">
+        Difficulty: Easy to Moderate \n2.6 Miles Round Trip</string>
+    <string name="hikes_green_mountain_hours">
+        Difficulty: Difficult \n5.5 Miles Round Trip</string>
+    <string name="hikes_mt_sanitas_hours">
+        Difficulty: Easy options, or Moderate \n2&#8211;3.1 Miles Round Trip</string>
+
+    <!--Strings of phone numbers for Hikes Fragment-->
+    <string name="hikes_first_flatiron_phone_number"> 1&#8211;800&#8211;COLORADO</string>
+    <string name="hikes_eldorado_falls_phone_number"> 1&#8211;800&#8211;COLORADO</string>
+    <string name="hikes_forsythe_canyon_phone_number"> 1&#8211;800&#8211;COLORADO</string>
+    <string name="hikes_green_mountain_phone_number"> 1&#8211;800&#8211;COLORADO</string>
+    <string name="hikes_mt_sanitas_phone_number"> 1&#8211;800&#8211;COLORADO</string>
+
+    <!--Strings of trail maps for Hikes Fragment-->
+    <string name="hikes_first_flatiron_trail_map">First and Second Flatirons Trail Map</string>
+    <string name="hikes_eldorado_falls_trail_map">Eldorado Falls at Walker Ranch Trail Map</string>
+    <string name="hikes_forsythe_canyon_trail_map">Forsythe Canyon to Waterfall Trail Map</string>
+    <string name="hikes_green_mountain_trail_map">Green Mountain Trail Map</string>
+    <string name="hikes_mt_sanitas_trail_map">Mt. Sanitas Trail Map</string>
+
+    <!--Strings of extra information for Hikes Fragment-->
+    <string name="hikes_first_flatiron_description">Hiking the Flatirons Trail near Boulder takes
+        hikers across a green meadow, then up through a notch between the First and Second
+        Flatirons. The climax of the Flatirons hike waits at the end: grand views of the Rocky
+        Mountains.</string>
+    <string name="hikes_eldorado_falls_description">The trail to Eldorado Falls is a 1.25-mile hike
+        from the Ethel Harrold Trailhead down to where South Boulder Creek winds through the park.
+        This cascade waterfall may not be the most dramatic along the Front Range, but it still
+        makes for a great hike. Hikers can explore full Walker Loop Trail to make this into a more
+        challenging adventure.</string>
+    <string name="hikes_forsythe_canyon_description">Are you looking for a trail that will shade
+        you from the sun on a hot day in Colorado? This hiking trail has got it all to cool you
+        off: decent shade, a waterfall, a brook, a lake, and a canyon. Forsythe Canyon is just
+        outside Boulder and is an easy to moderate hike.</string>
+    <string name="hikes_green_mountain_description">Green Mountain in Boulder, Colorado is a
+        strenuous hike, but worth all the effort. It has spectacular views of the Front Range,
+        Flatirons, and a wide 360-degree panorama at the summit. The payoff is at the peak where
+        hikers are rewarded with incredible views of Boulder to the East and the mountains to the
+        West.</string>
+    <string name="hikes_mt_sanitas_description">Mt. Sanitas gives you several trail options ranging
+        from an easy stroll along a meandering brook to a demanding trail up the mountainside.
+        It\’s a great social hike, so bring a friend (or man\’s best friend) on this hike within
+        the city of Boulder.</string>
+
+    <!--Strings for Parks Fragment-->
+    <!--Strings of names for Parks Fragment-->
+    <string name="parks_arapahoe_ridge_name">Open year round</string>
+    <string name="parks_canyon_pointe_name">Open year round</string>
+    <string name="parks_christiansen_name">Open year round</string>
+    <string name="parks_columbine_name">Open year round</string>
+    <string name="parks_eben_g_fine_name">Open year round</string>
+    <string name="parks_elks_name">Open year round</string>
+    <string name="parks_foothills_community_name">Open year round</string>
+    <string name="parks_greenleaf_name">Open year round</string>
+
+    <!--Strings of addresses for Parks Fragment-->
+    <string name="parks_arapahoe_ridge_address">Eisenhower Dr &amp; Kellogg Cir
+        \nBoulder, CO 80303</string>
+    <string name="parks_canyon_pointe_address">Canyon Blvd &amp; Walnut Hollow ln
+        \nBoulder, CO 80302</string>
+    <string name="parks_christiansen_address">3100 Kings Ridge Blvd\nBoulder, CO 80301</string>
+    <string name="parks_columbine_address">Glenwood Dr. &amp; 23rd St\nBoulder, CO 80304</string>
+    <string name="parks_eben_g_fine_address">101 Arapahoe Ave.\nBoulder, CO 80302</string>
+    <string name="parks_elks_address">3995 28th St.\nBoulder, CO 80301</string>
+    <string name="parks_foothills_community_address">800 Cherry Ave.\nBoulder, CO 80304</string>
+    <string name="parks_greenleaf_address">Pearl St. &amp; Folsom St\nBoulder, CO 80302</string>
+
+    <!--Strings of operating hours for Parks Fragment-->
+    <string name="parks_arapahoe_ridge_hours">Arapahoe Ridge Park</string>
+    <string name="parks_canyon_pointe_hours">Canyon Pointe Park</string>
+    <string name="parks_christiansen_hours">Christiansen Park</string>
+    <string name="parks_columbine_hours">Columbine Park</string>
+    <string name="parks_eben_g_fine_hours">Eben G. Fine Park</string>
+    <string name="parks_elks_hours">Elks Park</string>
+    <string name="parks_foothills_community_hours">Foothills Community Park</string>
+    <string name="parks_greenleaf_hours">Greenleaf Park</string>
+
+    <!--Strings of phone numbers for Parks Fragment-->
+    <string name="parks_arapahoe_ridge_phone_number">(303) 413&#8211;7200</string>
+    <string name="parks_canyon_pointe_phone_number">(303) 413&#8211;7200</string>
+    <string name="parks_christiansen_phone_number">(303) 413&#8211;7200</string>
+    <string name="parks_columbine_phone_number">(303) 413&#8211;7200</string>
+    <string name="parks_eben_g_fine_phone_number">(303) 413&#8211;7200</string>
+    <string name="parks_elks_phone_number">(303) 413&#8211;7200</string>
+    <string name="parks_foothills_community_phone_number">(303) 413&#8211;7209</string>
+    <string name="parks_greenleaf_phone_number">(303) 413&#8211;7200</string>
+
+    <!--Strings of websites for Parks Fragment-->
+    <string name="parks_arapahoe_ridge_website">
+        bouldercolorado.gov/parks-rec/arapahoe-ridge-park</string>
+    <string name="parks_canyon_pointe_website">
+        bouldercolorado.gov/parks-rec/canyon-pointe-park</string>
+    <string name="parks_christiansen_website">
+        bouldercolorado.gov/parks-rec/christiansen-park</string>
+    <string name="parks_columbine_website">
+        bouldercolorado.gov/parks-rec/columbine-park</string>
+    <string name="parks_eben_g_fine_website">
+       bouldercolorado.gov/parks-rec/eben-g-fine-park</string>
+    <string name="parks_elks_website">
+        bouldercolorado.gov/parks-rec/elks-neighborhood-park</string>
+    <string name="parks_foothills_community_website">
+        bouldercolorado.gov/parks-rec/foothills-community-park</string>
+    <string name="parks_greenleaf_website">
+        bouldercolorado.gov/parks-rec/greenleaf-park</string>
+
+    <!--Strings of extra information for Parks Fragment-->
+    <string name="parks_arapahoe_ridge_description">Arapahoe Ridge Park is a spacious park that
+        can accommodate a wide variety of activities to have an enjoyable experience. The park
+        includes playground, shelter, grill, picnic tables, tennis, ball fields, RTD bus route
+        access, and bike route access.</string>
+    <string name="parks_canyon_pointe_description">Canyon Park is located close to downtown and
+        is the perfect place for a picnic or to take the kids to get some fresh air. The park
+        includes playground, picnic area, basketball courts, RTD bus route access, and bike
+        route access.</string>
+    <string name="parks_christiansen_description">Christiansen Park is a great park that can
+        accommodate a wide variety of activities to have an enjoyable experience. The park
+        includes playground, picnic area and shelter, soccer fields, RTD bus route access, and
+        bike route access.</string>
+    <string name="parks_columbine_description">Columbine Park is a fantastic park that can
+        accommodate a wide variety of activities to have an enjoyable experience. The park
+        includes playground, picnic area, tennis courts, RTD bus route access, and bike route
+        access.</string>
+    <string name="parks_eben_g_fine_description">The Eben G. Fine Park is a beautiful community
+        park, perfect for a picnic or enjoying a sunny Colorado day. The park includes picnic area,
+        public restrooms, shelter, playground, Boulder Creek nearby, Hiking Trails, RTD access, and
+        bike route access. The shelter area is available for rental May to September. Please
+        contact the number above if you wish to reserve the shelter. </string>
+    <string name="parks_elks_description">Elks Park is a spacious park that can accommodate a wide
+        variety of activities to have an enjoyable experience. The park includes playground, picnic
+        area and shelter, ball fields, RTD bus route access, and bike route access.</string>
+    <string name="parks_foothills_community_description">Foothills Community Park is a large
+        spacious park, perfect for a picnic or hosting a party or small gathering. The park
+        includes playground, picnic shelters, basketball hoops, hiking trails, soccer, RTD access,
+        bike route access, and public restrooms.\n\nThere are three picnic shelters located
+        throughout the park. Shelters A and B are in the same area. Shelter A is south of Shelter
+        B. Shelter C is adjacent to the playground. Please note that groups with 51 to 100 people
+        are required reserve shelters A and B. Groups of between 101 and 250 people are required
+        to reserve all three shelters. If you plan on hosting an event and would like to reserve
+        a shelter, please contact Parks and Recreation at the number above.</string>
+    <string name="parks_greenleaf_description">Greenleaf Park is a great get away without really
+        getting away! Located downtown, Greenleaf Park is still close enough where you can access
+        shops and restaurants. The park includes, picnic area, playground, restrooms, basketball
+        courts, RTD access, and bike route access.</string>
+    <string name="content_description_info">info</string>
+    <string name="content_description_phone_number">phone number</string>
+
+</resources>
+

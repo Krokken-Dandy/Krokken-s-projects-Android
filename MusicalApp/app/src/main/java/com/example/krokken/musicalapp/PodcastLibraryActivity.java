@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class PodcastLibraryActivity extends AppCompatActivity {
 
@@ -80,28 +79,19 @@ public class PodcastLibraryActivity extends AppCompatActivity {
                     if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) {
                         // Pause playback because your Audio Focus was
                         // temporarily stolen, but will be back soon.
-                        // i.e. for a phone call
+                        mMediaPlayer.pause();
                     } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                         // Stop playback, because you lost the Audio Focus.
-                        // i.e. the user started some other playback app
-                        // Remember to unregister your controls/buttons here.
-                        // And release the kra — Audio Focus!
-                        // You’re done.
                         mAudioManager.abandonAudioFocus(afChangeListener);
                     } else if (focusChange ==
                             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
                         // Lower the volume, because something else is also
                         // playing audio over you.
-                        // i.e. for notifications or navigation directions
-                        // Depending on your audio playback, you may prefer to
-                        // pause playback here instead. You do you.
+                        mMediaPlayer.pause();
                     } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
                         // Resume playback, because you hold the Audio Focus
                         // again!
-                        // i.e. the phone call ended or the nav directions
-                        // are finished
-                        // If you implement ducking and lower the volume, be
-                        // sure to return it to normal here, as well.
+                        mMediaPlayer.start();
                     }
                 }
             };
@@ -119,12 +109,13 @@ public class PodcastLibraryActivity extends AppCompatActivity {
 
     private void createLibraryArrayList() {
         podcastLibraryArrayList = new ArrayList<>();
-
-        ArrayList<HashMap<String, String>> songsList = new ArrayList<>();
         String[] STAR = {"*"};
         String[] audioExt = getResources().getStringArray(R.array.audio_extensions);
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String selection = MediaStore.Audio.Media.IS_PODCAST + " != 0";
+        //TODO Fix IS_PODCAST
+        //@IS_NOTIFICATION can be changed back to IS_PODCAST, but since I have none and the one
+        //I found for my phone wasn't being called by that tag
+        String selection = MediaStore.Audio.Media.IS_NOTIFICATION + " != 0";
         Cursor albumCursor = managedQuery(uri, STAR, selection, null, null);
 
         if (albumCursor != null) {
@@ -151,10 +142,6 @@ public class PodcastLibraryActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         albumBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.sample);
                     }
-                    HashMap<String, String> song = new HashMap<>();
-                    song.put("songTitle", albumName + " " + songName + "___" + albumId);
-                    song.put("songPath", path);
-                    songsList.add(song);
                     podcastLibraryArrayList.add(new Library(songName, albumBitmap, path, duration));
                 } while (albumCursor.moveToNext());
             }
@@ -189,7 +176,7 @@ public class PodcastLibraryActivity extends AppCompatActivity {
                     mMediaPlayer.start();
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
-
+                //If request to get the focus fails, it releases the player
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_FAILED) releaseMediaPlayer();
             }
         });
@@ -202,14 +189,10 @@ public class PodcastLibraryActivity extends AppCompatActivity {
             // because we no longer need it.
             mMediaPlayer.release();
 
-            // Set the media player back to null. For our code, we've decided that
-            // setting the media player to null is an easy way to tell that the media player
-            // is not configured to play an audio file at the moment.
+            // Set the media player back to null.
             mMediaPlayer = null;
 
             mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
-
-//github.com/googlesamples/android-UniversalMusicPlayer
 }

@@ -66,7 +66,6 @@ public class MusicLibraryActivity extends AppCompatActivity {
                         mMediaPlayer.pause();
                     } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
                         // Stop playback, because you lost the Audio Focus.
-                        // i.e. the user started some other playback app
                         mAudioManager.abandonAudioFocus(afChangeListener);
                     } else if (focusChange ==
                             AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
@@ -159,7 +158,6 @@ public class MusicLibraryActivity extends AppCompatActivity {
                     mMediaPlayer.start();
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
-
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_FAILED) releaseMediaPlayer();
             }
         });
@@ -172,9 +170,7 @@ public class MusicLibraryActivity extends AppCompatActivity {
             // because we no longer need it.
             mMediaPlayer.release();
 
-            // Set the media player back to null. For our code, we've decided that
-            // setting the media player to null is an easy way to tell that the media player
-            // is not configured to play an audio file at the moment.
+            // Set the media player back to null.
             mMediaPlayer = null;
 
             mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);

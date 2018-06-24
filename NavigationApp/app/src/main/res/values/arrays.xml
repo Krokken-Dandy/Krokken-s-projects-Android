@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Names for Breweries Fragment-->
+    <string-array name="brewery_names">
+        <item>@string/brewery_asher_name</item>
+        <item>@string/brewery_avery_name</item>
+        <item>@string/brewery_beyond_name</item>
+        <item>@string/brewery_boulder_beer_name</item>
+        <item>@string/brewery_BRU_name</item>
+        <item>@string/brewery_cellar_name</item>
+        <item>@string/brewery_fate_name</item>
+        <item>@string/brewery_finkel_garf_name</item>
+        <item>@string/brewery_gunbarrel_name</item>
+        <item>@string/brewery_jwells_name</item>
+        <item>@string/brewery_kettle_spoke_name</item>
+        <item>@string/brewery_mountain_sun_name</item>
+        <item>@string/brewery_sanitas_name</item>
+        <item>@string/brewery_twisted_pine_name</item>
+        <item>@string/brewery_upslope_name</item>
+        <item>@string/brewery_visionquest_name</item>
+        <item>@string/brewery_west_flanders_name</item>
+        <item>@string/brewery_wild_woods_name</item>
+    </string-array>
+
+    <!--Addresses for Breweries Fragment-->
+    <string-array name="brewery_addresses">
+        <item>@string/brewery_asher_address</item>
+        <item>@string/brewery_avery_address</item>
+        <item>@string/brewery_beyond_address</item>
+        <item>@string/brewery_boulder_beer_address</item>
+        <item>@string/brewery_BRU_address</item>
+        <item>@string/brewery_cellar_address</item>
+        <item>@string/brewery_fate_address</item>
+        <item>@string/brewery_finkel_garf_address</item>
+        <item>@string/brewery_gunbarrel_address</item>
+        <item>@string/brewery_jwells_address</item>
+        <item>@string/brewery_kettle_spoke_address</item>
+        <item>@string/brewery_mountain_sun_address</item>
+        <item>@string/brewery_sanitas_address</item>
+        <item>@string/brewery_twisted_pine_address</item>
+        <item>@string/brewery_upslope_address</item>
+        <item>@string/brewery_visionquest_address</item>
+        <item>@string/brewery_west_flanders_address</item>
+        <item>@string/brewery_wild_woods_address</item>
+    </string-array>
+
+    <!--Operating Hours for Breweries Fragment-->
+    <string-array name="brewery_hours">
+        <item>@string/brewery_asher_hours</item>
+        <item>@string/brewery_avery_hours</item>
+        <item>@string/brewery_beyond_hours</item>
+        <item>@string/brewery_boulder_beer_hours</item>
+        <item>@string/brewery_BRU_hours</item>
+        <item>@string/brewery_cellar_hours</item>
+        <item>@string/brewery_fate_hours</item>
+        <item>@string/brewery_finkel_garf_hours</item>
+        <item>@string/brewery_gunbarrel_hours</item>
+        <item>@string/brewery_jwells_hours</item>
+        <item>@string/brewery_kettle_spoke_hours</item>
+        <item>@string/brewery_mountain_sun_hours</item>
+        <item>@string/brewery_sanitas_hours</item>
+        <item>@string/brewery_twisted_pine_hours</item>
+        <item>@string/brewery_upslope_hours</item>
+        <item>@string/brewery_visionquest_hours</item>
+        <item>@string/brewery_west_flanders_hours</item>
+        <item>@string/brewery_wild_woods_hours</item>
+    </string-array>
+
+    <!--Phone Numbers for Breweries Fragment-->
+    <string-array name="brewery_phone_numbers">
+        <item>@string/brewery_asher_phone_number</item>
+        <item>@string/brewery_avery_phone_number</item>
+        <item>@string/brewery_beyond_phone_number</item>
+        <item>@string/brewery_boulder_beer_phone_number</item>
+        <item>@string/brewery_BRU_phone_number</item>
+        <item>@string/brewery_cellar_phone_number</item>
+        <item>@string/brewery_fate_phone_number</item>
+        <item>@string/brewery_finkel_garf_phone_number</item>
+        <item>@string/brewery_gunbarrel_phone_number</item>
+        <item>@string/brewery_jwells_phone_number</item>
+        <item>@string/brewery_kettle_spoke_phone_number</item>
+        <item>@string/brewery_mountain_sun_phone_number</item>
+        <item>@string/brewery_sanitas_phone_number</item>
+        <item>@string/brewery_twisted_pine_phone_number</item>
+        <item>@string/brewery_upslope_phone_number</item>
+        <item>@string/brewery_visionquest_phone_number</item>
+        <item>@string/brewery_west_flanders_phone_number</item>
+        <item>@string/brewery_wild_woods_phone_number</item>
+    </string-array>
+
+    <!--Websites for Breweries Fragment-->
+    <string-array name="brewery_websites">
+        <item>@string/brewery_asher_website</item>
+        <item>@string/brewery_avery_website</item>
+        <item>@string/brewery_beyond_website</item>
+        <item>@string/brewery_boulder_beer_website</item>
+        <item>@string/brewery_BRU_website</item>
+        <item>@string/brewery_cellar_website</item>
+        <item>@string/brewery_fate_website</item>
+        <item>@string/brewery_finkel_garf_website</item>
+        <item>@string/brewery_gunbarrel_website</item>
+        <item>@string/brewery_jwells_website</item>
+        <item>@string/brewery_kettle_spoke_website</item>
+        <item>@string/brewery_mountain_sun_website</item>
+        <item>@string/brewery_sanitas_website</item>
+        <item>@string/brewery_twisted_pine_website</item>
+        <item>@string/brewery_upslope_website</item>
+        <item>@string/brewery_visionquest_website</item>
+        <item>@string/brewery_west_flanders_website</item>
+        <item>@string/brewery_wild_woods_website</item>
+    </string-array>
+
+    <!--Extra info for Breweries Fragment-->
+    <string-array name="brewery_descriptions">
+        <item>@string/brewery_asher_description</item>
+        <item>@string/brewery_avery_description</item>
+        <item>@string/brewery_beyond_description</item>
+        <item>@string/brewery_boulder_beer_description</item>
+        <item>@string/brewery_BRU_description</item>
+        <item>@string/brewery_cellar_description</item>
+        <item>@string/brewery_fate_description</item>
+        <item>@string/brewery_finkel_garf_description</item>
+        <item>@string/brewery_gunbarrel_description</item>
+        <item>@string/brewery_jwells_description</item>
+        <item>@string/brewery_kettle_spoke_description</item>
+        <item>@string/brewery_mountain_sun_description</item>
+        <item>@string/brewery_sanitas_description</item>
+        <item>@string/brewery_twisted_pine_description</item>
+        <item>@string/brewery_upslope_description</item>
+        <item>@string/brewery_visionquest_description</item>
+        <item>@string/brewery_west_flanders_description</item>
+        <item>@string/brewery_wild_woods_description</item>
+    </string-array>
+
+    <!--Names for Hikes Fragment-->
+    <string-array name="hikes_names">
+        <item>@string/hikes_first_flatiron_name</item>
+        <item>@string/hikes_eldorado_falls_name</item>
+        <item>@string/hikes_forsythe_canyon_name</item>
+        <item>@string/hikes_green_mountain_name</item>
+        <item>@string/hikes_mt_sanitas_name</item>
+    </string-array>
+
+    <!--Addresses for Hikes Fragment-->
+    <string-array name="hikes_addresses">
+        <item>@string/hikes_first_flatiron_address</item>
+        <item>@string/hikes_eldorado_falls_address</item>
+        <item>@string/hikes_forsythe_canyon_address</item>
+        <item>@string/hikes_green_mountain_address</item>
+        <item>@string/hikes_mt_sanitas_address</item>
+    </string-array>
+
+    <!--Operating Hours for Hikes Fragment-->
+    <string-array name="hikes_hours">
+        <item>@string/hikes_first_flatiron_hours</item>
+        <item>@string/hikes_eldorado_falls_hours</item>
+        <item>@string/hikes_forsythe_canyon_hours</item>
+        <item>@string/hikes_green_mountain_hours</item>
+        <item>@string/hikes_mt_sanitas_hours</item>
+    </string-array>
+
+    <!--Phone Numbers for Hikes Fragment-->
+    <string-array name="hikes_phone_numbers">
+        <item>@string/hikes_first_flatiron_phone_number</item>
+        <item>@string/hikes_eldorado_falls_phone_number</item>
+        <item>@string/hikes_forsythe_canyon_phone_number</item>
+        <item>@string/hikes_green_mountain_phone_number</item>
+        <item>@string/hikes_mt_sanitas_phone_number</item>
+    </string-array>
+
+    <!--Trail maps for Hikes Fragment-->
+    <string-array name="hikes_trail_maps">
+        <item>@string/hikes_first_flatiron_trail_map</item>
+        <item>@string/hikes_eldorado_falls_trail_map</item>
+        <item>@string/hikes_forsythe_canyon_trail_map</item>
+        <item>@string/hikes_green_mountain_trail_map</item>
+        <item>@string/hikes_mt_sanitas_trail_map</item>
+    </string-array>
+
+    <!--Extra Information for Hikes Fragment-->
+    <string-array name="hikes_descriptions">
+        <item>@string/hikes_first_flatiron_description</item>
+        <item>@string/hikes_eldorado_falls_description</item>
+        <item>@string/hikes_forsythe_canyon_description</item>
+        <item>@string/hikes_green_mountain_description</item>
+        <item>@string/hikes_mt_sanitas_description</item>
+    </string-array>
+
+    <!--Names for Park Fragment-->
+    <string-array name="parks_names">
+        <item>@string/parks_arapahoe_ridge_name</item>
+        <item>@string/parks_canyon_pointe_name</item>
+        <item>@string/parks_christiansen_name</item>
+        <item>@string/parks_columbine_name</item>
+        <item>@string/parks_eben_g_fine_name</item>
+        <item>@string/parks_elks_name</item>
+        <item>@string/parks_foothills_community_name</item>
+        <item>@string/parks_greenleaf_name</item>
+    </string-array>
+
+    <!--Addresses for Parks Fragment-->
+    <string-array name="parks_addresses">
+        <item>@string/parks_arapahoe_ridge_address</item>
+        <item>@string/parks_canyon_pointe_address</item>
+        <item>@string/parks_christiansen_address</item>
+        <item>@string/parks_columbine_address</item>
+        <item>@string/parks_eben_g_fine_address</item>
+        <item>@string/parks_elks_address</item>
+        <item>@string/parks_foothills_community_address</item>
+        <item>@string/parks_greenleaf_address</item>
+    </string-array>
+
+    <!--Operating Hours for Parks Fragment-->
+    <string-array name="parks_hours">
+        <item>@string/parks_arapahoe_ridge_hours</item>
+        <item>@string/parks_canyon_pointe_hours</item>
+        <item>@string/parks_christiansen_hours</item>
+        <item>@string/parks_columbine_hours</item>
+        <item>@string/parks_eben_g_fine_hours</item>
+        <item>@string/parks_elks_hours</item>
+        <item>@string/parks_foothills_community_hours</item>
+        <item>@string/parks_greenleaf_hours</item>
+    </string-array>
+
+    <!--Phone Numbers for Parks Fragment-->
+    <string-array name="parks_phone_numbers">
+        <item>@string/parks_arapahoe_ridge_phone_number</item>
+        <item>@string/parks_canyon_pointe_phone_number</item>
+        <item>@string/parks_christiansen_phone_number</item>
+        <item>@string/parks_columbine_phone_number</item>
+        <item>@string/parks_eben_g_fine_phone_number</item>
+        <item>@string/parks_elks_phone_number</item>
+        <item>@string/parks_foothills_community_phone_number</item>
+        <item>@string/parks_greenleaf_phone_number</item>
+    </string-array>
+
+    <!--Websites for Parks Fragment-->
+    <string-array name="parks_websites">
+        <item>@string/parks_arapahoe_ridge_website</item>
+        <item>@string/parks_canyon_pointe_website</item>
+        <item>@string/parks_christiansen_website</item>
+        <item>@string/parks_columbine_website</item>
+        <item>@string/parks_eben_g_fine_website</item>
+        <item>@string/parks_elks_website</item>
+        <item>@string/parks_foothills_community_website</item>
+        <item>@string/parks_greenleaf_website</item>
+    </string-array>
+
+    <!--Extra Information for Parks Fragment-->
+    <string-array name="parks_descriptions">
+        <item>@string/parks_arapahoe_ridge_description</item>
+        <item>@string/parks_canyon_pointe_description</item>
+        <item>@string/parks_christiansen_description</item>
+        <item>@string/parks_columbine_description</item>
+        <item>@string/parks_eben_g_fine_description</item>
+        <item>@string/parks_elks_description</item>
+        <item>@string/parks_foothills_community_description</item>
+        <item>@string/parks_greenleaf_description</item>
+    </string-array>
+
+    <!--Names for Events Fragment-->
+    <string-array name="events_names">
+        <item>@string/events_rabblefish_name</item>
+        <item>@string/events_larry_lacerte_name</item>
+        <item>@string/events_greg_brown_name</item>
+        <item>@string/events_taylor_shae_name</item>
+        <item>@string/events_bandshell_boogie_name</item>
+    </string-array>
+
+    <!--Addresses for Events Fragment-->
+    <string-array name="events_addresses">
+        <item>@string/events_rabblefish_address</item>
+        <item>@string/events_larry_lacerte_address</item>
+        <item>@string/events_greg_brown_address</item>
+        <item>@string/events_taylor_shae_address</item>
+        <item>@string/events_bandshell_boogie_address</item>
+    </string-array>
+
+    <!--Operating Hours for Events Fragment-->
+    <string-array name="events_hours">
+        <item>@string/events_rabblefish_hours</item>
+        <item>@string/events_larry_lacerte_hours</item>
+        <item>@string/events_greg_brown_hours</item>
+        <item>@string/events_taylor_shae_hours</item>
+        <item>@string/events_bandshell_boogie_hours</item>
+    </string-array>
+
+    <!--Phone Numbers for Events Fragment-->
+    <string-array name="events_phone_numbers">
+        <item>@string/events_rabblefish_phone_number</item>
+        <item>@string/events_larry_lacerte_phone_number</item>
+        <item>@string/events_greg_brown_phone_number</item>
+        <item>@string/events_taylor_shae_phone_number</item>
+        <item>@string/events_bandshell_boogie_phone_number</item>
+    </string-array>
+
+    <!--Extra Information for Events Fragment-->
+    <string-array name="events_websites">
+        <item>@string/events_rabblefish_website</item>
+        <item>@string/events_larry_lacerte_website</item>
+        <item>@string/events_greg_brown_website</item>
+        <item>@string/events_taylor_shae_website</item>
+        <item>@string/events_bandshell_boogie_website</item>
+    </string-array>
+
+    <!--Extra Information for Events Fragment-->
+    <string-array name="events_descriptions">
+        <item>@string/events_rabblefish_description</item>
+        <item>@string/events_larry_lacerte_description</item>
+        <item>@string/events_greg_brown_description</item>
+        <item>@string/events_taylor_shae_description</item>
+        <item>@string/events_bandshell_boogie_description</item>
+    </string-array>
+</resources>

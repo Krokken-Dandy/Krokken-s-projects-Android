@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="main_activity_selection_height">75dp</dimen>
+    <dimen name="main_activity_selection_height">100dp</dimen>
     <dimen name="main_activity_selection_text_size">36sp</dimen>
-    <dimen name="main_activity_selection_settings_width">75dp</dimen>
+    <dimen name="main_activity_selection_settings_width">24dp</dimen>
+    <dimen name="main_activity_selection_settings_height">24dp</dimen>
+    <dimen name="main_activity_other_options_padding">4dp</dimen>
+    <dimen name="currently_playing_song_title_text">18sp</dimen>
+    <dimen name="currently_playing_text_margin_bottom">16dp</dimen>
+    <dimen name="currently_playing_layout_padding">16dp</dimen>
+    <dimen name="currently_playing_text_margin_top">24dp</dimen>
 </resources>

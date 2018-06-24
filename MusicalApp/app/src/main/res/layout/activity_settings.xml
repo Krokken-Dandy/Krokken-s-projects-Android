@@ -36,4 +36,11 @@
         android:layout_marginTop="8dp"
         android:text="@string/another_option"/>
 
+    <TextView
+        android:id="@+id/options_blah_blah"
+        android:layout_below="@id/box_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/options_blah_blah_text"/>
+
 </RelativeLayout>

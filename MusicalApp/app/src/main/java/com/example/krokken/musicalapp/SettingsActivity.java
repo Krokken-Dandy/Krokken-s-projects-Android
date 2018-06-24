@@ -2,7 +2,6 @@ package com.example.krokken.musicalapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -40,7 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    private void checkSettings(){
+    private void checkSettings() {
         if (settings.getRandomPlay()) {
             randomPlay.setChecked(true);
         }
