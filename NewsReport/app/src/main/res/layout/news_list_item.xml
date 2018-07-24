@@ -6,15 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:background="@color/primaryDarkBackground"
-    android:orientation="vertical"
     android:paddingEnd="1dp"
     android:paddingLeft="1dp"
     android:paddingRight="1dp"
-    android:paddingStart="1dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toRightOf="parent"
-    app:layout_constraintRight_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:paddingStart="1dp">
 
     <TextView
         android:id="@+id/date"
@@ -26,12 +21,11 @@
         android:paddingTop="8dp"
         android:textColor="@android:color/black"
         android:textSize="12sp"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/time"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="author"
         tools:text="Mar 6, 2010" />
 
     <TextView
@@ -46,9 +40,8 @@
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/date"
-        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/section"
         tools:text="3:00 PM" />
 
     <TextView
@@ -58,8 +51,9 @@
         android:background="@color/primaryLightBackground"
         android:textColor="@android:color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/title"
-        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/section"
         app:layout_constraintTop_toBottomOf="@id/date"
         tools:text="Author name" />
@@ -71,9 +65,10 @@
         android:background="@color/primaryLightBackground"
         android:textColor="@android:color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/author"
-        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/time"
         tools:text="Section Name" />
 
@@ -92,8 +87,8 @@
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/author"
         tools:text="Martians invade Earth" />
 
