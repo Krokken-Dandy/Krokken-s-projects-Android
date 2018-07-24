@@ -100,7 +100,7 @@ public class List {
 
     //Method used by fragments to visit business website
     public Intent visitBusinessWebsite(String website) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" +website));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://" + website));
         return browserIntent;
     }
 }

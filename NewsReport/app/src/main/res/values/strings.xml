@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">News Report</string>
+    <string name="no_news">No noose is good noose</string>
+    <string name="no_internet">No internet connection found</string>
+    <string name="api_key">8078005c-bb53-4902-91f3-0b7d9f697c54</string>
+    <string name="url_api_key">api-key=</string>
+    <string name="url_show_contributor">show-tags=contributor</string>
+    <string name="url_guardian_search">https://content.guardianapis.com/search?</string>
+</resources>

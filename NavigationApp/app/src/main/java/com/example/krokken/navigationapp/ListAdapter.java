@@ -29,24 +29,30 @@ public class ListAdapter extends ArrayAdapter<List> {
         }
 
         List currentWord = getItem(position);
+        final ViewHolder item = new ViewHolder();
+        item.nameTextView = listItemView.findViewById(R.id.location_name);
+        item.nameTextView.setText(currentWord.getLocationName());
 
-        TextView nameTextView = listItemView.findViewById(R.id.location_name);
-        nameTextView.setText(currentWord.getLocationName());
-
-        ImageView iconView = listItemView.findViewById(R.id.list_item_icon);
+        item.iconView = listItemView.findViewById(R.id.list_item_icon);
 
         if (currentWord.hasImage()) {
-            iconView.setImageResource(currentWord.getLocationIcon());
-            iconView.setVisibility(View.VISIBLE);
+            item.iconView.setImageResource(currentWord.getLocationIcon());
+            item.iconView.setVisibility(View.VISIBLE);
         } else {
-            iconView.setVisibility(View.GONE);
+            item.iconView.setVisibility(View.GONE);
         }
 
         // Return the whole list item layout
-        View textContainer = listItemView.findViewById(R.id.text_container);
+        item.textContainer = listItemView.findViewById(R.id.text_container);
         int color = ContextCompat.getColor(getContext(), colorResourceId);
-        textContainer.setBackgroundColor(color);
+        item.textContainer.setBackgroundColor(color);
 
         return listItemView;
+    }
+
+    static class ViewHolder {
+        private TextView nameTextView;
+        private ImageView iconView;
+        private View textContainer;
     }
 }

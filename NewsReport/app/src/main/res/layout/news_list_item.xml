@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@color/primaryDarkBackground"
+    android:orientation="vertical"
+    android:paddingEnd="1dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp"
+    android:paddingStart="1dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toRightOf="parent"
+    app:layout_constraintRight_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@color/primaryLightBackground"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/time"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="author"
+        tools:text="Mar 6, 2010" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@color/primaryLightBackground"
+        android:paddingTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/date"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/section"
+        tools:text="3:00 PM" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryLightBackground"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/section"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        tools:text="Author name" />
+
+    <TextView
+        android:id="@+id/section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryLightBackground"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintLeft_toRightOf="@id/author"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time"
+        tools:text="Section Name" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryLightBackground"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="start"
+        android:paddingBottom="36dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="4dp"
+        android:textColor="@android:color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/author"
+        tools:text="Martians invade Earth" />
+
+</android.support.constraint.ConstraintLayout>

@@ -72,7 +72,7 @@ public class ParksFragment extends Fragment {
         }
 
         ListAdapter listAdapter = new ListAdapter(getActivity(), parksList, parksPrimaryColorID);
-        final ListView listView = (ListView) rootView.findViewById(R.id.list);
+        final ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(listAdapter);
 
 
@@ -154,7 +154,7 @@ public class ParksFragment extends Fragment {
             }
         });
 
-        //Sets clickable for trail map to open an Intent with the trail map
+        //Sets clickable on hikes popup to open an Intent with the trail map
         locationWebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
