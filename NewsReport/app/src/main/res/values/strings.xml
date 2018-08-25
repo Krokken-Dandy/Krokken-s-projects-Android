@@ -2,8 +2,51 @@
     <string name="app_name">News Report</string>
     <string name="no_news">No noose is good noose</string>
     <string name="no_internet">No internet connection found</string>
+    <string name="no_refresh_no_connection">Unable to refresh, no connection found</string>
+
+    <!-- Strings used to build the URL to request the JSON -->
     <string name="api_key">8078005c-bb53-4902-91f3-0b7d9f697c54</string>
-    <string name="url_api_key">api-key=</string>
+    <string name="url_api_key">"api-key"</string>
     <string name="url_show_contributor">show-tags=contributor</string>
-    <string name="url_guardian_search">https://content.guardianapis.com/search?</string>
+    <string name="url_guardian_search">https://content.guardianapis.com/</string>
+    <string name="url_contributor">contributor</string>
+    <string name="url_show_tags">show-tags</string>
+
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Report Settings</string>
+
+    <string name="settings_chosen_section_label">Search for</string>
+    <string name="settings_chosen_search_key" translatable="false">chosen_search</string>
+    <string name="settings_chosen_search_default" translatable="false">all</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_choose_from_date_label">Articles after date</string>
+    <string name="settings_choose_from_date_key" translatable="false">choose_from_date</string>
+    <string name="settings_choose_from_date_default" translatable="false">@string/settings_choose_from_date_value</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_choose_to_date_label">Articles before date</string>
+    <string name="settings_choose_to_date_key" translatable="false">choose_to_date</string>
+    <string name="settings_choose_to_date_default" translatable="false">@string/settings_choose_to_date_value</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_choose_from_date_default_label">Date</string>
+    <string name="settings_choose_from_date_value" translatable="false">1986-01-01</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_choose_to_date_default_label">Date</string>
+    <string name="settings_choose_to_date_value" translatable="false">3000-01-01</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_most_recent_value</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_least_recent_label">Oldest</string>
+    <string name="settings_order_by_least_recent_value" translatable="false">oldest</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_most_recent_label">Newest</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">newest</string>
 </resources>

@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Krokken\'s Inventory</string>
+    <!-- Menu options-->
+    <!-- Main activity menu-->
+    <string name="menu_option_save_new_dummy_item">Insert Dummy Item</string>
+    <string name="menu_option_delete_database">Delete Database</string>
+    <!--Editor Activity menu-->
+
+
+    <!-- Spinner strings-->
+    <!-- First spinner, for shipping costs-->
+    <string name="spinner_shipping_international_free">Free International Shipping</string>
+    <string name="spinner_shipping_local_free">Free Local Shipping</string>
+    <string name="spinner_shipping_base_cost">$7 Shipping</string>
+    <!-- Second spinner, for stock/non-stock items-->
+    <string name="spinner_special_order">Special order item</string>
+    <string name="spinner_custom_order">Custom order item</string>
+    <string name="spinner_replenish_order">Regularly replenished item</string>
+
+    <!--Illegal Argument Exception Strings-->
+    <string name="IAE_get_type_unknown_uri">Unknown URI:</string>
+    <string name="IAE_get_type_with_match">" with match "</string>
+    <string name="IAE_insert_insertion_not_supported">Insertion is not supported for</string>
+    <string name="IAE_update_update_not_supported">Update not supported for</string>
+    <string name="IAE_query_query_not_supported">Cannot query unknown URI:</string>
+    <string name="IAE_delete_delete_not_supported">Delete is not supported for</string>
+    <string name="IAE_insert_inventory_item_product_name">Item requires a name</string>
+    <string name="IAE_insert_inventory_item_product_price">Item requires a price</string>
+    <string name="IAE_insert_inventory_item_product_quantity">Item requires a positive quantity</string>
+    <string name="IAE_insert_inventory_item_supplier_name">Item requires a supplier name</string>
+    <string name="IAE_insert_inventory_item_supplier_phone_number">Item requires a supplier phone number</string>
+
+    <!-- Dialog text-->
+    <string name="delete_dialog_delete_all">Delete all</string>
+    <string name="delete_dialog_delete_question">Do you wish to delete all items in the inventory?</string>
+    <string name="delete_dialog_cancel">Cancel</string>
+    <string name="delete_all_toast_rows_deleted">" rows have been deleted with the table."</string>
+    <string name="dummy_product_name">Windex</string>
+    <string name="dummy_product_price">199</string>
+    <string name="dummy_supplier_name">Mother\'s Cleaning Supplies</string>
+    <string name="dummy_supplier_phone_number">8885551234</string>
+    <string name="dummy_toast_failed_insert">New dummy item insert failed</string>
+    <string name="menu_option_save_new_item">Save new Item</string>
+    <string name="menu_option_delete_item">Delete Item</string>
+</resources>

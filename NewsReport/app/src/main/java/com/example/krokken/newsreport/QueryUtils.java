@@ -18,22 +18,18 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Helper methods related to requesting and receiving earthquake data from USGS.
- */
+import static com.example.krokken.newsreport.NewsReportActivity.LOG_TAG;
+
 public final class QueryUtils {
 
+    // Each used to retrieve related object in the JSON response
     private static final String WEB_TITLE = "webTitle";
-
     private static final String WEB_PULICATION_DATE = "webPublicationDate";
-
     private static final String WEB_URL = "webUrl";
-
-    private static final String SECTION_NAME = "sectionName";
-
-    private static final String FIRST_NAME = "firstName";
-
-    private static final String LAST_NAME = "lastName";
+    private static final String WEB_SECTION_NAME = "sectionName";
+    private static final String WEB_RESPONSE = "response";
+    private static final String WEB_RESULTS = "results";
+    private static final String WEB_TAGS ="tags";
 
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtils} object.
@@ -51,55 +47,65 @@ public final class QueryUtils {
 
         if (TextUtils.isEmpty(newsReportJson)) return null;
 
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding news articles to
         List<NewsReport> newsReports = new ArrayList<>();
 
-        // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
-        // is formatted, a JSONException exception object will be thrown.
+        // Tries to parse the JSON response
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
 
-            // build up a list of Earthquake objects with the corresponding data.
+            // Build up a list of News objects with the corresponding data.
+            // Base JSON response
             JSONObject baseJsonResponse = new JSONObject(newsReportJson);
-            JSONObject devResponse = baseJsonResponse.getJSONObject("response");
-            JSONArray newsReportArray = devResponse.getJSONArray("results");
 
+            // First object needed to get most of the info
+            JSONObject devResponse = baseJsonResponse.getJSONObject(WEB_RESPONSE);
 
+            // The array that will hold the info of each article
+            JSONArray newsReportArray = devResponse.getJSONArray(WEB_RESULTS);
+
+            // Loop to build the List with all the info of the articles
             for (int i = 0; i < newsReportArray.length(); i++) {
+                // JSON object for each item in the JSON array
                 JSONObject currentNewsReport = newsReportArray.getJSONObject(i);
 
+                // Gets the title of the article, so long as one is provided
                 String title = "";
                 if (currentNewsReport.has(WEB_TITLE)) {
                     title = currentNewsReport.getString(WEB_TITLE);
                 }
 
+                // Gets the title of the article, so long as one is provided
                 String date = "";
                 if (currentNewsReport.has(WEB_PULICATION_DATE)) {
                     date = currentNewsReport.getString(WEB_PULICATION_DATE);
                 }
 
+                // Gets the website of the article, so long as one is provided
+                // Used to view the full article, used by the intent if clicked in ListView
                 String website = "";
                 if (currentNewsReport.has(WEB_URL)) {
                     website = currentNewsReport.getString(WEB_URL);
                 }
 
+                // Gets the section of the article, so long as one is provided
                 String sectionName = "";
-
-                if (currentNewsReport.has(SECTION_NAME)) {
-                    sectionName = currentNewsReport.getString(SECTION_NAME);
+                if (currentNewsReport.has(WEB_SECTION_NAME)) {
+                    sectionName = currentNewsReport.getString(WEB_SECTION_NAME);
                 }
 
-                JSONArray newsTagsArray = currentNewsReport.getJSONArray("tags");
-                String contributorName = null;
-                for (int j = 0; j < newsTagsArray.length(); j++) {
-                    JSONObject currentTag = newsTagsArray.getJSONObject(j);
-                    if (currentNewsReport.has(WEB_TITLE)) {
-                        contributorName = currentTag.getString(WEB_TITLE);
-                    }
+                String contributorName = "The Guardian News";
+                if (currentNewsReport.has(WEB_TAGS)) {
+                    // Gets the array with additional information for the article
+                    // WEB_TITLE in this section contains the contributor's name
+                    JSONArray newsTagsArray = currentNewsReport.getJSONArray(WEB_TAGS);
 
-//                    if (currentNewsReport.has(LAST_NAME)) {
-//                        contributorLastName = currentTag.getString(LAST_NAME);
-//                    }
+                    for (int j = 0; j < newsTagsArray.length(); j++) {
+                        JSONObject currentTag = newsTagsArray.getJSONObject(j);
+                        if (currentNewsReport.has(WEB_TITLE)) {
+                            contributorName = currentTag.getString(WEB_TITLE);
+                        }
+                    }
                 }
 
                 NewsReport newsReport = new NewsReport(title, website, date, sectionName, contributorName);
@@ -113,7 +119,7 @@ public final class QueryUtils {
             Log.e("QueryUtils", "Problem parsing the JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of news articles
         return newsReports;
     }
 
@@ -125,7 +131,7 @@ public final class QueryUtils {
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException exception) {
-            Log.e("Log tag", "Error with creating URL", exception);
+            Log.e("QueryUtils", "Error with creating URL", exception);
             return null;
         }
         return url;
@@ -149,7 +155,7 @@ public final class QueryUtils {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
-                Log.e("Log", "The response code was not 200, it was" + urlConnection.getResponseCode());
+                Log.e(LOG_TAG, "The response code was not 200, it was: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
             Log.e("IOException", "IOEception in makeHttpRequest", e);
@@ -184,10 +190,9 @@ public final class QueryUtils {
     }
 
     /**
-     * Query the USGS dataset and return a list of {@link NewsReport} objects.
+     * Query the Guardian dataset and return a list of {@link NewsReport} objects.
      */
-    public static List<NewsReport> fetchEarthquakeData(String requestUrl) {
-        Log.v("fetchEarthquakeData", "is happening");
+    public static List<NewsReport> fetchNewsData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -196,13 +201,13 @@ public final class QueryUtils {
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
-            Log.e("Log", "Problem making the HTTP request.", e);
+            Log.e("QueryUtils", "Problem making the HTTP request.", e);
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
+        // Extract relevant fields from the JSON response and create a list of {@link NewsReport}s
         List<NewsReport> newsReports = extractFeatureFromJson(jsonResponse);
 
-        // Return the list of {@link Earthquake}s
+        // Return the list of {@link NewsReport}s
         return newsReports;
     }
 }

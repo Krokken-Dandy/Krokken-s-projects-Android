@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="list_item_constraint_padding">1dp</dimen>
+    <dimen name="MATCH_CONSTRAINT">0dp</dimen>
+    <dimen name="list_item_date_padding">8dp</dimen>
+    <dimen name="list_item_date_text_size">12sp</dimen>
+    <dimen name="list_item_time_padding">8dp</dimen>
+    <dimen name="list_item_time_text_size">12sp</dimen>
+    <dimen name="list_item_author_padding">8dp</dimen>
+    <dimen name="list_item_author_text_size">12sp</dimen>
+    <dimen name="list_item_section_padding">8dp</dimen>
+    <dimen name="list_item_section_text_size">12sp</dimen>
+    <dimen name="list_item_title_text_size">26sp</dimen>
+    <dimen name="list_item_title_padding_top">4dp</dimen>
+    <dimen name="list_item_title_padding_left">16dp</dimen>
+    <dimen name="list_item_title_padding_right">16dp</dimen>
+    <dimen name="list_item_title_padding_bottom">36dp</dimen>
+</resources>

@@ -1,13 +1,13 @@
 package com.example.krokken.newsreport;
 
-import android.content.Context;
-import android.support.annotation.Nullable;
 import android.content.AsyncTaskLoader;
+import android.content.Context;
 
 import java.util.List;
 
 public class NewsReportLoader extends AsyncTaskLoader<List<NewsReport>> {
 
+    // URL used to get the JSON information
     private String mUrl;
 
     public NewsReportLoader(Context context, String url) {
@@ -22,9 +22,9 @@ public class NewsReportLoader extends AsyncTaskLoader<List<NewsReport>> {
 
     @Override
     public List<NewsReport> loadInBackground() {
-        if(mUrl == null) return null;
+        if (mUrl == null) return null;
 
-        List<NewsReport> newsReports = QueryUtils.fetchEarthquakeData(mUrl);
+        List<NewsReport> newsReports = QueryUtils.fetchNewsData(mUrl);
         return newsReports;
     }
 }

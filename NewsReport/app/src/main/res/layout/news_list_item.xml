@@ -1,95 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
     android:background="@color/primaryDarkBackground"
-    android:paddingEnd="1dp"
-    android:paddingLeft="1dp"
-    android:paddingRight="1dp"
-    android:paddingStart="1dp">
+    android:paddingEnd="@dimen/list_item_constraint_padding"
+    android:paddingLeft="@dimen/list_item_constraint_padding"
+    android:paddingRight="@dimen/list_item_constraint_padding"
+    android:paddingStart="@dimen/list_item_constraint_padding">
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:background="@color/primaryLightBackground"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
+        android:gravity="end"
+        android:paddingRight="@dimen/list_item_date_padding"
+        android:paddingTop="@dimen/list_item_date_padding"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textSize="@dimen/list_item_date_text_size"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/time"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mar 6, 2010" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/time"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:background="@color/primaryLightBackground"
-        android:paddingTop="8dp"
+        android:gravity="start"
+        android:paddingTop="@dimen/list_item_time_padding"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textSize="@dimen/list_item_time_text_size"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/date"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="3:00 PM" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/author"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
         android:layout_height="wrap_content"
         android:background="@color/primaryLightBackground"
+        android:gravity="start"
+        android:paddingLeft="@dimen/list_item_author_padding"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textSize="@dimen/list_item_author_text_size"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/section"
-        app:layout_constraintTop_toBottomOf="@id/date"
-        tools:text="Author name" />
+        app:layout_constraintTop_toBottomOf="@id/date" />
 
     <TextView
         android:id="@+id/section"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
         android:layout_height="wrap_content"
         android:background="@color/primaryLightBackground"
+        android:gravity="end"
+        android:paddingRight="@dimen/list_item_section_padding"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textSize="@dimen/list_item_section_text_size"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/author"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/time"
-        tools:text="Section Name" />
+        app:layout_constraintTop_toBottomOf="@id/time" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
         android:layout_height="wrap_content"
         android:background="@color/primaryLightBackground"
         android:fontFamily="sans-serif-medium"
         android:gravity="start"
-        android:paddingBottom="36dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="4dp"
+        android:paddingBottom="@dimen/list_item_title_padding_bottom"
+        android:paddingLeft="@dimen/list_item_title_padding_left"
+        android:paddingRight="@dimen/list_item_title_padding_right"
+        android:paddingTop="@dimen/list_item_title_padding_top"
         android:textColor="@android:color/black"
-        android:textSize="26sp"
+        android:textSize="@dimen/list_item_title_text_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/author"
-        tools:text="Martians invade Earth" />
-
+        app:layout_constraintTop_toBottomOf="@id/author" />
 </android.support.constraint.ConstraintLayout>

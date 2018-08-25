@@ -32,6 +32,8 @@ public class NewsReportAdapter extends ArrayAdapter<NewsReport> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.news_list_item, parent, false);
+
+            // ViewHolder for all the views in the ListView
             viewHolder = new ViewHolder();
             viewHolder.title = (TextView) convertView.findViewById(R.id.title);
             viewHolder.date = (TextView) convertView.findViewById(R.id.date);
@@ -46,10 +48,19 @@ public class NewsReportAdapter extends ArrayAdapter<NewsReport> {
 
         Log.v("new title", "" + nr.getNewsTitle());
 
+        // Sets the Title of the article
         viewHolder.title.setText(nr.getNewsTitle());
+
+        // Sets the Date the article was posted
         viewHolder.date.setText(getFormattedDate(nr));
+
+        // Sets the Time the article was posted
         viewHolder.time.setText(getFormattedTime(nr));
+
+        // Sets the Section Name of the article
         viewHolder.section.setText(nr.getSectionName());
+
+        // Sets the name of the Contributor to the article
         viewHolder.author.setText(nr.getContributorName());
 
         return convertView;
@@ -63,11 +74,12 @@ public class NewsReportAdapter extends ArrayAdapter<NewsReport> {
         private TextView author;
     }
 
-    private String getFormattedDate (NewsReport nr) {
+    // Formats and gets the date the article was posted
+    private String getFormattedDate(NewsReport nr) {
         SimpleDateFormat dateFromJson = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
         String date = "";
 
-        try{
+        try {
             Date dateObject = dateFromJson.parse(nr.getTime());
             Locale currentLocale = getContext().getResources().getConfiguration().locale;
             DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, currentLocale);
@@ -78,11 +90,12 @@ public class NewsReportAdapter extends ArrayAdapter<NewsReport> {
         return date;
     }
 
-    private String getFormattedTime (NewsReport nr) {
+    // Formats and gets the time the article was posted
+    private String getFormattedTime(NewsReport nr) {
         SimpleDateFormat dateFromJson = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
         String time = "";
 
-        try{
+        try {
             Date dateObject = dateFromJson.parse(nr.getTime());
             Locale currentLocale = getContext().getResources().getConfiguration().locale;
             DateFormat df = DateFormat.getTimeInstance(DateFormat.SHORT, currentLocale);
