@@ -44,13 +44,14 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
-    <!--Used by the popup to animate it-->
+    <!-- Used by the popup to animate it-->
     <style name="AnimationPopup">
         <item name="android:windowEnterAnimation">@anim/dialog_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_out</item>
     </style>
 
-    <style name="EditorLayoutEditText">
+    <!-- Editor Activity Edit Text -->
+    <style name="EditorActivityLayoutEditText">
         <item name="android:ems">10</item>
         <item name="android:lines">1</item>
         <item name="android:maxLines">1</item>

@@ -8,9 +8,7 @@ import com.example.krokken.storeinventory.data.InventoryContract.InventoryEntry;
 
 public class InventoryDbHelper extends SQLiteOpenHelper {
 
-    public static final String LOG_TAG = InventoryDbHelper.class.getSimpleName();
-
-    private static final String DATABASE_NAME = "bookstore.db";
+    private static final String DATABASE_NAME = "store.db";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -22,9 +20,10 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String SQL_CREATE_INVENTORY_TABLE = "CREATE TABLE " + InventoryEntry.TABLE_NAME + " ("
                 + InventoryEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + InventoryEntry.COLUMN_INVENTORY_PRODUCT_IMAGE + " STRING NOT NULL, "
                 + InventoryEntry.COLUMN_INVENTORY_PRODUCT_NAME + " TEXT NOT NULL, "
                 + InventoryEntry.COLUMN_INVENTORY_PRODUCT_QUANTITY + " INTEGER DEFAULT 0, "
-                + InventoryEntry.COLUMN_INVENTORY_PRODUCT_PRICE + " TEXT NOT NULL, "
+                + InventoryEntry.COLUMN_INVENTORY_PRODUCT_PRICE + " INTEGER NOT NULL, "
                 + InventoryEntry.COLUMN_INVENTORY_PRODUCT_SHIPPING_FEE + " INTEGER NOT NULL, "
                 + InventoryEntry.COLUMN_INVENTORY_PRODUCT_STOCK_TYPE + " INTEGER NOT NULL,"
                 + InventoryEntry.COLUMN_INVENTORY_SUPPLIER_NAME + " TEXT NOT NULL, "
