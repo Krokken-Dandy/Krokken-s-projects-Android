@@ -1,19 +1,22 @@
 package com.example.krokken.storeinventory.data;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
-import android.widget.ImageView;
+
+import com.example.krokken.storeinventory.R;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.util.Currency;
 import java.util.Locale;
 
@@ -69,16 +72,15 @@ public final class InventoryContract {
 
 
     public static String getFormattedPhoneNumber(String unformattedNumber) {
-        String formattedNumber = PhoneNumberUtils.formatNumber(unformattedNumber);
-        return formattedNumber;
+        return PhoneNumberUtils.formatNumber(unformattedNumber);
     }
 
     public static String getFormattedPrice(String productPrice, Context context) {
         double price = (Double.parseDouble(productPrice) / 100);
         Locale currentLocale = context.getResources().getConfiguration().locale;
         Currency currency = Currency.getInstance(currentLocale);
-        String formattedPrice = currency.getSymbol() + NumberFormat.getNumberInstance(currentLocale).format(price);
-        return formattedPrice;
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###.00");
+        return currency.getSymbol() + decimalFormat.format(price);
     }
 
     public static String getShippingFee(int shippingFeeInt) {
@@ -102,7 +104,6 @@ public final class InventoryContract {
                 return STOCK_SPECIAL_ORDER_TEXT;
         }
     }
-
 
     // Thanks to @crlsndrsjmnz (Forum Mentor Carlos) for this method
     public static Bitmap getBitmapFromUri(Uri uri, Context context) {
@@ -142,15 +143,46 @@ public final class InventoryContract {
         } catch (Exception e) {
             Log.e("Log image", "Failed to load image.", e);
             return null;
-        } catch (NullPointerException npe) {
-            Log.e("Log image", "NPE");
-            return null;
         } finally {
             try {
                 input.close();
             } catch (IOException ioe) {
-
             }
+        }
+    }
+
+    public static void checkContentValues(ContentValues contentValues, Context context) {
+        Resources res = context.getResources();
+
+        String productNameString =
+                contentValues.getAsString(InventoryEntry.COLUMN_INVENTORY_PRODUCT_NAME);
+        if (productNameString == null) {
+            throw new IllegalArgumentException(
+                    res.getString(R.string.IAE_insert_inventory_item_product_name));
+        }
+        Integer productPriceInt =
+                contentValues.getAsInteger(InventoryEntry.COLUMN_INVENTORY_PRODUCT_PRICE);
+        if (productPriceInt == null || productPriceInt < 0) {
+            throw new IllegalArgumentException(
+                    res.getString(R.string.IAE_insert_inventory_item_product_price));
+        }
+        Integer productQuantityInt =
+                contentValues.getAsInteger(InventoryEntry.COLUMN_INVENTORY_PRODUCT_QUANTITY);
+        if (productQuantityInt == null || productQuantityInt < 0) {
+            throw new IllegalArgumentException(
+                    res.getString(R.string.IAE_insert_inventory_item_product_quantity));
+        }
+        String supplierNameString =
+                contentValues.getAsString(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_NAME);
+        if (supplierNameString == null) {
+            throw new IllegalArgumentException(
+                    res.getString(R.string.IAE_insert_inventory_item_supplier_name));
+        }
+        String supplierPhoneNumberString =
+                contentValues.getAsString(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_PHONE_NUMBER);
+        if (supplierPhoneNumberString == null) {
+            throw new IllegalArgumentException(
+                    res.getString(R.string.IAE_insert_inventory_item_supplier_phone_number));
         }
     }
 }

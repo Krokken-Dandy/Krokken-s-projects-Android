@@ -36,25 +36,33 @@ import android.widget.Toast;
 
 import com.example.krokken.storeinventory.data.InventoryContract;
 import com.example.krokken.storeinventory.data.InventoryContract.InventoryEntry;
-import com.example.krokken.storeinventory.data.InventoryDbHelper;
 
 public class StoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int INVENTORY_LOADER = 0;
 
+    private static final int DELETE_ALL = 1;
+    private static final int DELETE_ONE = 2;
+
+    private static final int SELL_ITEM = 1;
+    private static final int ORDER_ITEM = 2;
+
     private static final int DUMMY_PRODUCT_QUANTITY = 5;
-
     private static final int DUMMY_PRODUCT_SHIPPING_FEE = 2;
-
     private static final int DUMMY_PRODUCT_STOCK_TYPE = 1;
 
     private static final String NO_IMAGE_STRING = "android.resource://com.example.krokken.storeinventory/drawable/no_image";
-
     private static final String ADD_IMAGE_STRING = "android.resource://com.example.krokken.storeinventory/drawable/add_image";
 
-    private int lightPurpleColor;
-    private int darkPurpleColor;
+    // Main activity views
+    private View emptyView;
+    private FloatingActionButton fabAddItem;
+    private ListView inventoryListView;
 
+    private InventoryCursorAdapter mInventoryCursorAdapter;
+
+    // Popup Views
+    private PopupWindow popupWindow;
     private ImageView popupDeleteItem;
     private ImageView popupEditItem;
     private ImageView popupProductImageView;
@@ -69,17 +77,10 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
     private Button popupSellItemButton;
     private Button popupOrderItemButton;
 
-    private InventoryDbHelper mDbHelper;
+    private int lightPurpleColor;
+    private int darkPurpleColor;
 
-    private View emptyView;
 
-    private FloatingActionButton fabAddItem;
-
-    private InventoryCursorAdapter mInventoryCursorAdapter;
-
-    private ListView inventoryListView;
-
-    private PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +88,8 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
         setContentView(R.layout.activity_main);
         initializeVariables();
         onCreateClickListeners();
-        lightPurpleColor = ContextCompat.getColor(this, R.color.main_light_purple);
-        darkPurpleColor = ContextCompat.getColor(this, R.color.main_dark_purple);
         inventoryListView.setEmptyView(emptyView);
         inventoryListView.setAdapter(mInventoryCursorAdapter);
-
         getLoaderManager().initLoader(INVENTORY_LOADER, null, StoreActivity.this);
     }
 
@@ -108,18 +106,19 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
                 insertDummyData();
                 return true;
             case R.id.action_delete_all_items:
-                showDeleteConfirmationDialog();
+                showDeleteConfirmationDialog(DELETE_ALL, null);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void initializeVariables() {
-        mDbHelper = new InventoryDbHelper(this);
         fabAddItem = findViewById(R.id.fab_add_item);
         emptyView = findViewById(R.id.empty_view);
         inventoryListView = findViewById(R.id.list);
         mInventoryCursorAdapter = new InventoryCursorAdapter(this, null);
+        lightPurpleColor = ContextCompat.getColor(this, R.color.main_light_purple);
+        darkPurpleColor = ContextCompat.getColor(this, R.color.main_dark_purple);
     }
 
     private void onCreateClickListeners() {
@@ -173,30 +172,53 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
         }
     }
 
-    private void showDeleteConfirmationDialog() {
+    private void showDeleteConfirmationDialog(int deleteWhat, final Uri currentItemUri) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.dialog_delete_all_question);
-        builder.setPositiveButton(R.string.dialog_delete_all_positive, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                deleteAll();
-            }
-        });
-        builder.setNegativeButton(R.string.dialog_delete_all_negative, new DialogInterface.OnClickListener() {
+        switch (deleteWhat) {
+            case DELETE_ALL:
+                builder.setMessage(R.string.dialog_delete_all_question);
+                builder.setPositiveButton(R.string.dialog_delete_all_positive, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteAll();
+                    }
+                });
+                break;
+            case DELETE_ONE:
+                builder.setMessage(R.string.dialog_delete_confirm_message);
+                builder.setPositiveButton(R.string.dialog_delete_confirm_positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deleteItem(currentItemUri);
+                    }
+                });
+                break;
+                default:
+                    return;
+        }
+
+        builder.setNegativeButton(R.string.dialog_delete_confirm_negative, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 if (dialog != null) {
                     dialog.dismiss();
                 }
             }
         });
-
-        // Create and show the AlertDialog
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
     private void deleteAll() {
         int rowsDeleted = getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
-        Toast.makeText(this, rowsDeleted + getString(R.string.toast_delete_all_rows_deleted), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, rowsDeleted + getString(R.string.toast_delete_all_rows_success), Toast.LENGTH_LONG).show();
+
+    }
+
+    private void deleteItem(Uri currentItemUri) {
+        int rowsDeleted = getContentResolver().delete(currentItemUri, null, null);
+        if (rowsDeleted > 0) {
+            Toast.makeText(this, R.string.toast_delete_item_success, Toast.LENGTH_SHORT);
+            popupWindow.dismiss();
+        }
     }
 
     @Override
@@ -308,7 +330,9 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
                 InventoryContract.getFormattedPhoneNumber(
                         currentItemCursor.getString(
                                 currentSupplierPhoneNumberColumnIndex));
-        String currentProductQuantityString = getString(R.string.popup_quantity_on_hand_text) + currentProductQuantityInt;
+        String currentProductQuantityString =
+                getString(R.string.popup_quantity_on_hand_text) +
+                        currentProductQuantityInt;
 
         View popupView = getLayoutInflater().inflate(R.layout.popup_inventory_item, null);
         // Finds all the views used in the popup window
@@ -328,12 +352,8 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
         popupSupplierNameView.setText(currentSupplierNameString);
         popupSupplierPhoneNumberView.setText(currentSupplierPhoneNumberString);
 
-        // Sets the views gone or fills with text if no information was provided for related columns
-        setViewsIfEmpty(currentProductNameString,
-                currentProductPriceString,
-                currentProductQuantityInt,
-                currentSupplierNameString,
-                currentSupplierPhoneNumberString);
+        // Sets the Sell and Order buttons depending on given quantity
+        setSellOrderButtonsOnQuantityChange(currentProductQuantityInt);
 
         // Popup window creation and initializing the views
         popupWindow = new PopupWindow(popupView,
@@ -349,11 +369,7 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
         popupDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int rowsDelete = getContentResolver().delete(currentItemUri, null, null);
-                if (rowsDelete > 0) {
-                    Toast.makeText(StoreActivity.this, currentProductNameString + " deleted", Toast.LENGTH_SHORT).show();
-                }
-                popupWindow.dismiss();
+                showDeleteConfirmationDialog(DELETE_ONE, currentItemUri);
             }
         });
 
@@ -371,8 +387,7 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
             @Override
             public void onClick(View view) {
                 int quantity = currentProductQuantityInt;
-                int whichButton = 2;
-                showAmountDialog(currentItemUri, quantity, whichButton);
+                showAmountDialog(currentItemUri, quantity, SELL_ITEM);
             }
         });
 
@@ -380,8 +395,7 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
             @Override
             public void onClick(View view) {
                 int quantity = currentProductQuantityInt;
-                int whichButton = 1;
-                showAmountDialog(currentItemUri, quantity, whichButton);
+                showAmountDialog(currentItemUri, quantity, ORDER_ITEM);
             }
         });
 
@@ -440,10 +454,10 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
 
         if (rowsAffected > 0) {
             switch (whichButton) {
-                case 1:
+                case ORDER_ITEM:
                     Toast.makeText(this, R.string.popup_quantity_case_ordered, Toast.LENGTH_SHORT).show();
                     break;
-                case 2:
+                case SELL_ITEM:
                     Toast.makeText(this, R.string.popup_quantity_case_sold, Toast.LENGTH_SHORT).show();
                     break;
                 default:
@@ -469,21 +483,7 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
         popupOrderItemButton = popupView.findViewById(R.id.popup_order_item);
     }
 
-    private void setViewsIfEmpty(String productName,
-                                 String productPrice,
-                                 int productQuantity,
-                                 String supplierName,
-                                 String supplierPhoneNumber) {
-
-        productPrice = productPrice.replaceAll("[$]", "");
-
-        if (productName.isEmpty()) {
-            popupProductNameView.setText(R.string.popup_no_product_name_text);
-        }
-
-        if (productPrice.isEmpty() || productPrice.equals("0")) {
-            popupProductPriceView.setText(getString(R.string.popup_no_price_text));
-        }
+    private void setSellOrderButtonsOnQuantityChange(int productQuantity) {
 
         if (productQuantity < 1) {
             popupSellItemButton.setBackgroundResource(R.drawable.popup_button_background);
@@ -498,18 +498,6 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
             popupOrderItemButton.setBackgroundResource(R.drawable.popup_button_background);
             popupOrderItemButton.setTextColor(darkPurpleColor);
         }
-
-        if (supplierName.isEmpty()) {
-            popupSupplierNameView.setText(R.string.popup_no_supplier_name_text);
-        }
-
-        if (supplierPhoneNumber.isEmpty()) {
-            popupSupplierPhoneNumberView.setVisibility(View.GONE);
-            popupSupplierPhoneNumberIcon.setVisibility(View.GONE);
-        } else {
-            popupSupplierPhoneNumberView.setVisibility(View.VISIBLE);
-            popupSupplierPhoneNumberIcon.setVisibility(View.VISIBLE);
-        }
     }
 
     private void showAmountDialog(final Uri currentItemUri, final int quantity, final int whichButton) {
@@ -519,11 +507,11 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
         String message;
         final int newQuantity;
         switch (whichButton) {
-            case 1:
+            case ORDER_ITEM:
                 message = getString(R.string.dialog_case_order);
                 newQuantity = quantity;
                 break;
-            case 2:
+            case SELL_ITEM:
                 message = getString(R.string.dialog_case_sell);
                 newQuantity = quantity * -1;
                 break;
@@ -548,7 +536,7 @@ public class StoreActivity extends AppCompatActivity implements LoaderManager.Lo
                     return;
                 }
                 int amountInt = Integer.parseInt(amount);
-                if (whichButton == 2 && quantity < amountInt) {
+                if (whichButton == SELL_ITEM && quantity < amountInt) {
                     Toast.makeText(StoreActivity.this, R.string.toast_dialog_show_amount_oversell, Toast.LENGTH_SHORT).show();
                     return;
                 }

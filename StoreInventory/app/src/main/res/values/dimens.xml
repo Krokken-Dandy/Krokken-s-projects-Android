@@ -52,4 +52,16 @@
 
    <!-- Alert Order -->
     <dimen name="alert_order_edit_text_layout_text_size">24sp</dimen>
+    <dimen name="product_name_padding_right">8dp</dimen>
+    <dimen name="clickable_button_minimum_width">48dp</dimen>
+    <dimen name="clickable_button_minimum_height">48dp</dimen>
+    <dimen name="sell_icon_margin_right">30dp</dimen>
+    <dimen name="info_icon_margin_right">8dp</dimen>
+    <dimen name="product_price_margin_top_activity_editor">16dp</dimen>
+    <dimen name="product_quantity_margin_left_activity_editor">36dp</dimen>
+    <dimen name="product_quantity_margin_top_activity_editor">16dp</dimen>
+    <dimen name="spinner_shipping_margin_top_activity_editor">16dp</dimen>
+    <dimen name="spinner_stock_margin_top_activity_editor">16dp</dimen>
+    <dimen name="supplier_name_margin_top_activity_editor">16dp</dimen>
+    <dimen name="supplier_phone_number_margin_top_activity_editor">16dp</dimen>
 </resources>

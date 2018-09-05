@@ -189,46 +189,6 @@ public class InventoryProvider extends ContentProvider {
 
     private int updateInventory(Uri uri, ContentValues contentValues,
                                 String selection, String[] selectionArgs) {
-        /**
-         * Note to reviewer person. I'm not entirely sure I understand why we have the following checks.
-         * It was in the pet app/course and so I wanted to have it. Checks are good, but:
-         * It seems to work without it, and when I'm wanting to update a single item, like with
-         * [@link StoreActivity] Order/Sell button to update quantity:
-         * It would see the contentValue for productName as null (since I only 'put' quantity?),
-         * and it would throw the exception and crash.
-         * Since I may not remember to add this when submitting, I'm hoping you can send me some info on what
-         * I should be doing differently or understanding better.
-         **/
-        String productNameString =
-                contentValues.getAsString(InventoryEntry.COLUMN_INVENTORY_PRODUCT_NAME);
-        if (productNameString == null) {
-            throw new IllegalArgumentException(
-                    res.getString(R.string.IAE_insert_inventory_item_product_name));
-        }
-        Integer productPriceInt =
-                contentValues.getAsInteger(InventoryEntry.COLUMN_INVENTORY_PRODUCT_PRICE);
-        if (productPriceInt == null || productPriceInt < 0) {
-            throw new IllegalArgumentException(
-                    res.getString(R.string.IAE_insert_inventory_item_product_price));
-        }
-        Integer productQuantityInt =
-                contentValues.getAsInteger(InventoryEntry.COLUMN_INVENTORY_PRODUCT_QUANTITY);
-        if (productQuantityInt == null || productQuantityInt < 0) {
-            throw new IllegalArgumentException(
-                    res.getString(R.string.IAE_insert_inventory_item_product_quantity));
-        }
-        String supplierNameString =
-                contentValues.getAsString(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_NAME);
-        if (supplierNameString == null) {
-            throw new IllegalArgumentException(
-                    res.getString(R.string.IAE_insert_inventory_item_supplier_name));
-        }
-        String supplierPhoneNumberString =
-                contentValues.getAsString(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_PHONE_NUMBER);
-        if (supplierPhoneNumberString == null) {
-            throw new IllegalArgumentException(
-                    res.getString(R.string.IAE_insert_inventory_item_supplier_phone_number));
-        }
 
         if (contentValues.size() == 0) {
             return 0;

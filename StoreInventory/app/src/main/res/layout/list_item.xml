@@ -11,9 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:paddingTop="@dimen/product_name_padding_top_list_item"
         android:paddingLeft="@dimen/product_name_padding_left_list_item"
         android:paddingStart="@dimen/product_name_padding_left_list_item"
+        android:paddingRight="@dimen/product_name_padding_right"
+        android:paddingEnd="@dimen/product_name_padding_right"
+        android:paddingTop="@dimen/product_name_padding_top_list_item"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/text_color_list_item_dark"
         tools:text="Product Name" />
@@ -50,23 +52,26 @@
 
         <ImageView
             android:id="@+id/sell_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_cashier"
+            android:layout_width="@dimen/clickable_button_minimum_width"
+            android:layout_height="@dimen/clickable_button_minimum_height"
+            android:layout_marginEnd="@dimen/sell_icon_margin_right"
+            android:layout_marginRight="@dimen/sell_icon_margin_right"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/info_icon"
             android:layout_toStartOf="@id/info_icon"
-            android:layout_alignTop="@id/info_icon"
-            android:layout_alignBottom="@id/info_icon"
-            android:contentDescription="@string/content_description_sell_item_list_item" />
+            android:contentDescription="@string/content_description_sell_item_list_item"
+            android:src="@drawable/ic_cashier" />
 
         <ImageView
             android:id="@+id/info_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/clickable_button_minimum_width"
+            android:layout_height="@dimen/clickable_button_minimum_height"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/info_icon_margin_right"
+            android:layout_marginEnd="@dimen/info_icon_margin_right"
             android:contentDescription="@string/content_description_additional_information_list_item"
             android:src="@drawable/ic_action_info" />
-
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

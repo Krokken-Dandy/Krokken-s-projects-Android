@@ -59,6 +59,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private Bitmap addImage;
     private int mShippingFee;
     private int mStockType;
+    private int colorRed;
+    private int colorNormal;
 
     private boolean mItemHasChanged = false;
 
@@ -74,7 +76,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-
+        colorRed = ActivityCompat.getColor(this, android.R.color.holo_red_light);
+        colorNormal = ActivityCompat.getColor(this, android.R.color.white);
         Intent intent = getIntent();
         mCurrentItemUri = intent.getData();
         addImage = BitmapFactory.decodeResource(getResources(), R.drawable.add_image);
@@ -116,7 +119,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         switch (item.getItemId()) {
             case R.id.save_edit_text_info:
                 saveItem();
-                finish();
                 return true;
             case R.id.action_delete:
                 showDeleteConfirmationDialog();
@@ -222,6 +224,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             String supplierNameString = cursor.getString(supplierNameColumnIndex);
             String supplierPhoneNumberString = cursor.getString(supplierPhoneNumberColumnIndex);
 
+            productImageString = "";
             if (!productImageString.isEmpty()) {
                 mPhotoUri = Uri.parse(productImageString);
             }
@@ -416,20 +419,66 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         });
     }
 
+    private int checkEditTextValue(String s, View v, String requiredValue) {
+        if (TextUtils.isEmpty(s)) {
+            v.setBackgroundColor(colorRed);
+            Toast.makeText(this, getString(R.string.toast_check_values_pt_1) +
+                    requiredValue +
+                    getString(R.string.toast_check_values_pt_2),
+                    Toast.LENGTH_SHORT).show();
+            return 1;
+        } else {
+            v.setBackgroundColor(colorNormal);
+            return 0;
+        }
+    }
+
     private void saveItem() {
+        String productNameString = mProductNameEditText.getText().toString().trim();
+        String productPriceString = mProductPriceEditText.getText().toString().trim();
+        String productQuantityString = mProductQuantityEditText.getText().toString().trim();
+        String supplierNameString = mSupplierNameEditText.getText().toString().trim();
+        String supplierPhoneNumberString = mSupplierPhoneNumberEditText.getText().toString().trim();
+
+        String[] strings = {
+                        productNameString,
+                        productPriceString,
+                        productQuantityString,
+                        supplierNameString,
+                        supplierPhoneNumberString
+        };
+        View[] views = {
+                mProductNameEditText,
+                mProductPriceEditText,
+                mProductQuantityEditText,
+                mSupplierNameEditText,
+                mSupplierPhoneNumberEditText
+        };
+        String[] requiredValue = {
+                getString(R.string.toast_check_value_product_name),
+                getString(R.string.toast_check_value_product_price),
+                getString(R.string.toast_check_value_product_quantity),
+                getString(R.string.toast_check_value_supplier_name),
+                getString(R.string.toast_check_value_supplier_phone_number)
+        };
+        int counter = 0;
+        for (int i = 0; i < strings.length; i++) {
+            counter += checkEditTextValue(strings[i], views[i], requiredValue[i]);
+        }
+        if (supplierPhoneNumberString.length() < 10) {
+            Toast.makeText(this, R.string.toast_count_phone_number, Toast.LENGTH_SHORT).show();
+            counter+=1;
+        }
+        if (counter > 0){
+            return;
+        }
+
         String productImageString = "";
         if (mPhotoBitmap != null &&
                 !mPhotoBitmap.sameAs(addImage) &&
                 mPhotoUri != null) {
             productImageString = mPhotoUri.toString();
         }
-
-
-        String productNameString = mProductNameEditText.getText().toString().trim();
-        String productPriceString = mProductPriceEditText.getText().toString().trim();
-        String productQuantityString = mProductQuantityEditText.getText().toString().trim();
-        String supplierNameString = mSupplierNameEditText.getText().toString().trim();
-        String supplierPhoneNumberString = mSupplierPhoneNumberEditText.getText().toString().trim();
 
         int productPriceInt = 0;
         if (!TextUtils.isEmpty(productPriceString)) {
@@ -454,19 +503,25 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             productQuantityInt = Integer.parseInt(productQuantityString);
         }
 
-        ContentValues values = new ContentValues();
-        values.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_IMAGE, productImageString); // String input
-        values.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_NAME, productNameString); // String input
-        values.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_PRICE, productPriceInt); // int input
-        values.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_QUANTITY, productQuantityInt); // int input
-        values.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_SHIPPING_FEE, mShippingFee); // int input
-        values.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_STOCK_TYPE, mStockType); // int input
-        values.put(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_NAME, supplierNameString); // String input
-        values.put(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_PHONE_NUMBER, supplierPhoneNumberString); // String input
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_IMAGE, productImageString); // String input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_NAME, productNameString); // String input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_PRICE, productPriceInt); // int input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_QUANTITY, productQuantityInt); // int input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_SHIPPING_FEE, mShippingFee); // int input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_PRODUCT_STOCK_TYPE, mStockType); // int input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_NAME, supplierNameString); // String input
+        contentValues.put(InventoryEntry.COLUMN_INVENTORY_SUPPLIER_PHONE_NUMBER, supplierPhoneNumberString); // String input
+
+        try {
+            InventoryContract.checkContentValues(contentValues, this);
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e, Toast.LENGTH_SHORT).show();
+        }
 
         if (mCurrentItemUri == null) {
             // Insert the new row, returning the primary key value of the new row
-            Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
+            Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, contentValues);
 
             if (newUri == null) {
                 Toast.makeText(this, R.string.toast_new_item_failed, Toast.LENGTH_SHORT).show();
@@ -474,7 +529,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 Toast.makeText(this, R.string.toast_new_item_saved, Toast.LENGTH_SHORT).show();
             }
         } else {
-            int rowsAffected = getContentResolver().update(mCurrentItemUri, values, null, null);
+            int rowsAffected = getContentResolver().update(mCurrentItemUri, contentValues, null, null);
 
             if (rowsAffected == 0) {
                 Toast.makeText(this, R.string.toast_update_item_failed, Toast.LENGTH_SHORT).show();
@@ -482,6 +537,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 Toast.makeText(this, R.string.toast_item_update_successful, Toast.LENGTH_SHORT).show();
             }
         }
+        finish();
     }
 
     private void deleteItem() {
@@ -534,7 +590,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         alertDialog.show();
     }
 
-    private void showDeleteConfirmationDialog() {
+    public void showDeleteConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.dialog_delete_confirm_message);
         builder.setPositiveButton(R.string.dialog_delete_confirm_positive, new DialogInterface.OnClickListener() {
