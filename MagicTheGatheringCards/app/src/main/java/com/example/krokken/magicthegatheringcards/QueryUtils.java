@@ -3,23 +3,23 @@ package com.example.krokken.magicthegatheringcards;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+/** Imports for Jackson JSON */
+//import com.fasterxml.jackson.annotation.JsonInclude;
+//import com.fasterxml.jackson.core.JsonFactory;
+//import com.fasterxml.jackson.core.JsonParser;
+//import com.fasterxml.jackson.core.JsonToken;
+//import com.fasterxml.jackson.databind.DeserializationFeature;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -62,199 +62,200 @@ public final class QueryUtils {
     private static List<Cards> extractFeatureFromJson(String cardsJson) {
 
         if (TextUtils.isEmpty(cardsJson)) return null;
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        /** Tried with GSON and wasn't working */
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+//        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+//        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
+//        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        try {
-            CardDetails cardDetails = objectMapper.readValue(cardsJson, CardDetails.class);
-        } catch (IOException e) {
-
-        }
+//        try {
+//            Gson gson
+//            CardPOJO cardPOJO = objectMapper.readValue(cardsJson, CardPOJO.class);
+//        } catch (IOException e) {
+//
+//        }
 
         // Create an empty ArrayList that we can start adding news articles to
         List<Cards> cards = new ArrayList<>();
 
-        // Tries to parse the JSON response
-        // Catch the exception so the app doesn't crash, and print the error message to the logs.
-        try {
-
-            JsonFactory jsonFactory = new JsonFactory();
-            JsonParser jsonParser = jsonFactory.createParser(new File(cardsJson));
-
-            while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = jsonParser.getCurrentName();
-                String cardLayoutString = "";
-                String cardNameString = "";
-                String cardManaCostString = "";
-                String cardCMCString = "";
-                String cardTypeString = "";
-                String[] cardTypesStringArray;
-                if (fieldName.equals(CARD_TYPES)) {
-                    jsonParser.nextToken();
-                    int length = fieldName.length();
-                    cardTypesStringArray = new String[length];
-                    while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
-                        int i = 0;
-                        cardTypesStringArray[i] = jsonParser.getText();
-                        i++;
-                    }
-                } else {
-                    cardTypesStringArray = new String[0];
-                }
-
-                String[] cardSubtypesStringArray;
-                if (fieldName.equals(CARD_SUBTYPES)) {
-                    int length = fieldName.length();
-                    cardSubtypesStringArray = new String[length];
-                    int i = 0;
-                    while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
-                        cardSubtypesStringArray[i] = jsonParser.getText();
-                        i++;
-                    }
-                } else {
-                    cardSubtypesStringArray = new String[0];
-                }
-
-                String cardTextString = "";
-                String cardPowerString = "";
-                String cardToughnessString = "";
-
-                switch (fieldName) {
-                    case CARD_LAYOUT:
-                        jsonParser.nextToken();
-                        cardLayoutString = jsonParser.getText();
-                        break;
-                    case CARD_NAME:
-                        jsonParser.nextToken();
-                        cardNameString = jsonParser.getText();
-                        break;
-                    case CARD_MANA_COST:
-                        jsonParser.nextToken();
-                        cardManaCostString = jsonParser.getText();
-                        break;
-                    case CARD_CMC:
-                        jsonParser.nextToken();
-                        cardCMCString = jsonParser.getText();
-                        break;
-                    case CARD_TYPE:
-                        jsonParser.nextToken();
-                        cardTypeString = jsonParser.getText();
-                        break;
-                    case CARD_TEXT:
-                        jsonParser.nextToken();
-                        cardTextString = jsonParser.getText();
-                        break;
-                    case CARD_POWER:
-                        jsonParser.nextToken();
-                        cardPowerString = jsonParser.getText();
-                        break;
-                    case CARD_TOUGHNESS:
-                        jsonParser.nextToken();
-                        cardToughnessString = jsonParser.getText();
-                        break;
-                    default:
-                        break;
-                }
-               Log.v("Log", "" + cardLayoutString+ cardNameString+ cardManaCostString+
-                        cardCMCString+ cardTypeString+ cardTypesStringArray+ cardSubtypesStringArray+
-                        cardTextString+ cardPowerString + cardToughnessString);
-
-                Cards cardInfo = new Cards(cardLayoutString, cardNameString, cardManaCostString,
-                            cardCMCString, cardTypeString, cardTypesStringArray, cardSubtypesStringArray,
-                            cardTextString, cardPowerString, cardToughnessString);
-
-                cards.add(cardInfo);
-            }
-
-//            JSONObject baseJsonResponse = new JSONObject(cardsJson);
+        /** Trying Jackson JSON parsing, wasn't working */
+//        try {
 //
-//            Iterator<String> iter = baseJsonResponse.keys();
-//            while (iter.hasNext()) {
-//                String key = iter.next();
-//                try {
-//                    // First object needed to get most of the info
-//                    JSONObject devResponse = baseJsonResponse.getJSONObject(key);
+//            JsonFactory jsonFactory = new JsonFactory();
+//            JsonParser jsonParser = jsonFactory.createParser(new File(cardsJson));
 //
-////                     Gets the title of the article, so long as one is provided
-//                    String cardLayoutString = "";
-//                    if (devResponse.has(CARD_LAYOUT)) {
-//                        cardLayoutString = devResponse.getString(CARD_LAYOUT);
+//            while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
+//                String fieldName = jsonParser.getCurrentName();
+//                String cardLayoutString = "";
+//                String cardNameString = "";
+//                String cardManaCostString = "";
+//                String cardCMCString = "";
+//                String cardTypeString = "";
+//                String[] cardTypesStringArray;
+//                if (fieldName.equals(CARD_TYPES)) {
+//                    jsonParser.nextToken();
+//                    int length = fieldName.length();
+//                    cardTypesStringArray = new String[length];
+//                    while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
+//                        int i = 0;
+//                        cardTypesStringArray[i] = jsonParser.getText();
+//                        i++;
 //                    }
+//                } else {
+//                    cardTypesStringArray = new String[0];
+//                }
 //
-//                    String cardNameString = "";
-//                    if (devResponse.has(CARD_NAME)) {
-//                        cardNameString = devResponse.getString(CARD_NAME);
+//                String[] cardSubtypesStringArray;
+//                if (fieldName.equals(CARD_SUBTYPES)) {
+//                    int length = fieldName.length();
+//                    cardSubtypesStringArray = new String[length];
+//                    int i = 0;
+//                    while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
+//                        cardSubtypesStringArray[i] = jsonParser.getText();
+//                        i++;
 //                    }
+//                } else {
+//                    cardSubtypesStringArray = new String[0];
+//                }
 //
-//                    String cardManaCostString = "";
-//                    if (devResponse.has(CARD_MANA_COST)) {
-//                        cardManaCostString = devResponse.getString(CARD_MANA_COST);
-//                    }
+//                String cardTextString = "";
+//                String cardPowerString = "";
+//                String cardToughnessString = "";
 //
-//                    String cardCMCString = "";
-//                    if (devResponse.has(CARD_CMC)) {
-//                        cardCMCString = devResponse.getString(CARD_CMC);
-//                    }
+//                switch (fieldName) {
+//                    case CARD_LAYOUT:
+//                        jsonParser.nextToken();
+//                        cardLayoutString = jsonParser.getText();
+//                        break;
+//                    case CARD_NAME:
+//                        jsonParser.nextToken();
+//                        cardNameString = jsonParser.getText();
+//                        break;
+//                    case CARD_MANA_COST:
+//                        jsonParser.nextToken();
+//                        cardManaCostString = jsonParser.getText();
+//                        break;
+//                    case CARD_CMC:
+//                        jsonParser.nextToken();
+//                        cardCMCString = jsonParser.getText();
+//                        break;
+//                    case CARD_TYPE:
+//                        jsonParser.nextToken();
+//                        cardTypeString = jsonParser.getText();
+//                        break;
+//                    case CARD_TEXT:
+//                        jsonParser.nextToken();
+//                        cardTextString = jsonParser.getText();
+//                        break;
+//                    case CARD_POWER:
+//                        jsonParser.nextToken();
+//                        cardPowerString = jsonParser.getText();
+//                        break;
+//                    case CARD_TOUGHNESS:
+//                        jsonParser.nextToken();
+//                        cardToughnessString = jsonParser.getText();
+//                        break;
+//                    default:
+//                        break;
+//                }
+//               Log.v("Log", "" + cardLayoutString + cardNameString + cardManaCostString +
+//                        cardCMCString + cardTypeString + cardTypesStringArray + cardSubtypesStringArray +
+//                        cardTextString + cardPowerString + cardToughnessString);
 //
-//                    String cardTypeString = "";
-//                    if (devResponse.has(CARD_TYPE)) {
-//                        cardTypeString = devResponse.getString(CARD_TYPE);
-//                    }
-//
-//                    JSONArray typesArray = devResponse.getJSONArray(CARD_TYPES);
-//                    int typesArrayLength = typesArray.length();
-//                    String[] cardTypesStringArray = new String[typesArrayLength];
-//                    if (typesArrayLength > 0) {
-//                        for (int i = 0; i < typesArrayLength; i++) {
-//                            cardTypesStringArray[i] = typesArray.getString(i);
-//                        }
-//                    }
-//
-//                    JSONArray subtypesArray = devResponse.getJSONArray(CARD_SUBTYPES);
-//                    int subtypesArrayLength = subtypesArray.length();
-//                    String[] cardSubtypesStringArray = new String[subtypesArrayLength];
-//                    if (subtypesArrayLength > 0) {
-//                        for (int i = 0; i < subtypesArrayLength; i++) {
-//                            cardSubtypesStringArray[i] = subtypesArray.getString(i);
-//                        }
-//                    }
-//
-//                    String cardTextString = "";
-//                    if (devResponse.has(CARD_TEXT)) {
-//                        cardTextString = devResponse.getString(CARD_TEXT);
-//                    }
-//
-//                    String cardPowerString = "";
-//                    if (devResponse.has(CARD_POWER)) {
-//                        cardPowerString = devResponse.getString(CARD_POWER);
-//                    }
-//
-//                    String cardToughnessString = "";
-//                    if (devResponse.has(CARD_TOUGHNESS)) {
-//                        cardToughnessString = devResponse.getString(CARD_TOUGHNESS);
-//                    }
-//
-//                    Cards cardInfo = new Cards(cardLayoutString, cardNameString, cardManaCostString,
+//                Cards cardInfo = new Cards(cardLayoutString, cardNameString, cardManaCostString,
 //                            cardCMCString, cardTypeString, cardTypesStringArray, cardSubtypesStringArray,
 //                            cardTextString, cardPowerString, cardToughnessString);
 //
-//                    cards.add(cardInfo);
-//                } catch (JSONException e) {
-//                    // Something went wrong!
-//                }
+//                cards.add(cardInfo);
 //            }
 
-//        } catch (JSONException e) {
-//            // If an error is thrown when executing any of the above statements in the "try" block,
-//            // catch the exception here, so the app doesn't crash. Print a log message
-//            // with the message from the exception.
-//            Log.e("QueryUtils", "Problem parsing the JSON results", e);
-        } catch (IOException e){
-            e.printStackTrace();
+        /**
+         * Normal JSON parsing with Android
+         * */
+        try {
+            JSONObject baseJsonResponse = new JSONObject(cardsJson);
+
+            Iterator<String> iter = baseJsonResponse.keys();
+            while (iter.hasNext()) {
+                String key = iter.next();
+                try {
+                    JSONObject devResponse = baseJsonResponse.getJSONObject(key);
+
+                    String cardLayoutString = "";
+                    if (devResponse.has(CARD_LAYOUT)) {
+                        cardLayoutString = devResponse.getString(CARD_LAYOUT);
+                    }
+
+                    String cardNameString = "";
+                    if (devResponse.has(CARD_NAME)) {
+                        cardNameString = devResponse.getString(CARD_NAME);
+                    }
+
+                    String cardManaCostString = "";
+                    if (devResponse.has(CARD_MANA_COST)) {
+                        cardManaCostString = devResponse.getString(CARD_MANA_COST);
+                    }
+
+                    String cardCMCString = "";
+                    if (devResponse.has(CARD_CMC)) {
+                        cardCMCString = devResponse.getString(CARD_CMC);
+                    }
+
+                    String cardTypeString = "";
+                    if (devResponse.has(CARD_TYPE)) {
+                        cardTypeString = devResponse.getString(CARD_TYPE);
+                    }
+
+                    JSONArray typesArray = devResponse.getJSONArray(CARD_TYPES);
+                    int typesArrayLength = typesArray.length();
+                    String[] cardTypesStringArray = new String[typesArrayLength];
+                    if (typesArrayLength > 0) {
+                        for (int i = 0; i < typesArrayLength; i++) {
+                            cardTypesStringArray[i] = typesArray.getString(i);
+                        }
+                    }
+
+                    JSONArray subtypesArray = devResponse.getJSONArray(CARD_SUBTYPES);
+                    int subtypesArrayLength = subtypesArray.length();
+                    String[] cardSubtypesStringArray = new String[subtypesArrayLength];
+                    if (subtypesArrayLength > 0) {
+                        for (int i = 0; i < subtypesArrayLength; i++) {
+                            cardSubtypesStringArray[i] = subtypesArray.getString(i);
+                        }
+                    }
+
+                    String cardTextString = "";
+                    if (devResponse.has(CARD_TEXT)) {
+                        cardTextString = devResponse.getString(CARD_TEXT);
+                    }
+
+                    String cardPowerString = "";
+                    if (devResponse.has(CARD_POWER)) {
+                        cardPowerString = devResponse.getString(CARD_POWER);
+                    }
+
+                    String cardToughnessString = "";
+                    if (devResponse.has(CARD_TOUGHNESS)) {
+                        cardToughnessString = devResponse.getString(CARD_TOUGHNESS);
+                    }
+
+                    Cards cardInfo = new Cards(cardLayoutString, cardNameString, cardManaCostString,
+                            cardCMCString, cardTypeString, cardTypesStringArray, cardSubtypesStringArray,
+                            cardTextString, cardPowerString, cardToughnessString);
+
+                    cards.add(cardInfo);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (JSONException e) {
+            Log.e("QueryUtils", "Problem parsing the JSON results", e);
         }
+        // For JSON Jackson
+        /* catch (IOException e){
+            e.printStackTrace();
+        }*/
 
         // Return the list of cards
         return cards;
@@ -305,6 +306,7 @@ public final class QueryUtils {
                 inputStream.close();
             }
         }
+        Log.v("HttpRequest returned", ""+jsonResponse);
         return jsonResponse;
     }
 
@@ -323,6 +325,7 @@ public final class QueryUtils {
                 line = reader.readLine();
             }
         }
+        Log.v("ReadFromStream", " commenced");
         return output.toString();
     }
 
@@ -346,35 +349,35 @@ public final class QueryUtils {
             }
         }
 
-        // Extract relevant fields from the JSON response and create a list of {@link NewsReport}s
+        // Extract relevant fields from the JSON response and create a list of {@link Cards}
         List<Cards> cardsList = extractFeatureFromJson(jsonResponse);
 
-        // Return the list of {@link NewsReport}s
+        Log.v("FetchCardData returned", "Cards list");
         return cardsList;
     }
 
     private static String loadJSONFromAsset(Context context) {
-        String jsonResponse = null;
+        StringBuilder output = new StringBuilder();
+
+        File file = new File(context.getFilesDir(), "AllCards.json");
 
         try {
-            FileInputStream fileInputStream = context.openFileInput("AllCards.json");
+            BufferedReader fileReader = new BufferedReader(new FileReader(file));
 
-            int size = fileInputStream.available();
+            String line = fileReader.readLine();
+            while (line != null) {
+                output.append(line);
+                line = fileReader.readLine();
+            }
 
-            byte[] buffer = new byte[size];
-
-            fileInputStream.read(buffer);
-
-            fileInputStream.close();
-
-            jsonResponse = new String(buffer, "UTF-8");
-
+            fileReader.close();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
 
         }
-        return jsonResponse;
+        Log.v("LoadJSONFromAsset", " finishing");
+        return output.toString();
     }
 
     public static Boolean checkJSONVersion(String requestUrl, Context context) {

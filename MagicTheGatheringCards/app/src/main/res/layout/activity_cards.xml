@@ -13,7 +13,7 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"
+            android:divider="#3700B3"
             android:dividerHeight="@dimen/divider_height"
             android:orientation="vertical" />
 

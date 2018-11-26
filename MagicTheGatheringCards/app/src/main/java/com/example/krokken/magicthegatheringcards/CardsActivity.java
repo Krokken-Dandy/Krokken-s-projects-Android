@@ -58,13 +58,13 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cards);
+        setTitle("MTG Card List");
 
         // Method that initializes all the global variables to be used
         initializeVariables();
 
         // Sets the empty text view for when there is no information or no connection
         cardsListView.setEmptyView(mEmptyStateTextView);
-
 
         // Sets a listener for opening an intent with the relating article
         cardsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -2,7 +2,7 @@ package com.example.krokken.magicthegatheringcards;
 
 import java.util.List;
 
-public class CardDetails {
+public class CardPOJO {
 
     private String cardName;
     private List<String> language;

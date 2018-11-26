@@ -34,7 +34,8 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
         CardsActivity cardsActivity = new CardsActivity();
         Resources res = mContext.getResources();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-// getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
         String chosenNameString = sharedPreferences.getString(
                 res.getString(R.string.settings_chosen_search_by_name_key),
                 res.getString(R.string.settings_chosen_search_by_name_default));
@@ -94,12 +95,13 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
 
         viewHolder.cmc.setText(cardsPosition.getCardCMC());
 
+        viewHolder.type.setText(cardsPosition.getCardType());
+
         if (!cardsPosition.getCardPower().equals("") || !cardsPosition.getCardToughness().equals("")) {
             viewHolder.powerAndToughness.setText(cardsPosition.getCardPNT());
+        } else {
+            viewHolder.powerAndToughness.setText("");
         }
-
-        // Sets the name of the Contributor to the article
-        viewHolder.type.setText(cardsPosition.getCardType());
 
         return convertView;
     }

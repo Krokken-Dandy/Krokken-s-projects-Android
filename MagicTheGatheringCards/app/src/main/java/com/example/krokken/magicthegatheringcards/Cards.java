@@ -72,7 +72,7 @@ public class Cards {
         return mCardSubtypes;
     }
 
-    public String getCardText() {
+    String getCardText() {
         return mCardText;
     }
 
