@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingEnd="@dimen/list_item_constraint_padding"
+    android:paddingLeft="@dimen/list_item_constraint_padding"
+    android:paddingRight="@dimen/list_item_constraint_padding"
+    android:paddingStart="@dimen/list_item_constraint_padding">
+
+    <TextView
+        android:id="@+id/card_name"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
+        android:layout_height="25dp"
+        android:layout_gravity="start"
+        android:gravity="center"
+        android:paddingTop="@dimen/list_item_date_padding"
+        android:paddingRight="@dimen/list_item_date_padding"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/list_item_date_text_size"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/card_cmc"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="text" />
+
+    <TextView
+        android:id="@+id/card_cmc"
+        android:layout_width="@dimen/MATCH_CONSTRAINT"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:paddingTop="@dimen/list_item_time_padding"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/list_item_time_text_size"
+        tools:text="text"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/card_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card_power_and_toughness"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/list_item_section_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toEndOf="@+id/card_type"
+        app:layout_constraintTop_toBottomOf="@+id/card_cmc"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="text" />
+
+    <TextView
+        android:id="@+id/card_type"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="start"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/list_item_title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_name"
+        tools:text="text" />
+</android.support.constraint.ConstraintLayout>

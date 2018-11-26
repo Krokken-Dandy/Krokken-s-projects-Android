@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">MagicTheGatheringCards</string>
+    <string name="no_cards">No cards found</string>
+    <string name="no_internet">No internet connection found</string>
+    <string name="no_refresh_no_connection">Unable to refresh, no connection found</string>
+
+    <!-- Strings used to build the URL to request the JSON -->
+    <string name="url_mtg_json">http://mtgjson.com</string>
+    <string name="url_all_cards">v4/json/AllCards.json</string>
+    <string name="url_cards_version">v4/json/version.json</string>
+
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Card Filter Settings</string>
+
+    <string name="settings_search_by_name">Search by Card Name</string>
+    <string name="settings_chosen_search_by_name_key" translatable="false">choose_name_search</string>
+    <string name="settings_chosen_search_by_name_default" translatable="false">any</string>
+
+    <string name="settings_cmc_less_than">Converted Mana Cost Equal to or Less than</string>
+    <string name="settings_choose_cmc_less_key" translatable="false">choose_cmc_less</string>
+    <string name="settings_choose_cmc_less_default" translatable="false">@string/settings_choose_cmc_less_default_value</string>
+
+    <string name="settings_choose_cmc_less_default_label">CMC Less than or Equal to</string>
+    <string name="settings_choose_cmc_less_default_value" translatable="false">300</string>
+
+    <string name="settings_cmc_greater_than">Converted Mana Cost Equal to or Greater than</string>
+    <string name="settings_choose_cmc_greater_key" translatable="false">choose_cmc_greater</string>
+    <string name="settings_choose_cmc_greater_default" translatable="false">@string/settings_choose_cmc_greater_default_value</string>
+
+    <string name="settings_choose_cmc_greater_default_label">CMC Greater than or Equal to</string>
+    <string name="settings_choose_cmc_greater_default_value" translatable="false">0</string>
+
+    <string name="settings_choose_colors">Choose Colors</string>
+    <string name="settings_choose_colors_key" translatable="false">choose_color</string>
+    <string name="settings_choose_colors_default" translatable="false">@string/settings_choose_colors_default_value</string>
+
+    <string name="settings_choose_colors_default_label">Colors</string>
+    <string name="settings_choose_colors_default_value" translatable="false">any</string>
+
+    <string name="settings_choose_types">Choose Types</string>
+    <string name="settings_choose_types_key" translatable="false">choose_types</string>
+    <string name="settings_choose_types_default" translatable="false">@string/settings_choose_types_default_value</string>
+
+    <string name="settings_choose_types_default_label">Types</string>
+    <string name="settings_choose_types_default_value" translatable="false">any</string>
+
+    <string name="settings_choose_subtypes">Choose Subtypes</string>
+    <string name="settings_choose_subtypes_key" translatable="false">choose_subtypes</string>
+    <string name="settings_choose_subtypes_default" translatable="false">@string/settings_choose_subtypes_default_value</string>
+
+    <string name="settings_choose_subtypes_default_label">Subtypes</string>
+    <string name="settings_choose_subtypes_default_value" translatable="false">any</string>
+</resources>

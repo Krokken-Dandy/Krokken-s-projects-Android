@@ -285,7 +285,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 Intent cameraIntent = new
                         Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
-            } else {
             }
         }
     }
@@ -311,12 +310,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     private void setupListeners() {
-        /**
-         * Note to reviewer
-         * I wanted to add the perform click for the following listeners,
-         * but I was having trouble understanding exactly how they're supposed to be implemented
-         * and where I put it, or doing it for each one seperately?
-         */
         mProductImageView.setOnTouchListener(mTouchListener);
         mProductNameEditText.setOnTouchListener(mTouchListener);
         mProductPriceEditText.setOnTouchListener(mTouchListener);

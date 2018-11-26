@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title">
+
+    <EditTextPreference
+        android:id="@+id/edit_search"
+        android:defaultValue="@string/settings_chosen_search_by_name_default"
+        android:inputType="text"
+        android:key="@string/settings_chosen_search_by_name_key"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_search_by_name" />
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_choose_cmc_less_default"
+        android:inputType="numberDecimal"
+        android:key="@string/settings_choose_cmc_less_key"
+        android:title="@string/settings_choose_cmc_less_default_label" />
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_choose_cmc_greater_default"
+        android:inputType="numberDecimal"
+        android:key="@string/settings_choose_cmc_greater_key"
+        android:title="@string/settings_choose_cmc_greater_default_label" />
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_choose_colors_default_value"
+        android:inputType="text"
+        android:key="@string/settings_choose_colors_key"
+        android:title="@string/settings_choose_colors_default_label"
+        />
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_choose_types_default_value"
+        android:inputType="text"
+        android:key="@string/settings_choose_types_key"
+        android:title="@string/settings_choose_types_default_label"
+        />
+
+    <EditTextPreference
+        android:defaultValue="@string/settings_choose_subtypes_default_value"
+        android:inputType="text"
+        android:key="@string/settings_choose_subtypes_key"
+        android:title="@string/settings_choose_subtypes_default_label"
+        />
+</PreferenceScreen>

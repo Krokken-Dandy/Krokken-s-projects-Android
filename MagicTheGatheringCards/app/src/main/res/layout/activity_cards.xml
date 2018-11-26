@@ -1,0 +1,36 @@
+<!-- Layout for a list of news reports -->
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pullToRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- Listview for the news articles-->
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="@dimen/divider_height"
+            android:orientation="vertical" />
+
+        <!-- Empty view is only visible when the list has no items. -->
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <!-- Loading indicator is only shown before the first load and when refreshing-->
+        <ProgressBar
+            android:id="@+id/loading_indicator"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

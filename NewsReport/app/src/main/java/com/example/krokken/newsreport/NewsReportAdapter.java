@@ -21,8 +21,8 @@ public class NewsReportAdapter extends ArrayAdapter<NewsReport> {
 
     ViewHolder viewHolder;
 
-    public NewsReportAdapter(Activity context, ArrayList<NewsReport> earthquakes) {
-        super(context, 0, earthquakes);
+    public NewsReportAdapter(Activity context, ArrayList<NewsReport> newsReports) {
+        super(context, 0, newsReports);
     }
 
     @Override

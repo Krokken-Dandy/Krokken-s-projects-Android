@@ -30,10 +30,10 @@ public class InventoryCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, final Context context, final Cursor cursor) {
         final ViewHolder vh = new ViewHolder();
-        vh.productName = (TextView) view.findViewById(R.id.name);
-        vh.productPrice = (TextView) view.findViewById(R.id.price);
-        vh.productQuantity = (TextView) view.findViewById(R.id.quantity);
-        vh.sellIcon = (ImageView) view.findViewById(R.id.sell_icon);
+        vh.productName = view.findViewById(R.id.name);
+        vh.productPrice = view.findViewById(R.id.price);
+        vh.productQuantity = view.findViewById(R.id.quantity);
+        vh.sellIcon = view.findViewById(R.id.sell_icon);
 
         // Figure out the index of each column
         int productNameIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_INVENTORY_PRODUCT_NAME);
