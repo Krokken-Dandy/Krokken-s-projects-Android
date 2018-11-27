@@ -8,6 +8,8 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

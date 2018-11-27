@@ -31,8 +31,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.example.krokken.magicthegatheringcards.CardsActivity.LOG_TAG;
-
 public final class QueryUtils {
 
     // Each used to retrieve related object in the JSON response
@@ -293,7 +291,7 @@ public final class QueryUtils {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
-                Log.e(LOG_TAG, "The response code was not 200, it was: " + urlConnection.getResponseCode());
+                Log.e("Log tag", "The response code was not 200, it was: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
             Log.e("IOException", "IOEception in makeHttpRequest", e);

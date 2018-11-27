@@ -1,5 +1,6 @@
 <!-- Layout for a list of news reports -->
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/pullToRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,11 +9,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:queryHint="Search name">
+
+        </SearchView>
+
         <!-- Listview for the news articles-->
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/search_view"
             android:divider="#3700B3"
             android:dividerHeight="@dimen/divider_height"
             android:orientation="vertical" />

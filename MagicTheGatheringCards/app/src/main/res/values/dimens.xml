@@ -16,4 +16,26 @@
     <dimen name="list_item_title_padding_left">16dp</dimen>
     <dimen name="list_item_title_padding_right">16dp</dimen>
     <dimen name="list_item_title_padding_bottom">36dp</dimen>
+
+    <!--First popup dimensions-->
+    <dimen name="first_popup_frame_width">300dp</dimen>
+    <dimen name="first_popup_image_width">65dp</dimen>
+    <dimen name="first_popup_image_height">65dp</dimen>
+    <dimen name="first_popup_image_margin_bottom">4dp</dimen>
+    <dimen name="first_popup_image_margin_left">8dp</dimen>
+    <dimen name="first_popup_image_margin_right">8dp</dimen>
+    <dimen name="first_popup_image_margin_top">8dp</dimen>
+    <dimen name="first_popup_address_text_margin">8dp</dimen>
+    <dimen name="first_popup_name_text_margin_bottom">8dp</dimen>
+    <dimen name="first_popup_name_text_margin_left">8dp</dimen>
+    <dimen name="first_popup_name_text_margin_right">8dp</dimen>
+    <dimen name="first_popup_name_text_margin_top">4dp</dimen>
+    <dimen name="first_popup_name_text_size">24sp</dimen>
+    <dimen name="first_popup_description_text_margin_bottom">4dp</dimen>
+    <dimen name="first_popup_description_text_margin_left">8dp</dimen>
+    <dimen name="first_popup_description_text_margin_right">8dp</dimen>
+    <dimen name="first_popup_description_text_margin_top">4dp</dimen>
+    <dimen name="first_popup_hours_text_margin">8dp</dimen>
+    <dimen name="first_popup_phone_icon_margin">8dp</dimen>
+    <dimen name="first_popup_website_text_padding_bottom">8dp</dimen>
 </resources>

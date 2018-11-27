@@ -10,70 +10,73 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class CardsAdapter extends ArrayAdapter<Cards> {
+public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
 
     ViewHolder viewHolder;
     Context mContext;
-    ArrayList<Cards> mCards;
+    Resources res;
+    SharedPreferences sharedPreferences;
+    ArrayList<Cards> mCardsOriginalData;
+    ArrayList<Cards> mCardsFilteredData;
     String[] globalSearchTerms = {"", "any", "all", "everything"};
+    private Filter mFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            FilterResults filterResults = new FilterResults();
+
+            if (mCardsOriginalData != null && charSequence != null) {
+                ArrayList<Cards> nList = new ArrayList<>();
+                int listSize = mCardsOriginalData.size();
+                for (int i = 0; i < listSize; i++) {
+                    Cards item = mCardsOriginalData.get(i);
+                    Log.v("If check for filter", (filterThroughAllOptions(item) && checkSearchView(item, charSequence)) + "");
+                    if (filterThroughAllOptions(item) && checkSearchView(item, charSequence)) {
+                        Log.v("Filterthroughall", "True");
+                        nList.add(item);
+                    } else {
+                        Log.v("Filterthroughall", "false");
+                    }
+                }
+                filterResults.count = nList.size();
+                filterResults.values = nList;
+            }
+            Log.v("filter results", "triggered");
+            return filterResults;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            mCardsFilteredData = (ArrayList<Cards>) filterResults.values;
+            if (filterResults.count >= 0) {
+                notifyDataSetChanged();
+                Log.v("Publish Results", "Validated");
+            } else {
+                notifyDataSetInvalidated();
+                Log.v("Publish Results", "Invalidated");
+            }
+        }
+    };
 
     public CardsAdapter(Activity context, ArrayList<Cards> cards) {
         super(context, 0, cards);
         mContext = context;
-        mCards = cards;
+        res = mContext.getResources();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        this.mCardsOriginalData = cards;
+        this.mCardsFilteredData = cards;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Cards cardsPosition = getItem(position);
-        CardsActivity cardsActivity = new CardsActivity();
-        Resources res = mContext.getResources();
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-
-        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
-        String chosenNameString = sharedPreferences.getString(
-                res.getString(R.string.settings_chosen_search_by_name_key),
-                res.getString(R.string.settings_chosen_search_by_name_default));
-
-        String[] chosenNames = splitNamesString(chosenNameString);
-
-        String chosenColorsString = sharedPreferences.getString(
-                res.getString(R.string.settings_choose_colors_key),
-                res.getString(R.string.settings_choose_colors_default));
-
-        String[] chosenColors = splitColorsString(chosenColorsString);
-
-        String chosenTypesString = sharedPreferences.getString(
-                res.getString(R.string.settings_choose_types_key),
-                res.getString(R.string.settings_choose_types_default));
-
-        String[] chosenTypes = splitTypesString(chosenTypesString);
-
-        String chosenSubtypesString = sharedPreferences.getString(
-                res.getString(R.string.settings_choose_subtypes_key),
-                res.getString(R.string.settings_choose_subtypes_default));
-
-        String[] chosenSubtypes = splitSubtypesString(chosenSubtypesString);
-
-        double chosenCMCLessThan = Double.parseDouble(sharedPreferences.getString(
-                res.getString(R.string.settings_choose_cmc_less_key),
-                res.getString(R.string.settings_choose_cmc_less_default))
-        );
-
-        double chosenCMCGreaterThan = Double.parseDouble(sharedPreferences.getString(
-                res.getString(R.string.settings_choose_cmc_greater_key),
-                res.getString(R.string.settings_choose_cmc_greater_default))
-        );
-
-        if (!filterThroughAllOptions(cardsPosition, chosenCMCLessThan, chosenCMCGreaterThan,
-                chosenNames, chosenColors, chosenTypes, chosenSubtypes)) {
-            return convertView;
-        }
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
@@ -106,33 +109,40 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
         return convertView;
     }
 
-    private boolean filterThroughAllOptions(
-            Cards cardsPosition,
-            double chosenCMCLessThan, double chosenCMCGreaterThan,
-            String[] chosenName,
-            String[] chosenColors,
-            String[] chosenTypes,
-            String[] chosenSubtypes) {
-
-        //TODO Add power/toughness filter, text filter
-        return (filterCMCOptions(cardsPosition, chosenCMCLessThan, chosenCMCGreaterThan) &&
-                filterNameOptions(cardsPosition, chosenName) &&
-                filterColorCostOptions(cardsPosition, chosenColors) &&
-                filterTypeOptions(cardsPosition, chosenTypes) &&
-                filterSubtypeOptions(cardsPosition, chosenSubtypes));
+    @Override
+    public Filter getFilter() {
+        return mFilter;
     }
 
-    private boolean filterCMCOptions(Cards cardsPosition,
-                                     double chosenCMCLessThan, double chosenCMCGreaterThan) {
+    private boolean filterThroughAllOptions(Cards cardsPosition) {
+        //TODO Add power/toughness filter, text filter
+        Log.v ("Filter boolean", "" + filterCMCOptions(cardsPosition) +
+                filterNameOptions(cardsPosition) +
+                filterColorCostOptions(cardsPosition) +
+                filterTypeOptions(cardsPosition) +
+                filterSubtypeOptions(cardsPosition));
+        return (filterCMCOptions(cardsPosition) &&
+                filterNameOptions(cardsPosition) &&
+                filterColorCostOptions(cardsPosition) &&
+                filterTypeOptions(cardsPosition) &&
+                filterSubtypeOptions(cardsPosition));
+    }
 
+    // Returns true if CMC is null or card equals chosen cmc in search
+    private boolean filterCMCOptions(Cards cardsPosition) {
+        double chosenCMCLessThan = getChosenCMCLessThan();
+        double chosenCMCGreaterThan = getChosenCMCGreaterThan();
         if (cardsPosition.getCardCMC() == null) return true;
 
         return ((Double.parseDouble(cardsPosition.getCardCMC()) <= chosenCMCLessThan &&
                 (Double.parseDouble(cardsPosition.getCardCMC()) >= chosenCMCGreaterThan)));
     }
 
-    private boolean filterNameOptions(Cards cardsPosition, String[] chosenNameArray) {
-        if (cardsPosition.getCardName() == null || checkGlobalSearchTerms(chosenNameArray)) return true;
+    // Returns true if Name is null or card equals chosen name in search
+    private boolean filterNameOptions(Cards cardsPosition) {
+        String[] chosenNameArray = getChosenNameString();
+        if (cardsPosition.getCardName() == null || checkGlobalSearchTerms(chosenNameArray))
+            return true;
         for (String chosenNames : chosenNameArray) {
             if (Pattern.compile(Pattern.quote(cardsPosition.getCardName()),
                     Pattern.CASE_INSENSITIVE).matcher(chosenNames).find()) {
@@ -142,7 +152,9 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
         return false;
     }
 
-    private boolean filterColorCostOptions(Cards cardsPosition, String[] chosenColorsArray) {
+    // Returns true if color is null or card equals chosen colors in search
+    private boolean filterColorCostOptions(Cards cardsPosition) {
+        String[] chosenColorsArray = getChosenColors();
         if (cardsPosition.getCardManaCost() == null || checkGlobalSearchTerms(chosenColorsArray)) {
             return true;
         }
@@ -158,9 +170,12 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
         return false;
     }
 
-    private boolean filterTypeOptions(Cards cardsPosition, String[] chosenTypesArray) {
-        if (cardsPosition.getCardTypes() == null || checkGlobalSearchTerms(chosenTypesArray))
+    // Returns true if type is null or card equals chosen types in search
+    private boolean filterTypeOptions(Cards cardsPosition) {
+        String[] chosenTypesArray = getChosenTypes();
+        if (cardsPosition.getCardTypes() == null || checkGlobalSearchTerms(chosenTypesArray)) {
             return true;
+        }
         String[] cardTypesArray = cardsPosition.getCardTypes();
         for (String cardTypes : cardTypesArray) {
             for (String chosenTypes : chosenTypesArray) {
@@ -173,9 +188,12 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
         return false;
     }
 
-    private boolean filterSubtypeOptions(Cards cardsPosition, String[] chosenSubtypesArray) {
-        if (cardsPosition.getCardSubtypes() == null || checkGlobalSearchTerms(chosenSubtypesArray))
+    // Returns true if subtypes is null or card equals chosen subtypes in search
+    private boolean filterSubtypeOptions(Cards cardsPosition) {
+        String[] chosenSubtypesArray = getChosenSubtypes();
+        if (cardsPosition.getCardSubtypes() == null || checkGlobalSearchTerms(chosenSubtypesArray)) {
             return true;
+        }
         String[] cardSubtypesArray = cardsPosition.getCardSubtypes();
         for (String cardSubtypes : cardSubtypesArray) {
             for (String chosenSubtypes : chosenSubtypesArray) {
@@ -188,6 +206,21 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
         return false;
     }
 
+    private boolean checkSearchView(Cards cardsPosition, CharSequence charSequence){
+        Log.v("SearchView CharS", "" + charSequence);
+        Log.v("SearchView ToString", "" + charSequence.toString());
+        if (cardsPosition.getCardName() == null || checkGlobalSearchTerms(splitNamesString(charSequence.toString())))
+            return true;
+        for (String chosenNames : splitNamesString(charSequence.toString())) {
+            if (Pattern.compile(Pattern.quote(cardsPosition.getCardName()),
+                    Pattern.CASE_INSENSITIVE).matcher(chosenNames).find()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Returns true if search term is one of the globals: "", "any", "all", "everything"
     private boolean checkGlobalSearchTerms(String[] globalTerm) {
         for (String enteredTerms : globalTerm) {
             for (String terms : globalSearchTerms) {
@@ -197,6 +230,54 @@ public class CardsAdapter extends ArrayAdapter<Cards> {
             }
         }
         return false;
+    }
+
+       private String[] getChosenNameString() {
+        String chosenNameString = sharedPreferences.getString(
+                res.getString(R.string.settings_chosen_search_by_name_key),
+                res.getString(R.string.settings_chosen_search_by_name_default));
+        String[] chosenNames = splitNamesString(chosenNameString);
+        return chosenNames;
+    }
+
+    private String[] getChosenColors() {
+        String chosenColorsString = sharedPreferences.getString(
+                res.getString(R.string.settings_choose_colors_key),
+                res.getString(R.string.settings_choose_colors_default));
+        String[] chosenColors = splitColorsString(chosenColorsString);
+        return chosenColors;
+    }
+
+    private String[] getChosenTypes() {
+        String chosenTypesString = sharedPreferences.getString(
+                res.getString(R.string.settings_choose_types_key),
+                res.getString(R.string.settings_choose_types_default));
+        String[] chosenTypes = splitTypesString(chosenTypesString);
+        return chosenTypes;
+    }
+
+    private String[] getChosenSubtypes() {
+        String chosenSubtypesString = sharedPreferences.getString(
+                res.getString(R.string.settings_choose_subtypes_key),
+                res.getString(R.string.settings_choose_subtypes_default));
+        String[] chosenSubtypes = splitSubtypesString(chosenSubtypesString);
+        return chosenSubtypes;
+    }
+
+    private double getChosenCMCLessThan() {
+        double chosenCMCLessThan = Double.parseDouble(sharedPreferences.getString(
+                res.getString(R.string.settings_choose_cmc_less_key),
+                res.getString(R.string.settings_choose_cmc_less_default))
+        );
+        return chosenCMCLessThan;
+    }
+
+    private double getChosenCMCGreaterThan() {
+        double chosenCMCGreaterThan = Double.parseDouble(sharedPreferences.getString(
+                res.getString(R.string.settings_choose_cmc_greater_key),
+                res.getString(R.string.settings_choose_cmc_greater_default))
+        );
+        return chosenCMCGreaterThan;
     }
 
     private String[] splitNamesString(String chosenNamesString) {
