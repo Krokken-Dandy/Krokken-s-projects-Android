@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,18 +35,13 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
                 int listSize = mCardsOriginalData.size();
                 for (int i = 0; i < listSize; i++) {
                     Cards item = mCardsOriginalData.get(i);
-                    Log.v("If check for filter", (filterThroughAllOptions(item) && checkSearchView(item, charSequence)) + "");
                     if (filterThroughAllOptions(item) && checkSearchView(item, charSequence)) {
-                        Log.v("Filterthroughall", "True");
                         nList.add(item);
-                    } else {
-                        Log.v("Filterthroughall", "false");
                     }
                 }
                 filterResults.count = nList.size();
                 filterResults.values = nList;
             }
-            Log.v("filter results", "triggered");
             return filterResults;
         }
 
@@ -55,12 +49,10 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             mCardsFilteredData = (ArrayList<Cards>) filterResults.values;
-            if (filterResults.count >= 0) {
+            if (filterResults.count > 0) {
                 notifyDataSetChanged();
-                Log.v("Publish Results", "Validated");
             } else {
                 notifyDataSetInvalidated();
-                Log.v("Publish Results", "Invalidated");
             }
         }
     };
@@ -75,8 +67,18 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
     }
 
     @Override
+    public int getCount() {
+        return mCardsFilteredData.size();
+    }
+
+    @Override
+    public Cards getItem(int position) {
+        return mCardsFilteredData.get(position);
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Cards cardsPosition = getItem(position);
+        Cards cardsPosition = mCardsFilteredData.get(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
@@ -116,11 +118,7 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
 
     private boolean filterThroughAllOptions(Cards cardsPosition) {
         //TODO Add power/toughness filter, text filter
-        Log.v ("Filter boolean", "" + filterCMCOptions(cardsPosition) +
-                filterNameOptions(cardsPosition) +
-                filterColorCostOptions(cardsPosition) +
-                filterTypeOptions(cardsPosition) +
-                filterSubtypeOptions(cardsPosition));
+
         return (filterCMCOptions(cardsPosition) &&
                 filterNameOptions(cardsPosition) &&
                 filterColorCostOptions(cardsPosition) &&
@@ -155,13 +153,37 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
     // Returns true if color is null or card equals chosen colors in search
     private boolean filterColorCostOptions(Cards cardsPosition) {
         String[] chosenColorsArray = getChosenColors();
+        String[] alteredChosenColorsArray = new String[chosenColorsArray.length];
         if (cardsPosition.getCardManaCost() == null || checkGlobalSearchTerms(chosenColorsArray)) {
             return true;
         }
         String[] cardManaCostArray = cardsPosition.getCardManaCost();
-        for (String cardManaCosts : cardManaCostArray) {
-            for (String chosenColors : chosenColorsArray) {
-                if (Pattern.compile(Pattern.quote(cardManaCosts),
+
+        for (int i = 0; i < chosenColorsArray.length; i++) {
+            switch (chosenColorsArray[i]) {
+                case "blue":
+                    alteredChosenColorsArray[i] = chosenColorsArray[i].replaceAll("blue", "U");
+                    break;
+                case "black":
+                    alteredChosenColorsArray[i] = chosenColorsArray[i].replaceAll("black", "B");
+                    break;
+                case "white":
+                    alteredChosenColorsArray[i] = chosenColorsArray[i].replaceAll("white", "W");
+                    break;
+                case "red":
+                    alteredChosenColorsArray[i] = chosenColorsArray[i].replaceAll("red", "R");
+                    break;
+                case "green":
+                    alteredChosenColorsArray[i] = chosenColorsArray[i].replaceAll("green", "G");
+                    break;
+                default:
+                    alteredChosenColorsArray[i] = chosenColorsArray[i];
+            }
+        }
+
+        for (String cardManaCost : cardManaCostArray) {
+            for (String chosenColors : alteredChosenColorsArray) {
+                if (Pattern.compile(Pattern.quote(cardManaCost),
                         Pattern.CASE_INSENSITIVE).matcher(chosenColors).find()) {
                     return true;
                 }
@@ -206,9 +228,7 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
         return false;
     }
 
-    private boolean checkSearchView(Cards cardsPosition, CharSequence charSequence){
-        Log.v("SearchView CharS", "" + charSequence);
-        Log.v("SearchView ToString", "" + charSequence.toString());
+    private boolean checkSearchView(Cards cardsPosition, CharSequence charSequence) {
         if (cardsPosition.getCardName() == null || checkGlobalSearchTerms(splitNamesString(charSequence.toString())))
             return true;
         for (String chosenNames : splitNamesString(charSequence.toString())) {
@@ -232,7 +252,7 @@ public class CardsAdapter extends ArrayAdapter<Cards> implements Filterable {
         return false;
     }
 
-       private String[] getChosenNameString() {
+    private String[] getChosenNameString() {
         String chosenNameString = sharedPreferences.getString(
                 res.getString(R.string.settings_chosen_search_by_name_key),
                 res.getString(R.string.settings_chosen_search_by_name_default));

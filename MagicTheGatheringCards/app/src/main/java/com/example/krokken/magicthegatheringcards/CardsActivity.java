@@ -105,7 +105,6 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
             }
         });
 
-        // Sets the refresh listener to refresh the listview when requested
         pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -116,12 +115,8 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
 
         getLoaderManager().initLoader(VERSION_LOADER_ID, null, this);
 
-        // Set the adapter on the {@link ListView}
-        // so the list can be populated in the user interface
         cardsListView.setAdapter(mAdapter);
     }
-
-
 
     @Override
     public Loader onCreateLoader(int id, Bundle bundle) {
@@ -172,7 +167,7 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
                 mAdapter.addAll(ab);
             }
         }
-        mAdapter.getFilter().filter("any");
+        CardsActivity.this.mAdapter.getFilter().filter("any");
     }
 
     @Override
@@ -183,7 +178,6 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
     }
 
     private void initializeVariables() {
-        // Adapter for the News
         mAdapter = new CardsAdapter(this, new ArrayList<Cards>());
 
         // Constructs the URL that will be used for the request
