@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:id="@+id/popup_frame"
@@ -16,79 +16,83 @@
 
             <LinearLayout
                 android:id="@+id/popup_mana_cost_symbols_layout"
-                android:layout_margin="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
-                android:orientation="horizontal"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/popup_location_icon"
-                tools:ignore="ContentDescription"
-                android:layout_width="@dimen/first_popup_image_width"
-                android:layout_height="@dimen/first_popup_image_height"
-                android:layout_marginBottom="@dimen/first_popup_image_margin_bottom"
-                android:layout_marginLeft="@dimen/first_popup_image_margin_left"
-                android:layout_marginStart="@dimen/first_popup_image_margin_left"
-                android:layout_marginRight="@dimen/first_popup_image_margin_right"
-                android:layout_marginEnd="@dimen/first_popup_image_margin_right"
-                android:layout_marginTop="@dimen/first_popup_image_margin_top" />
-
-            <TextView
-                android:id="@+id/popup_card_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/popup_location_icon"
-                android:layout_alignTop="@id/popup_location_icon"
-                android:layout_margin="@dimen/first_popup_address_text_margin"
-                android:layout_toEndOf="@id/popup_location_icon"
-                android:layout_toRightOf="@id/popup_location_icon"
-                android:clickable="true"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                tools:text="Enchantment"/>
 
             <TextView
                 android:id="@+id/popup_card_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/popup_location_icon"
-                android:layout_marginBottom="@dimen/first_popup_name_text_margin_bottom"
-                android:layout_marginLeft="@dimen/first_popup_name_text_margin_left"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="@dimen/first_popup_name_text_margin_left"
-                android:layout_marginRight="@dimen/first_popup_name_text_margin_right"
-                android:layout_marginEnd="@dimen/first_popup_name_text_margin_right"
+                android:layout_marginLeft="@dimen/first_popup_name_text_margin_left"
                 android:layout_marginTop="@dimen/first_popup_name_text_margin_top"
+                android:layout_marginEnd="@dimen/first_popup_name_text_margin_right"
+                android:layout_marginRight="@dimen/first_popup_name_text_margin_right"
+                android:layout_marginBottom="@dimen/first_popup_name_text_margin_bottom"
                 android:textSize="@dimen/first_popup_name_text_size"
                 android:textStyle="bold"
-                tools:text="Card Name"/>
+                tools:text="Card Name" />
+
+            <ImageView
+                android:id="@+id/popup_card_set_icon"
+                android:layout_width="@dimen/first_popup_image_width"
+                android:layout_height="@dimen/first_popup_image_height"
+                android:layout_below="@id/popup_card_name"
+                android:layout_marginStart="@dimen/first_popup_image_margin_left"
+                android:layout_marginLeft="@dimen/first_popup_image_margin_left"
+                android:layout_marginTop="@dimen/first_popup_image_margin_top"
+                android:layout_marginEnd="@dimen/first_popup_image_margin_right"
+                android:layout_marginRight="@dimen/first_popup_image_margin_right"
+                android:layout_marginBottom="@dimen/first_popup_image_margin_bottom"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/popup_card_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/popup_card_set_icon"
+                android:layout_alignBottom="@id/popup_card_set_icon"
+                android:layout_margin="@dimen/first_popup_address_text_margin"
+                android:layout_toEndOf="@id/popup_card_set_icon"
+                android:layout_toRightOf="@id/popup_card_set_icon"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                tools:text="Enchantment" />
+
 
             <TextView
                 android:id="@+id/popup_card_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/popup_card_name"
-                android:layout_marginBottom="@dimen/first_popup_description_text_margin_bottom"
-                android:layout_marginLeft="@dimen/first_popup_description_text_margin_left"
+                android:layout_below="@id/popup_card_set_icon"
                 android:layout_marginStart="@dimen/first_popup_description_text_margin_left"
-                android:layout_marginRight="@dimen/first_popup_description_text_margin_right"
-                android:layout_marginEnd="@dimen/first_popup_description_text_margin_right"
+                android:layout_marginLeft="@dimen/first_popup_description_text_margin_left"
                 android:layout_marginTop="@dimen/first_popup_description_text_margin_top"
-                tools:text="Card Is like super cool and stuff. Does things"/>
+                android:layout_marginEnd="@dimen/first_popup_description_text_margin_right"
+                android:layout_marginRight="@dimen/first_popup_description_text_margin_right"
+                android:layout_marginBottom="@dimen/first_popup_description_text_margin_bottom"
+                tools:text="Card Is like super cool and stuff. Does things" />
 
             <TextView
                 android:id="@+id/popup_card_power_and_toughness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/popup_card_text"
+                android:layout_alignParentRight="true"
                 android:layout_margin="@dimen/first_popup_hours_text_margin" />
 
             <TextView
                 android:id="@+id/popup_location_phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/popup_card_text"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -99,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/popup_location_phone_number"
-                android:layout_centerHorizontal="true"
+                android:layout_alignParentLeft="true"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"

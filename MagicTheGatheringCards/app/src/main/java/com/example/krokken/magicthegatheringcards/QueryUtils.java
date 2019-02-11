@@ -304,7 +304,6 @@ public final class QueryUtils {
                 inputStream.close();
             }
         }
-        Log.v("HttpRequest returned", ""+jsonResponse);
         return jsonResponse;
     }
 
@@ -323,7 +322,6 @@ public final class QueryUtils {
                 line = reader.readLine();
             }
         }
-        Log.v("ReadFromStream", " commenced");
         return output.toString();
     }
 
@@ -350,7 +348,6 @@ public final class QueryUtils {
         // Extract relevant fields from the JSON response and create a list of {@link Cards}
         List<Cards> cardsList = extractFeatureFromJson(jsonResponse);
 
-        Log.v("FetchCardData returned", "Cards list");
         return cardsList;
     }
 
@@ -374,7 +371,6 @@ public final class QueryUtils {
             return null;
 
         }
-        Log.v("LoadJSONFromAsset", " finishing");
         return output.toString();
     }
 

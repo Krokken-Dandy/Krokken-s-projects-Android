@@ -253,16 +253,15 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         TextView cardName = popupView.findViewById(R.id.popup_card_name);
-        //TODO Remove location icon and phone
-        ImageView locationIcon = popupView.findViewById(R.id.popup_location_icon);
-        TextView locationPhone = popupView.findViewById(R.id.popup_location_phone_number);
+        ImageView cardSetIcon = popupView.findViewById(R.id.popup_card_set_icon);
         //TODO Have website instead search WOTC for the card
         //TODO Create another hyperlink for TCG player
+        TextView locationPhone = popupView.findViewById(R.id.popup_location_phone_number);
         TextView locationWebsite = popupView.findViewById(R.id.popup_location_website);
 
         TextView cardType = popupView.findViewById(R.id.popup_card_type);
-        TextView locationHours = popupView.findViewById(R.id.popup_card_power_and_toughness);
-        TextView locationDescription = popupView.findViewById(R.id.popup_card_text);
+        TextView cardPNT = popupView.findViewById(R.id.popup_card_power_and_toughness);
+        TextView cardText = popupView.findViewById(R.id.popup_card_text);
         LinearLayout manaCostSymbolsLayout = popupView.findViewById(R.id.popup_mana_cost_symbols_layout);
         FrameLayout popupFrame = popupView.findViewById(R.id.popup_frame);
 
@@ -296,6 +295,8 @@ public class CardsActivity extends AppCompatActivity implements LoaderManager.Lo
 
         cardName.setText(cardPosition.getCardName());
         cardType.setText(cardPosition.getCardType());
+        cardPNT.setText(cardPosition.getCardPNT());
+        cardText.setText(cardPosition.getCardText());
     }
 }
 
